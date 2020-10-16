@@ -24,6 +24,7 @@ or will create a new tag and push this to Github.
 
 	-c <tag>	Create a tag named <tag> and pushes this
 			information to Github and creates a release.
+	-d		Will generate CHANGELOG.md.
 	-h		Will print this help message.
 	-l		Will print last created tag.
 
