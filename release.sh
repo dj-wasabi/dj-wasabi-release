@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# This script will be used for creating tags and releases for the dj-wasabi related repositories
+# in an automated and (hopefully) structured way. :)
 
 set -euo pipefail
 
@@ -10,15 +13,18 @@ function help() {
 }
 
 function getLatestTag() {
+  # Print the latest created git tag.
   git describe --abbrev=0
 }
 
 function verifyGitTag(){
+  # Verify if the provided tag locally exist (1) or not (0).
   local TAG=$1
   git tag | grep "^${TAG}$" | wc -l
 }
 
 function createRelease(){
+  # The "main" function to start creating everything for a single release.
   local VERSION=$1
   local TAG_ALREAD_EXIST=$(verifyGitTag $VERSION)
   if [[ $TAG_ALREAD_EXIST -eq 1 ]]
@@ -26,17 +32,98 @@ function createRelease(){
           exit 1
   fi
   createGitTag $VERSION
+  pushGitTag
+  createGithubRelease $VERSION
+  createGitAuthors $VERSION
+  updateChangelogMd $VERSION
+  pushGit
+}
+
+function pushGit() {
+  # Push the changes to Github.
+  git push > /dev/null 2>&1
+}
+
+function pushGitTag() {
+  # Push the just created git tag.
+  git push --tags > /dev/null 2>&1
+}
+
+function createGitAuthors() {
+  # Create/Update and commit file with git authors.
+  local VERSION=$1
+  git shortlog -s -n --all --no-merges | awk '{$1=""}1' | sort -u > AUTHORS
+  if [[ $(git diff AUTHORS | wc -l) -gt 0 ]]
+    then  echo "INFO - Updating AUTHORS file"
+          git commit -m "Updating Authors file for release ${VERSION}" AUTHORS
+  fi
+}
+
+function updateChangelogMd() {
+  # Update the CHANGELOG.md by running a generator command via Docker.
+  local VERSION=$1
+  docker run -it --rm -e CHANGELOG_GITHUB_TOKEN=${GITHUB_TOKEN} -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u ${GITHUB_USER} -p ${GITHUB_PROJECT}  > /dev/null 2>&1
+
+  if [[ $(git diff CHANGELOG.md | wc -l) -gt 0 ]]
+    then  echo "INFO - Updating CHANGELOG.md file"
+          git commit -m "Updating CHANGELOG.md file for release ${VERSION}" CHANGELOG.md
+  fi
 }
 
 function createGitTag() {
+  # Create a git tag locally.
   local VERSION=$1
-  echo "git tag -a $VERSION -m $VERSION"
+  echo "INFO - Create the tag \"${VERSION}\" locally."
+  git tag -a $VERSION -m $VERSION
 }
 
+function generateGithubReleaseData() {
+  # Generate json data to be POST'ed to Github.
+  local VERSION=$1
 
+  cat <<EOF
+{
+  "tag_name": "${VERSION}",
+  "target_commitish": "$(git rev-parse --abbrev-ref HEAD)",
+  "name": "${VERSION}",
+  "body": "",
+  "draft": false,
+  "prerelease": false
+}
+EOF
+
+}
+
+function createGithubRelease() {
+  # Create release in Github.
+  local VERSION=$1
+  echo "INFO - Create release on Github"
+  curl -s -H "Authorization: token ${GITHUB_TOKEN}" --data "$(generateGithubReleaseData ${VERSION})" "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_PROJECT}/releases" > /dev/null
+}
+
+# Some checks we need to do to make sure we don't run into errors.
+# We need at an argument, otherwise we just print help and stop working.
 if [[ $# -eq 0 ]]
   then  help
 fi
+
+# Validate if we have a "CHANGELOG_GITHUB_TOKEN" environment variable already in our current env
+if [[ -z $CHANGELOG_GITHUB_TOKEN ]]
+  then  echo "ERROR - We don't have the environment \"CHANGELOG_GITHUB_TOKEN\" set."
+        exit 1
+fi
+
+# Verify that Docker is runnig.
+if [[ $(docker ps > /dev/null 2>&1;echo $?) -ne 0 ]]
+  then  echo "ERROR - Docker is not running"
+        exit 1
+fi
+
+# Get GIT related information
+GITHUB_URL=$(git config --get remote.origin.url)
+GITHUB_USER=$(echo $GITHUB_URL | awk -F ':' '{print $2}' | awk -F '/' '{print $1}')
+GITHUB_PROJECT=$(echo $GITHUB_URL | xargs basename | sed 's/.git//g')
+GITHUB_TOKEN=${CHANGELOG_GITHUB_TOKEN}
 
 while getopts 'c:lh' OPTION; do
   case "$OPTION" in
@@ -60,10 +147,3 @@ while getopts 'c:lh' OPTION; do
   esac
 done
 shift "$(($OPTIND -1))"
-
-# Get GIT related information
-GITHUB_URL=$(git config --get remote.origin.url)
-GITHUB_USER=$(echo $GITHUB_URL | awk -F ':' '{print $2}' | awk -F '/' '{print $1}')
-GITHUB_PROJECT=$(echo $GITHUB_URL | xargs basename | sed 's/.git//g')
-
-echo $GITHUB_PROJECT
