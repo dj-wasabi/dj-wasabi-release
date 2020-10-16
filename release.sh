@@ -6,9 +6,15 @@
 set -euo pipefail
 
 function help() {
-  echo -e "This is the help message.\n"
-  echo -e "\c-l\t\tCreate a tag"
-  echo -e "\t-l\t\tWill show last tag"
+  echo -e "This script will either provide the last created tag."
+  echo -e "or will create a new tag and push this to Github."
+  echo -e "\n\t-c <tag>\tCreate a tag named <tag> and pushes this"
+  echo -e "\t\t\tinformation to Github and creates a release."
+  echo -e "\t-h\t\tWill print this help message."
+  echo -e "\t-l\t\tWill print last created tag."
+  echo -e "\nNote:"
+  echo -e "\tPlease make sure that Docker is running and the environment"
+  echo -e "\tvariable \"CHANGELOG_GITHUB_TOKEN\" is set with correct value."
   exit 1
 }
 
@@ -41,11 +47,13 @@ function createRelease(){
 
 function pushGit() {
   # Push the changes to Github.
+  echo "INFO - Pushing changes to Github."
   git push > /dev/null 2>&1
 }
 
 function pushGitTag() {
   # Push the just created git tag.
+  echo "INFO - Push tag to Github."
   git push --tags > /dev/null 2>&1
 }
 
@@ -62,6 +70,7 @@ function createGitAuthors() {
 function updateChangelogMd() {
   # Update the CHANGELOG.md by running a generator command via Docker.
   local VERSION=$1
+  echo "INFO - Writing CHANGELOG.md file."
   docker run -it --rm -e CHANGELOG_GITHUB_TOKEN=${GITHUB_TOKEN} -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u ${GITHUB_USER} -p ${GITHUB_PROJECT}  > /dev/null 2>&1
 
   if [[ $(git diff CHANGELOG.md | wc -l) -gt 0 ]]
