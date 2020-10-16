@@ -10,6 +10,7 @@ function help() {
   echo -e "or will create a new tag and push this to Github."
   echo -e "\n\t-c <tag>\tCreate a tag named <tag> and pushes this"
   echo -e "\t\t\tinformation to Github and creates a release."
+  echo -e "\t-d\t\tWill generate CHANGELOG.md."
   echo -e "\t-h\t\tWill print this help message."
   echo -e "\t-l\t\tWill print last created tag."
   echo -e "\nNote:"
@@ -69,13 +70,15 @@ function createGitAuthors() {
 
 function updateChangelogMd() {
   # Update the CHANGELOG.md by running a generator command via Docker.
-  local VERSION=$1
+  local VERSION=${1:-null}
   echo "INFO - Writing CHANGELOG.md file."
   docker run -it --rm -e CHANGELOG_GITHUB_TOKEN=${GITHUB_TOKEN} -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u ${GITHUB_USER} -p ${GITHUB_PROJECT}  > /dev/null 2>&1
 
-  if [[ $(git diff CHANGELOG.md | wc -l) -gt 0 ]]
-    then  echo "INFO - Updating CHANGELOG.md file"
-          git commit -m "Updating CHANGELOG.md file for release ${VERSION}" CHANGELOG.md
+  if [[ "${VERSION}" == "null" ]];then
+    if [[ $(git diff CHANGELOG.md | wc -l) -gt 0 ]]
+      then  echo "INFO - Updating CHANGELOG.md file"
+            git commit -m "Updating CHANGELOG.md file for release ${VERSION}" CHANGELOG.md
+    fi
   fi
 }
 
@@ -134,10 +137,14 @@ GITHUB_USER=$(echo $GITHUB_URL | awk -F ':' '{print $2}' | awk -F '/' '{print $1
 GITHUB_PROJECT=$(echo $GITHUB_URL | xargs basename | sed 's/.git//g')
 GITHUB_TOKEN=${CHANGELOG_GITHUB_TOKEN}
 
-while getopts 'c:lh' OPTION; do
+while getopts 'c:dlh' OPTION; do
   case "$OPTION" in
     c)
       createRelease $OPTARG
+      ;;
+
+    d)
+      updateChangelogMd
       ;;
 
     l)
