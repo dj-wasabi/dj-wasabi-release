@@ -64,6 +64,7 @@ function createGitAuthors() {
   git shortlog -s -n --all --no-merges | awk '{$1=""}1' | sort -u > AUTHORS
   if [[ $(git diff AUTHORS | wc -l) -gt 0 ]]
     then  echo "INFO - Updating AUTHORS file"
+          git add AUTHORS
           git commit -m "Updating Authors file for release ${VERSION}" AUTHORS
   fi
 }
@@ -74,9 +75,10 @@ function updateChangelogMd() {
   echo "INFO - Writing CHANGELOG.md file."
   docker run -it --rm -e CHANGELOG_GITHUB_TOKEN=${GITHUB_TOKEN} -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u ${GITHUB_USER} -p ${GITHUB_PROJECT}  > /dev/null 2>&1
 
-  if [[ "${VERSION}" == "null" ]];then
+  if [[ "${VERSION}" != "null" ]];then
     if [[ $(git diff CHANGELOG.md | wc -l) -gt 0 ]]
       then  echo "INFO - Updating CHANGELOG.md file"
+            git add CHANGELOG.md
             git commit -m "Updating CHANGELOG.md file for release ${VERSION}" CHANGELOG.md
     fi
   fi
