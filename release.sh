@@ -41,7 +41,7 @@ function createRelease(){
   createGitTag $VERSION
   pushGitTag
   createGithubRelease $VERSION
-  createGitAuthors $VERSION
+  createGitContributors $VERSION
   updateChangelogMd $VERSION
   pushGit
 }
@@ -58,14 +58,17 @@ function pushGitTag() {
   git push --tags > /dev/null 2>&1
 }
 
-function createGitAuthors() {
-  # Create/Update and commit file with git authors.
+function createGitContributors() {
+  # Create/Update and commit file with git contributors.
   local VERSION=$1
-  git shortlog -s -n --all --no-merges | awk '{$1=""}1' | sort -u > AUTHORS
-  if [[ $(git diff AUTHORS | wc -l) -gt 0 ]]
-    then  echo "INFO - Updating AUTHORS file"
-          git add AUTHORS
-          git commit -m "Updating Authors file for release ${VERSION}" AUTHORS
+  if [[ ! -f CONTRIBUTORS ]]
+    then  touch CONTRIBUTORS
+  fi
+  git shortlog -s -n --all --no-merges | awk '{$1=""}1' | sort -u > CONTRIBUTORS
+  if [[ $(git diff CONTRIBUTORS | wc -l) -gt 0 ]]
+    then  echo "INFO - Updating CONTRIBUTORS file"
+          git add CONTRIBUTORS
+          git commit -m "Updating CONTRIBUTORS file for release ${VERSION}" CONTRIBUTORS
   fi
 }
 
