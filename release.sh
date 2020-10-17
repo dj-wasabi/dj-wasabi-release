@@ -177,4 +177,4 @@ while getopts 'c:dlh' OPTION; do
       ;;
   esac
 done
-shift "$($OPTIND -1)"
+shift "$(( OPTIND - 1))"
