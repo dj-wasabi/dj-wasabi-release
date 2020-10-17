@@ -27,23 +27,31 @@ function getLatestTag() {
 function verifyGitTag(){
   # Verify if the provided tag locally exist (1) or not (0).
   local TAG=$1
-  git tag | grep "^${TAG}$" | wc -l
+  git tag | grep -c "^${TAG}$"
 }
 
 function createRelease(){
   # The "main" function to start creating everything for a single release.
   local VERSION=$1
-  local TAG_ALREAD_EXIST=$(verifyGitTag $VERSION)
+  local TAG_ALREAD_EXIST
+  TAG_ALREAD_EXIST=$(verifyGitTag "${VERSION}")
   if [[ $TAG_ALREAD_EXIST -eq 1 ]]
     then  echo "ERROR - Release already exist"
           exit 1
   fi
-  createGitTag $VERSION
+  pullGit
+  createGitTag "${VERSION}"
   pushGitTag
-  createGithubRelease $VERSION
-  createGitContributors $VERSION
-  updateChangelogMd $VERSION
+  createGithubRelease "${VERSION}"
+  createGitContributors "${VERSION}"
+  updateChangelogMd "${VERSION}"
   pushGit
+}
+
+function pullGit(){
+  # Do a git pull
+  echo "INFO - Pulling changes from Github."
+  git pull origin "$(git rev-parse --abbrev-ref HEAD)" > /dev/null 2>&1
 }
 
 function pushGit() {
@@ -65,7 +73,7 @@ function createGitContributors() {
     then  touch CONTRIBUTORS
   fi
   git shortlog -s -n --all --no-merges | awk '{$1=""}1' | sort -u > CONTRIBUTORS
-  if [[ $(git diff CONTRIBUTORS | wc -l) -gt 0 ]]
+  if [[ $(git status | grep -c 'CONTRIBUTORS' ) -gt 0 ]]
     then  echo "INFO - Updating CONTRIBUTORS file"
           git add CONTRIBUTORS
           git commit -m "Updating CONTRIBUTORS file for release ${VERSION}" CONTRIBUTORS
@@ -76,10 +84,10 @@ function updateChangelogMd() {
   # Update the CHANGELOG.md by running a generator command via Docker.
   local VERSION=${1:-null}
   echo "INFO - Writing CHANGELOG.md file."
-  docker run -it --rm -e CHANGELOG_GITHUB_TOKEN=${GITHUB_TOKEN} -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u ${GITHUB_USER} -p ${GITHUB_PROJECT}  > /dev/null 2>&1
+  docker run -it --rm -e CHANGELOG_GITHUB_TOKEN="${GITHUB_TOKEN}" -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u "${GITHUB_USER}" -p "${GITHUB_PROJECT}"  > /dev/null 2>&1
 
   if [[ "${VERSION}" != "null" ]];then
-    if [[ $(git diff CHANGELOG.md | wc -l) -gt 0 ]]
+    if [[ $(git status | grep -c 'CHANGELOG.md') -gt 0 ]]
       then  echo "INFO - Updating CHANGELOG.md file"
             git add CHANGELOG.md
             git commit -m "Updating CHANGELOG.md file for release ${VERSION}" CHANGELOG.md
@@ -91,7 +99,7 @@ function createGitTag() {
   # Create a git tag locally.
   local VERSION=$1
   echo "INFO - Create the tag \"${VERSION}\" locally."
-  git tag -a $VERSION -m $VERSION
+  git tag -a "${VERSION}" -m "${VERSION}"
 }
 
 function generateGithubReleaseData() {
@@ -114,8 +122,10 @@ EOF
 function createGithubRelease() {
   # Create release in Github.
   local VERSION=$1
+  local JSON_DATA
+  JSON_DATA=$(generateGithubReleaseData "${VERSION}")
   echo "INFO - Create release on Github"
-  curl -s -H "Authorization: token ${GITHUB_TOKEN}" --data "$(generateGithubReleaseData ${VERSION})" "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_PROJECT}/releases" > /dev/null
+  curl -s -H "Authorization: token ${GITHUB_TOKEN}" --data "${JSON_DATA}" "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_PROJECT}/releases" > /dev/null
 }
 
 # Some checks we need to do to make sure we don't run into errors.
@@ -138,14 +148,14 @@ fi
 
 # Get GIT related information
 GITHUB_URL=$(git config --get remote.origin.url)
-GITHUB_USER=$(echo $GITHUB_URL | awk -F ':' '{print $2}' | awk -F '/' '{print $1}')
-GITHUB_PROJECT=$(echo $GITHUB_URL | xargs basename | sed 's/.git//g')
-GITHUB_TOKEN=${CHANGELOG_GITHUB_TOKEN}
+GITHUB_USER=$(echo "${GITHUB_URL}" | awk -F ':' '{print $2}' | awk -F '/' '{print $1}')
+GITHUB_PROJECT=$(echo "${GITHUB_URL}" | xargs basename | sed 's/.git//g')
+GITHUB_TOKEN="${CHANGELOG_GITHUB_TOKEN}"
 
 while getopts 'c:dlh' OPTION; do
   case "$OPTION" in
     c)
-      createRelease $OPTARG
+      createRelease "${OPTARG}"
       ;;
 
     d)
@@ -167,4 +177,4 @@ while getopts 'c:dlh' OPTION; do
       ;;
   esac
 done
-shift "$(($OPTIND -1))"
+shift "$($OPTIND -1)"
