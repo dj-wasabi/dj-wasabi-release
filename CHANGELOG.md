@@ -1,8 +1,16 @@
 # Changelog
 
+## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.1...0.0.2)
+
+**Merged pull requests:**
+
+- Added precommit hook [\#2](https://github.com/dj-wasabi/dj-wasabi-release/pull/2) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.0.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.1) (2020-10-16)
 
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/6d92751117f396d559cf98f54bb7128ff3053c95...0.0.1)
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/cd59e724928d6eb8ff0a701f36835dc28202b9ef...0.0.1)
 
 
 
