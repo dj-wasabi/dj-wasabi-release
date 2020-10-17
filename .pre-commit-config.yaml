@@ -1,0 +1,6 @@
+---
+repos:
+- repo: https://github.com/dj-wasabi/pre-commit-hooks
+  rev: 17b760879a1980340342c8dcb444e81eebb2313d
+  hooks:
+    - id: shellcheck
