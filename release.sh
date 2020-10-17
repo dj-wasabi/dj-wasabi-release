@@ -27,7 +27,7 @@ function getLatestTag() {
 function verifyGitTag(){
   # Verify if the provided tag locally exist (1) or not (0).
   local TAG=$1
-  git tag | grep -c "^${TAG}$"
+  git tag | grep -c "^${TAG}$" || true
 }
 
 function createRelease(){
@@ -73,7 +73,7 @@ function createGitContributors() {
     then  touch CONTRIBUTORS
   fi
   git shortlog -s -n --all --no-merges | awk '{$1=""}1' | sort -u > CONTRIBUTORS
-  if [[ $(git status | grep -c 'CONTRIBUTORS' ) -gt 0 ]]
+  if [[ $(git status | grep -c 'CONTRIBUTORS' || true) -gt 0 ]]
     then  echo "INFO - Updating CONTRIBUTORS file"
           git add CONTRIBUTORS
           git commit -m "Updating CONTRIBUTORS file for release ${VERSION}" CONTRIBUTORS
@@ -87,7 +87,7 @@ function updateChangelogMd() {
   docker run -it --rm -e CHANGELOG_GITHUB_TOKEN="${GITHUB_TOKEN}" -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u "${GITHUB_USER}" -p "${GITHUB_PROJECT}"  > /dev/null 2>&1
 
   if [[ "${VERSION}" != "null" ]];then
-    if [[ $(git status | grep -c 'CHANGELOG.md') -gt 0 ]]
+    if [[ $(git status | grep -c 'CHANGELOG.md' || true) -gt 0 ]]
       then  echo "INFO - Updating CHANGELOG.md file"
             git add CHANGELOG.md
             git commit -m "Updating CHANGELOG.md file for release ${VERSION}" CHANGELOG.md
