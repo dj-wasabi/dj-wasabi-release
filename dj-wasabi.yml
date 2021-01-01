@@ -1,0 +1,35 @@
+---
+
+# The following set of labels needs be configured and available
+# on all Github repositories.
+labels:
+  - name: enhancement
+    color: 'a2eeef'
+    description: New feature or requests.
+  - name: deprecated
+    color: 'd73a4a'
+    description: This feature is deprecated.
+  - name: backwards-incompatible
+    color: '000000'
+    description: An backwards incompatible issues or causes issues for migration.
+  - name: bug
+    color: 'd73a4a'
+    description: Something isn't working.
+  - name: security
+    color: 'B60205'
+    description: Security related issue.
+  - name: invalid
+    color: 'e4e669'
+    description: This doesn't seem right.
+  - name: wontfix
+    color: 'ffffff'
+    description: This will not be worked on.
+  - name: duplicate
+    color: 'cfd3d7'
+    description: This issue or pull request already exists.
+  - name: first-issue
+    color: '0052cc'
+    description: Nice first issue for newcomers
+  - name: needed-help
+    color: 'FBCA04'
+    description: Issues/PR requires help to continue.
