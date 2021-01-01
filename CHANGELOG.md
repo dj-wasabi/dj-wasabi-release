@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.3](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.3) (2021-01-01)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.2...0.0.3)
+
+**Implemented enhancements:**
+
+- Added first initial attempt to create script to manage labels [\#3](https://github.com/dj-wasabi/dj-wasabi-release/pull/3) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.1...0.0.2)
