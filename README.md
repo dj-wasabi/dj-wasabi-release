@@ -32,3 +32,20 @@ Note:
 	Please make sure that Docker is running and the environment
 	variable "CHANGELOG_GITHUB_TOKEN" is set with correct value.
 ```
+
+### label
+
+A script that reads the information from the `dj-wasabi.yml` file and based on a key named `labels` it
+will create/delete/update labels in the git repository on Github.
+
+```bash
+$ ./label.py -h
+usage: label.py [-h] [-D]
+
+This script is responsible for creating/deleting labels in current git repository in Github based on a configuration cound in the 'dj-wasabi.yml' file.
+
+optional arguments:
+  -h, --help   show this help message and exit
+  -D, --debug  Print some debug information
+```
+
