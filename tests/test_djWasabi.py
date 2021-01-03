@@ -26,3 +26,11 @@ def test_readconfig():
     """
     yamlConfig = djWasabi.config.readConfig(rootPath=rootPath)
     assert yamlConfig['owner'] == "Werner Dijkerman"
+
+
+def test_readOsEnv():
+    """Test the _get function with wrong_uri.
+    :return:
+    """
+    envKey = djWasabi.config.readOsEnv(key="DJWASABI")
+    assert envKey == "test"

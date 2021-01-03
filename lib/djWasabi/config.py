@@ -32,5 +32,4 @@ def readOsEnv(key=None):
     if key in os.environ:
         return os.environ[key]
     else:
-        print('Provided {s} does not exist.'.format(s=key))
-        sys.exit(1)
+        raise ValueError('Provided key does not exist.')
