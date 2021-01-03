@@ -1,5 +1,7 @@
 ---
 
+owner: Werner Dijkerman
+
 # The following set of labels needs be configured and available
 # on all Github repositories.
 labels:
@@ -33,3 +35,23 @@ labels:
   - name: needed-help
     color: 'FBCA04'
     description: Issues/PR requires help to continue.
+
+# Configuration of scripts that can be executed with the 'run-me.py' script.
+#
+# name: The name of the script that needs to be executed.
+# clone: If a git clone needs to be performed in the tmp directory.
+# args: A list with arguments that needs to be provided when running the script.
+#
+scripts:
+  - name: label.py
+    clone: False
+    args:
+      - "-r"
+
+# A list with all repositories that is "maintained" by the scripts found
+# in the 'scripts' property.
+repositories:
+  - name: consul
+    repo: git@github.com:dj-wasabi/consul.git
+  - name: vault
+    repo: git@github.com:dj-wasabi/vault.git
