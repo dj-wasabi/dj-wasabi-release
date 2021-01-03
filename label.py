@@ -89,9 +89,9 @@ def compareLabelsDelete(config=None, github=None):
 
 def createOrUpdateLabel(repository=None, headers=None,  entry=None):
     githubUrl = 'https://api.github.com/repos/{r}/labels'.format(r=repository)
-    djWasabi.generic.debugLog(debug=is_debug, message="The full Github labels url: {r}".format(r=githubUrl))
     githubUrlName = '{g}/{n}'.format(g=githubUrl, n=entry['name'])
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
+    djWasabi.generic.debugLog(debug=is_debug, message="The full Github labels url: {r}".format(r=githubUrlName))
 
     labelExist = requests.get(githubUrlName, headers=headers)
     if labelExist.status_code == 200:
