@@ -40,12 +40,15 @@ will create/delete/update labels in the git repository on Github.
 
 ```bash
 $ ./label.py -h
-usage: label.py [-h] [-D]
+usage: label.py [-h] [-D] [-r REPO] [-t TOKEN]
 
-This script is responsible for creating/deleting labels in current git repository in Github based on a configuration cound in the 'dj-wasabi.yml' file.
+This script is responsible for creating/deleting labels in current git repositoryin Github based on a configuration cound in the 'dj-wasabi.yml' file.
 
 optional arguments:
-  -h, --help   show this help message and exit
-  -D, --debug  Print some debug information
+  -h, --help            show this help message and exit
+  -D, --debug           Print some debug information
+  -r REPO, --repo REPO  The name of the repository
+  -t TOKEN, --token TOKEN
+                        The Github API token.
 ```
 

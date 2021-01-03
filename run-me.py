@@ -81,7 +81,7 @@ def main():
         if is_debug:
             print(output)
 
-    # shutil.rmtree(dirpath)
+    shutil.rmtree(tmpDir)
 
 
 if __name__ == "__main__":
