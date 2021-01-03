@@ -15,5 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install some packages
+        run: |
+          pip install requests pyyaml
+
       - name: Run runme with label script.
         run: ./run-me.py -D -s label.py
