@@ -55,3 +55,25 @@ repositories:
     repo: git@github.com:dj-wasabi/consul.git
   - name: vault
     repo: git@github.com:dj-wasabi/vault.git
+  - name: dj-wasabi-release
+    repo: git@github.com:dj-wasabi/dj-wasabi-release.git
+  - name: helm-zabbix
+    repo: git@github.com:dj-wasabi/helm-zabbix.git
+  - name: telegraf
+    repo: git@github.com:dj-wasabi/ansible-telegraf.git
+  - name: ossec-agent
+    repo: git@github.com:dj-wasabi/ansible-ossec-agent.git
+  - name: ossec-server
+    repo: git@github.com:dj-wasabi/ansible-ossec-server.git
+  - name: pre-commit-hooks
+    repo: git@github.com:dj-wasabi/pre-commit-hooks.git
+  - name: vagrant-kubernetes
+    repo: git@github.com:dj-wasabi/vagrant-kubernetes.git
+  - name: ansible-role-php
+    repo: git@github.com:dj-wasabi/ansible-role-php.git
+  - name: packer-centos-vsphere-example
+    repo: git@github.com:dj-wasabi/packer-centos-vsphere-example.git
+  - name: clair-and-docker-notary-example
+    repo: git@github.com:dj-wasabi/clair-and-docker-notary-example.git
+  - name: consul-acl-examples
+    repo: git@github.com:dj-wasabi/consul-acl-examples.git
