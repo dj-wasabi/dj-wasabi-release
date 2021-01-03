@@ -20,4 +20,4 @@ jobs:
           pip install wheel requests pyyaml
 
       - name: Run runme with label script.
-        run: ./run-me.py -D -s label.py
+        run: ./run-me.py -D -s label.py -t ${{ secrets.GITHUB_TOKEN }}

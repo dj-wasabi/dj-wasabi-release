@@ -18,6 +18,8 @@ def get_args():
     debug information""")
     parser.add_argument('-s', '--script', required=False, action='store',
                         help='The script we want to execute on all repositories.', type=str)
+    parser.add_argument('-t', '--token', required=False, action='store',
+                        help='The Github API token.', type=str)
     return parser.parse_args()
 
 
@@ -36,6 +38,7 @@ def main():
     args = get_args()
     is_debug = args.debug
     script = args.script
+    token = args.token
     yamlConfig = djWasabi.config.readConfig(rootPath=currentPath)
 
     repositories = yamlConfig['repositories']
@@ -74,6 +77,10 @@ def main():
             if _arg == "-r":
                 script_execution.append("-r")
                 script_execution.append("\"{r}\"".format(r=_repo))
+                continue
+            elif _arg == "-t":
+                script_execution.append("-t")
+                script_execution.append("\"{r}\"".format(r=token))
                 continue
         djWasabi.generic.debugLog(debug=is_debug, message="Executing script {r}".format(r=script_execution))
         proc = subprocess.Popen(script_execution, shell=False, stdout=subprocess.PIPE)
