@@ -1,5 +1,7 @@
 ---
 
+owner: Werner Dijkerman
+
 # The following set of labels needs be configured and available
 # on all Github repositories.
 labels:

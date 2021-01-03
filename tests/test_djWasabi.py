@@ -6,7 +6,8 @@ import requests
 import pytest
 
 currentPath = os.path.dirname(os.path.realpath(__file__))
-libraryDir = os.path.join(currentPath, "..", "lib")
+rootPath = os.path.join(currentPath, "..")
+libraryDir = os.path.join(rootPath, "lib")
 sys.path.append(libraryDir)
 from djWasabi import djWasabi
 
@@ -17,3 +18,11 @@ def test_readRepository_repo():
     """
     repo = djWasabi.git.readRepository(repo="git@github.com:dj-wasabi/consul.git")
     assert repo == "dj-wasabi/consul"
+
+
+def test_readconfig():
+    """Test the _get function with wrong_uri.
+    :return:
+    """
+    yamlConfig = djWasabi.config.readConfig(rootPath=rootPath)
+    assert yamlConfig['owner'] == "Werner Dijkerman"
