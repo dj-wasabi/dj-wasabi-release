@@ -3,6 +3,7 @@
 import os
 import sys
 import argparse
+import shutil
 import subprocess
 currentPath = os.path.dirname(os.path.realpath(__file__))
 libraryDir = os.path.join(currentPath, "lib")
