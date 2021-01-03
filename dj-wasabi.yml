@@ -47,7 +47,6 @@ scripts:
     clone: False
     args:
       - "-r"
-      - "-t"
 
 # A list with all repositories that is "maintained" by the scripts found
 # in the 'scripts' property.
