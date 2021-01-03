@@ -36,7 +36,6 @@ def main():
     args = get_args()
     is_debug = args.debug
     script = args.script
-    token = args.token
     yamlConfig = djWasabi.config.readConfig(rootPath=currentPath)
 
     repositories = yamlConfig['repositories']
