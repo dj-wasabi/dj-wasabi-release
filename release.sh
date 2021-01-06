@@ -85,7 +85,7 @@ function updateChangelogMd() {
   # Update the CHANGELOG.md by running a generator command via Docker.
   local VERSION=${1:-null}
   echo "INFO - Writing CHANGELOG.md file."
-  docker run -it --rm -e CHANGELOG_GITHUB_TOKEN="${GITHUB_TOKEN}" -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u "${GITHUB_USER}" -p "${GITHUB_PROJECT}"  > /dev/null 2>&1
+  docker run -it --rm -e CHANGELOG_GITHUB_TOKEN="${GITHUB_TOKEN}" -v "$(pwd)":/usr/local/src/your-app ferrarimarco/github-changelog-generator -u "${GITHUB_USER}" -p "${GITHUB_PROJECT}" 
 
   if [[ "${VERSION}" != "null" ]];then
     if [[ $(git status | grep -c 'CHANGELOG.md' || true) -gt 0 ]]
