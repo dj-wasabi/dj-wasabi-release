@@ -3,7 +3,6 @@
 # This script will be used for creating tags and releases for the dj-wasabi related repositories
 # in an automated and (hopefully) structured way. :)
 
-set -x
 set -euo pipefail
 
 function help() {
