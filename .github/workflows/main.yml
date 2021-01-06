@@ -5,6 +5,11 @@ name: MasterRun
 on:
   push:
     branches: [ main ]
+    paths:
+      - '*.sh'
+      - '*.py'
+      - 'dj-wasabi.yml'
+      - '.github/workflows/main.yml'
 
   workflow_dispatch:
 
