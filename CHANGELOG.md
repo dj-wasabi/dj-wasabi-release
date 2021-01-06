@@ -1,5 +1,22 @@
 # Changelog
 
+## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.3...HEAD)
+
+**Implemented enhancements:**
+
+- Add GH Action for generating CHANGELOG [\#10](https://github.com/dj-wasabi/dj-wasabi-release/pull/10) ([dj-wasabi](https://github.com/dj-wasabi))
+- Updated versions [\#6](https://github.com/dj-wasabi/dj-wasabi-release/pull/6) ([dj-wasabi](https://github.com/dj-wasabi))
+- Create runme script to be executed when merge on master [\#5](https://github.com/dj-wasabi/dj-wasabi-release/pull/5) ([dj-wasabi](https://github.com/dj-wasabi))
+- Add Python module incl. tests [\#4](https://github.com/dj-wasabi/dj-wasabi-release/pull/4) ([dj-wasabi](https://github.com/dj-wasabi))
+
+**Fixed bugs:**
+
+- Removal of debug commands [\#9](https://github.com/dj-wasabi/dj-wasabi-release/pull/9) ([dj-wasabi](https://github.com/dj-wasabi))
+- Using function to determine github\_user when it is https repo [\#8](https://github.com/dj-wasabi/dj-wasabi-release/pull/8) ([dj-wasabi](https://github.com/dj-wasabi))
+- Only execute run when changes are made to a certain paths [\#7](https://github.com/dj-wasabi/dj-wasabi-release/pull/7) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.0.3](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.3) (2021-01-01)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.2...0.0.3)
