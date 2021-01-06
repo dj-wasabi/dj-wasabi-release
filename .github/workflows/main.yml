@@ -4,12 +4,9 @@ name: MasterRun
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - '*.sh'
-      - '*.py'
-      - 'dj-wasabi.yml'
-      - '.github/workflows/main.yml'
+    branches:
+      - master
+      - main
 
   workflow_dispatch:
 
@@ -18,13 +15,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout dj-wasabi-release repo
+        uses: actions/checkout@v2
+        with:
+          repository: dj-wasabi/dj-wasabi-release
+          path: dj-wasabi-release
 
-      - name: Install some packages
+      - name: Checkout current repo
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Commit Changelog file
         run: |
-          pip install wheel requests pyyaml
+          # We are cloned in the 'main' directory and the dj-wasabi-release
+          # repository is the 'dj-wasabi-release' next to 'main'
+          cd main
 
-      - name: Run runme with label script.
-        run: ./run-me.py -D -s label.py
+          # Generate CHANGELOG.md file
+          ../dj-wasabi-release/release.sh -d
+
+          # Let commit the changes if there are any? (Well there should be!)
+          if [[ $(git status | grep -c 'CHANGELOG.md' || true) -gt 0 ]]
+            then  echo "Committing file"
+                  git config --global user.name 'Werner Dijkerman [GH bot]'
+                  git config --global user.email 'github@dj-wasabi.nl'
+
+                  git add CHANGELOG.md
+                  git commit -m "Updated CHANGELOG.md on \"$(date "+%Y-%m-%d %H:%M:%S")\"" CHANGELOG.md
+                  git push
+          fi
         env:
           CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

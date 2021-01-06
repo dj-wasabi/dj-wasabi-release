@@ -1,0 +1,30 @@
+# This will execute some scripts on main branch.
+
+name: run-all
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '*.sh'
+      - '*.py'
+      - 'dj-wasabi.yml'
+      - '.github/workflows/main.yml'
+
+  workflow_dispatch:
+
+jobs:
+  runme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install some packages
+        run: |
+          pip install wheel requests pyyaml
+
+      - name: Run runme with label script.
+        run: ./run-me.py -D -s label.py
+        env:
+          CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
