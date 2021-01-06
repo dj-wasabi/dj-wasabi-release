@@ -128,6 +128,19 @@ function createGithubRelease() {
   curl -s -H "Authorization: token ${GITHUB_TOKEN}" --data "${JSON_DATA}" "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_PROJECT}/releases" > /dev/null
 }
 
+function getGithubUser() {
+  # Find username
+  local GITHUB_URL=$1
+
+  if [[ $(echo $GITHUB_URL | grep '^https:' | wc -l) -eq 1 ]]
+    then  GITHUB_USER=$(echo "${GITHUB_URL}" | awk -F '/' '{print $4}')
+    else  GITHUB_USER=$(echo "${GITHUB_URL}" | awk -F ':' '{print $2}' | awk -F '/' '{print $1}')
+  fi
+
+  echo $GITHUB_USER
+}
+
+
 # Some checks we need to do to make sure we don't run into errors.
 # We need at an argument, otherwise we just print help and stop working.
 if [[ $# -eq 0 ]]
@@ -148,7 +161,7 @@ fi
 
 # Get GIT related information
 GITHUB_URL=$(git config --get remote.origin.url)
-GITHUB_USER=$(echo "${GITHUB_URL}" | awk -F ':' '{print $2}' | awk -F '/' '{print $1}')
+GITHUB_USER=$(getGithubUser "${GITHUB_URL}")
 GITHUB_PROJECT=$(echo "${GITHUB_URL}" | xargs basename | sed 's/.git//g')
 GITHUB_TOKEN="${CHANGELOG_GITHUB_TOKEN}"
 
