@@ -91,17 +91,20 @@ def createOrUpdateLabel(repository=None, headers=None, entry=None):
     githubUrl = 'https://api.github.com/repos/{r}/labels'.format(r=repository)
     githubUrlName = '{g}/{n}'.format(g=githubUrl, n=entry['name'])
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
-    djWasabi.generic.debugLog(debug=is_debug, message="The full Github labels url: {r}".format(r=githubUrlName))
 
     labelExist = requests.get(githubUrlName, headers=headers)
     if labelExist.status_code == 200:
         print('Patching label {n}'.format(n=entry['name']))
         r = requests.patch(githubUrlName, headers=headers, data=json.dumps(entry))
-        djWasabi.generic.debugLog(debug=is_debug, message="The Github PATCH data: {r}".format(r=r.text))
+        djWasabi.generic.debugLog(debug=is_debug, message="The Github URL {u} with PATCH data: {r}".format(
+            u=githubUrlName, r=r.text)
+        )
     else:
         print('Creating label {n}'.format(n=entry['name']))
         r = requests.post(githubUrl, headers=headers, data=json.dumps(entry))
-        djWasabi.generic.debugLog(debug=is_debug, message="The Github POST data: {r}".format(r=r.text))
+        djWasabi.generic.debugLog(debug=is_debug, message="The Github URL {u} with POST data: {r}".format(
+            u=githubUrl, r=r.text)
+        )
 
 
 def deleteLabel(repository=None, headers=None, name=None):
