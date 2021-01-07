@@ -132,12 +132,12 @@ function getGithubUser() {
   # Find username
   local GITHUB_URL=$1
 
-  if [[ $(echo $GITHUB_URL | grep '^https:' | wc -l) -eq 1 ]]
+  if [[ $(echo "${GITHUB_URL}" | grep -c '^https:' ) -eq 1 ]]
     then  GITHUB_USER=$(echo "${GITHUB_URL}" | awk -F '/' '{print $4}')
     else  GITHUB_USER=$(echo "${GITHUB_URL}" | awk -F ':' '{print $2}' | awk -F '/' '{print $1}')
   fi
 
-  echo $GITHUB_USER
+  echo "${GITHUB_USER}"
 }
 
 
