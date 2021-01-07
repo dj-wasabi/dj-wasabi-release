@@ -50,12 +50,12 @@ def cleanDataGithubLabels(data=None):
             continue
 
         value = {
-          'name': str(entry['name']),
-          'color': str(entry['color']),
-          'description': str(entry['description']),
+            'name': str(entry['name']),
+            'color': str(entry['color']),
+            'description': str(entry['description']),
         }
         _new_data.append(value)
-    _new_data_sorted = sorted(_new_data, key=lambda k: k['name']) 
+    _new_data_sorted = sorted(_new_data, key=lambda k: k['name'])
     return _new_data_sorted
 
 
@@ -87,7 +87,7 @@ def compareLabelsDelete(config=None, github=None):
     djWasabi.generic.debugLog(debug=is_debug, message="print 'github': {r}".format(r=github))
 
 
-def createOrUpdateLabel(repository=None, headers=None,  entry=None):
+def createOrUpdateLabel(repository=None, headers=None, entry=None):
     githubUrl = 'https://api.github.com/repos/{r}/labels'.format(r=repository)
     githubUrlName = '{g}/{n}'.format(g=githubUrl, n=entry['name'])
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
@@ -104,7 +104,7 @@ def createOrUpdateLabel(repository=None, headers=None,  entry=None):
         djWasabi.generic.debugLog(debug=is_debug, message="The Github POST data: {r}".format(r=r.text))
 
 
-def deleteLabel(repository=None, headers=None,  name=None):
+def deleteLabel(repository=None, headers=None, name=None):
     githubUrl = 'https://api.github.com/repos/{r}/labels/{n}'.format(r=repository, n=name)
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
     print('Deleting repo {n}'.format(n=name))
@@ -129,13 +129,13 @@ def main():
 
     # Get label from configuration file.
     _labels = yamlConfig['labels']
-    labels = sorted(_labels, key=lambda k: k['name']) 
+    labels = sorted(_labels, key=lambda k: k['name'])
 
     # Create or Update the labels
     githubLabels = getGithubLabels(repository=repository, headers=headers)
     diffLabels = compareLabelsCreate(config=labels, github=githubLabels)
     djWasabi.generic.debugLog(debug=is_debug, message="We have differences: {r}".format(r=diffLabels))
-    
+
     if (len(diffLabels) >= 1):
         print('New or updates Labels found.')
         for entry in diffLabels:
@@ -146,7 +146,7 @@ def main():
     githubLabels = getGithubLabels(repository=repository, headers=headers)
     diffLabels = compareLabelsDelete(config=labels, github=githubLabels)
 
-    if(len(diffLabels) >=1):
+    if (len(diffLabels) >= 1):
         print('Delete not needed labels.')
         for entry in diffLabels:
             print('Delete label {s}'.format(s=entry['name']))
