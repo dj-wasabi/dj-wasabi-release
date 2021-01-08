@@ -9,7 +9,7 @@ on:
       - '*.sh'
       - '*.py'
       - 'dj-wasabi.yml'
-      - '.github/workflows/main.yml'
+      - '.github/workflows/run-all.yml'
 
   workflow_dispatch:
 
