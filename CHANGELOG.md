@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+## [0.1.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.1.0) (2021-01-08)
 
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.3...HEAD)
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.3...0.1.0)
 
 **Implemented enhancements:**
 
@@ -14,6 +14,8 @@
 
 **Fixed bugs:**
 
+- The GH Action `run-all` not working correctly [\#12](https://github.com/dj-wasabi/dj-wasabi-release/issues/12)
+- Correcting 'path' to watch for the 'run-all' yob [\#13](https://github.com/dj-wasabi/dj-wasabi-release/pull/13) ([dj-wasabi](https://github.com/dj-wasabi))
 - Removal of debug commands [\#9](https://github.com/dj-wasabi/dj-wasabi-release/pull/9) ([dj-wasabi](https://github.com/dj-wasabi))
 - Using function to determine github\_user when it is https repo [\#8](https://github.com/dj-wasabi/dj-wasabi-release/pull/8) ([dj-wasabi](https://github.com/dj-wasabi))
 - Only execute run when changes are made to a certain paths [\#7](https://github.com/dj-wasabi/dj-wasabi-release/pull/7) ([dj-wasabi](https://github.com/dj-wasabi))
