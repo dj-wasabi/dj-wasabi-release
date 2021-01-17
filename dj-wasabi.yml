@@ -77,3 +77,5 @@ repositories:
     repo: git@github.com:dj-wasabi/clair-and-docker-notary-example.git
   - name: consul-acl-examples
     repo: git@github.com:dj-wasabi/consul-acl-examples.git
+  - name: docker-local-development-puppet
+    repo: git@github.com:dj-wasabi/docker-local-development-puppet.git
