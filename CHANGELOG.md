@@ -2,15 +2,16 @@
 
 ## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
 
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/9.9.9...HEAD)
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.1.0...HEAD)
+
+**Implemented enhancements:**
+
+- Delete local branches automatically [\#15](https://github.com/dj-wasabi/dj-wasabi-release/issues/15)
 
 **Merged pull requests:**
 
+- Remove local branches that are already removed on remote [\#17](https://github.com/dj-wasabi/dj-wasabi-release/pull/17) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added repository for docker-local-development-puppet [\#14](https://github.com/dj-wasabi/dj-wasabi-release/pull/14) ([dj-wasabi](https://github.com/dj-wasabi))
-
-## [9.9.9](https://github.com/dj-wasabi/dj-wasabi-release/tree/9.9.9) (2021-01-08)
-
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.1.0...9.9.9)
 
 ## [0.1.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.1.0) (2021-01-08)
 
@@ -22,6 +23,7 @@
 - Add GH Action for generating CHANGELOG [\#10](https://github.com/dj-wasabi/dj-wasabi-release/pull/10) ([dj-wasabi](https://github.com/dj-wasabi))
 - Updated versions to be used as part of Molecule runs [\#6](https://github.com/dj-wasabi/dj-wasabi-release/pull/6) ([dj-wasabi](https://github.com/dj-wasabi))
 - Create runme script to be executed when merge on master [\#5](https://github.com/dj-wasabi/dj-wasabi-release/pull/5) ([dj-wasabi](https://github.com/dj-wasabi))
+- Add Python module incl. tests [\#4](https://github.com/dj-wasabi/dj-wasabi-release/pull/4) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
 
@@ -42,10 +44,6 @@
 ## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.1...0.0.2)
-
-**Implemented enhancements:**
-
-- Add Python module incl. tests [\#4](https://github.com/dj-wasabi/dj-wasabi-release/pull/4) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Merged pull requests:**
 
