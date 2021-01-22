@@ -40,12 +40,18 @@ function createRelease(){
           exit 1
   fi
   pullGit
+  fetchGit
   createGitTag "${VERSION}"
   pushGitTag
   createGithubRelease "${VERSION}"
   createGitContributors "${VERSION}"
   updateChangelogMd "${VERSION}"
   pushGit
+}
+
+function fetchGit(){
+  echo "INFO - Prune remote-tracking references that no longer exist on the remote."
+  git fetch -p > /dev/null 2>&1
 }
 
 function pullGit(){
