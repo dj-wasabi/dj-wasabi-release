@@ -63,16 +63,16 @@ repository_default:
 
 repositories:
   - name: consul
-  # - name: vault
-  # - name: dj-wasabi-release
-  # - name: helm-zabbix
-  # - name: ansible-telegraf
-  # - name: ansible-ossec-agent
-  # - name: ansible-ossec-server
-  # - name: pre-commit-hooks
-  # - name: vagrant-kubernetes
-  # - name: ansible-role-php
-  # - name: packer-centos-vsphere-example
-  # - name: clair-and-docker-notary-example
-  # - name: consul-acl-examples
-  # - name: docker-local-development-puppet
+  - name: vault
+  - name: dj-wasabi-release
+  - name: helm-zabbix
+  - name: ansible-telegraf
+  - name: ansible-ossec-agent
+  - name: ansible-ossec-server
+  - name: pre-commit-hooks
+  - name: vagrant-kubernetes
+  - name: ansible-role-php
+  - name: packer-centos-vsphere-example
+  - name: clair-and-docker-notary-example
+  - name: consul-acl-examples
+  - name: docker-local-development-puppet
