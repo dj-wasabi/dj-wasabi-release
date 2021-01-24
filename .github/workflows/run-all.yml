@@ -25,6 +25,15 @@ jobs:
           pip install wheel requests pyyaml
 
       - name: Run runme with label script.
-        run: ./run-me.py -D -s label.py
+        run: |
+          git remote set-url origin git@github.com:dj-wasabi/dj-wasabi-release.git
+          ./run-me.py -D -s label.py
+        env:
+          CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}
+
+      - name: Run runme with repository script.
+        run: |
+          git remote set-url origin git@github.com:dj-wasabi/dj-wasabi-release.git
+          ./run-me.py -D -s repository.py
         env:
           CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}

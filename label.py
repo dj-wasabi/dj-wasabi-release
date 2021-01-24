@@ -21,8 +21,8 @@ except:
 def get_args():
     """Support the command-line arguments listed below."""
     parser = argparse.ArgumentParser(description="""This script is responsible for
-    creating/deleting labels in current git repositoryin Github based on a configuration
-    cound in the 'dj-wasabi.yml` file.""")
+    creating/deleting labels in current git repository in Github based on a configuration
+    found in the 'dj-wasabi.yml` file.""")
     parser.add_argument('-D', '--debug', required=False, action='store_true', help="""Print some
     debug information""")
     parser.add_argument('-r', '--repo', required=False, action='store',
