@@ -26,7 +26,7 @@ def get_args():
     parser.add_argument('-D', '--debug', required=False, action='store_true', help="""Print some
     debug information""")
     parser.add_argument('-r', '--repo', required=False, action='store',
-                        help='The name of the repository', type=str)
+                        help='The name of the repository. Example "git@github.com:dj-wasabi/consul.git"', type=str)
     parser.add_argument('-t', '--token', required=False, action='store',
                         help='The Github API token.', type=str)
     return parser.parse_args()
@@ -59,7 +59,7 @@ def cleanDataGithubLabels(data=None):
     return _new_data_sorted
 
 
-def getGithubLabels(repository=None, headers=None):
+def getGithubLabels(github=None, headers=None):
     """ Will get all labels in repository.
 
     :param repository: The username/repository information.
@@ -69,7 +69,7 @@ def getGithubLabels(repository=None, headers=None):
     :rtype: list
     :return: All labels from current repository.
     """
-    githubUrl = 'https://api.github.com/repos/{r}/labels'.format(r=repository)
+    githubUrl = '{g}/labels'.format(g=github)
     djWasabi.generic.debugLog(debug=is_debug, message="The Github URL {r}".format(r=githubUrl))
     _githubLabels = requests.get(githubUrl, headers=headers)
     return cleanDataGithubLabels(data=_githubLabels.json())
@@ -87,8 +87,8 @@ def compareLabelsDelete(config=None, github=None):
     djWasabi.generic.debugLog(debug=is_debug, message="print 'github': {r}".format(r=github))
 
 
-def createOrUpdateLabel(repository=None, headers=None, entry=None):
-    githubUrl = 'https://api.github.com/repos/{r}/labels'.format(r=repository)
+def createOrUpdateLabel(github=None, headers=None, entry=None):
+    githubUrl = '{g}/labels'.format(g=github)
     githubUrlName = '{g}/{n}'.format(g=githubUrl, n=entry['name'])
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
 
@@ -107,8 +107,8 @@ def createOrUpdateLabel(repository=None, headers=None, entry=None):
         )
 
 
-def deleteLabel(repository=None, headers=None, name=None):
-    githubUrl = 'https://api.github.com/repos/{r}/labels/{n}'.format(r=repository, n=name)
+def deleteLabel(github=None, headers=None, name=None):
+    githubUrl = '{g}/labels/{n}'.format(g=github, n=name)
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
     print('Deleting repo {n}'.format(n=name))
     r = requests.delete(githubUrl, headers=headers)
@@ -128,14 +128,15 @@ def main():
     headers = {'Authorization': 'token {t}'.format(t=token)}
 
     # TODO validate provided repository
-    repository = djWasabi.git.readRepository(repo=repo, debug=is_debug)
+    (owner, repository) = djWasabi.git.readRepository(repo=repo, debug=is_debug)
 
     # Get label from configuration file.
     _labels = yamlConfig['labels']
     labels = sorted(_labels, key=lambda k: k['name'])
 
     # Create or Update the labels
-    githubLabels = getGithubLabels(repository=repository, headers=headers)
+    githubUrl = djWasabi.generic.getGithubUrl(owner=owner, repository=repository)
+    githubLabels = getGithubLabels(github=githubUrl, headers=headers)
     diffLabels = compareLabelsCreate(config=labels, github=githubLabels)
     djWasabi.generic.debugLog(debug=is_debug, message="We have differences: {r}".format(r=diffLabels))
 
@@ -143,17 +144,17 @@ def main():
         print('New or updates Labels found.')
         for entry in diffLabels:
             print('Create or update label {s}'.format(s=entry['name']))
-            createOrUpdateLabel(repository=repository, headers=headers, entry=entry)
+            createOrUpdateLabel(github=githubUrl, headers=headers, entry=entry)
 
     # Delete if any labels that exist in repository.
-    githubLabels = getGithubLabels(repository=repository, headers=headers)
+    githubLabels = getGithubLabels(github=githubUrl, headers=headers)
     diffLabels = compareLabelsDelete(config=labels, github=githubLabels)
 
     if (len(diffLabels) >= 1):
         print('Delete not needed labels.')
         for entry in diffLabels:
             print('Delete label {s}'.format(s=entry['name']))
-            deleteLabel(repository=repository, headers=headers, name=entry['name'])
+            deleteLabel(github=githubUrl, headers=headers, name=entry['name'])
 
 
 if __name__ == "__main__":

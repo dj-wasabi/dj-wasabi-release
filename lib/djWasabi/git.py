@@ -4,7 +4,7 @@ import subprocess
 from . import generic
 
 
-def readRepository(repo=None, debug=True):
+def readRepository(repo=None, debug=False):
     """ Get the remote url and return the username and repository.
 
     :rtype: str
@@ -16,14 +16,18 @@ def readRepository(repo=None, debug=True):
     else:
         _repository_string = repo
     _repository = _repository_string.split(':')[1]
-    generic.debugLog(debug=True, message="Git repository: {m}".format(m=_repository.split('.')[0]))
-    return _repository.split('.')[0]
+    _data = _repository.split('.')[0]
+    owner = _data.split('/')[0]
+    repo = _data.split('/')[1]
+
+    generic.debugLog(debug=debug, message="Git {o} with repository: {r}".format(o=owner, r=repo))
+    return (owner, repo)
 
 
-def cloneRepository(name=None, repository=None, debug=False):
+def cloneRepository(name=None, repositoryUrl=None, debug=False):
     """ Clone the provided git repository into specific directory.
 
     """
-    command = "git clone {r} {d}".format(r=repository, d=name)
+    command = "git clone {r} {d}".format(r=repositoryUrl, d=name)
     _repository_string = generic.executeCommand(command=command)
     generic.debugLog(debug=debug, message=_repository_string)

@@ -45,6 +45,7 @@ def main():
     djWasabi.generic.debugLog(debug=is_debug, message="TMP directory: {r}".format(r=tmpDir))
 
     # Get configuration for the provided script.
+    owner, _ = djWasabi.git.readRepository(debug=is_debug)
     scriptConfig = getConfigScript(scripts=scripts, script=script)
     djWasabi.generic.debugLog(debug=is_debug, message="Script config: {r}".format(r=scriptConfig))
     if scriptConfig is None:
@@ -56,7 +57,7 @@ def main():
         script_execution = []
         script_path = ""
         _name = repo['name']
-        _repo = repo['repo']
+        _repo = djWasabi.generic.getRepoUrl(owner=owner, repository=_name)
 
         os.chdir(tmpDir)
         if scriptConfig['clone']:
