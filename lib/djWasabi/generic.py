@@ -26,3 +26,37 @@ def makeTempDir():
 def executeCommand(command=None):
     proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     return proc.communicate()[0].decode().strip('\n')
+
+
+def getRepoUrl(owner=None, repository=None):
+    """Get the complete URL for the Github repository.
+
+    :param owner: The name of the owner of the repository.
+    :typem owner: str
+    :param repository: The name of the repository
+    :typem repository: str
+    :rtype: str
+    :return: The complete url to the Github repository
+    """
+    if not owner:
+        raise ValueError('Please provide the owner of the repository.')
+    if not repository:
+        raise ValueError('Please provide the name of the repository.')
+    return "git@github.com:{o}/{r}.git".format(o=owner, r=repository)
+
+
+def getGithubUrl(owner=None, repository=None):
+    """Get the complete URL for the Github repository.
+
+    :param owner: The name of the owner of the repository.
+    :typem owner: str
+    :param repository: The name of the repository
+    :typem repository: str
+    :rtype: str
+    :return: The complete url to the Github repository
+    """
+    if not owner:
+        raise ValueError('Please provide the owner of the repository.')
+    if not repository:
+        raise ValueError('Please provide the name of the repository.')
+    return "https://api.github.com/repos/{o}/{r}".format(o=owner, r=repository)

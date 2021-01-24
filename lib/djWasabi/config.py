@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 
 import os
-import yaml
 import sys
+
+try:
+    import yaml
+except:
+    print('Please install: pip install pyyaml')
+    sys.exit(1)
 
 
 def readConfig(rootPath=None):
@@ -33,3 +38,39 @@ def readOsEnv(key=None):
         return os.environ[key]
     else:
         raise ValueError('Provided key does not exist.')
+
+
+def getRepository(config=None, name=None, default=None):
+    """Get the correct configuration for the repository.
+
+    :param default: The default configuration we will override.
+    :typem default: dict
+    :param config: The compleet repository list.
+    :typem config: list
+    :param name: The name of the current repository we want to find.
+    :typem name: str
+    :rtype: dict
+    :return: The combination of the default and overriden config.
+    """
+    for entry in config:
+        if entry['name'] == name:
+            return combineConfig(default=default, config=entry)
+    return False
+
+
+def combineConfig(default=None, config=None):
+    """Override the default with the configuration.
+
+    :param default: The default configuration we will override.
+    :typem default: dict
+    :param config: The information
+    :typem config: dict
+    :rtype: dict
+    :return: The combination of the default and overriden config.
+    """
+    default['name'] = config['name']
+    for key in config:
+        if key in default:
+            if default[key] != config[key]:
+                default[key] = config[key]
+    return default

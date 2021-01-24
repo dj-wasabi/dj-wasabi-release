@@ -45,4 +45,5 @@ jobs:
       env:
         DJWASABI: test
       run: |
+        git remote set-url origin git@github.com:dj-wasabi/dj-wasabi-release.git
         pytest -v
