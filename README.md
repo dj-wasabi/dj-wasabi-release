@@ -4,10 +4,11 @@
 
 - [dj-wasabi-release](#dj-wasabi-release)
   * [Introduction](#introduction)
+  * [Github Actions](#github-actions)
 - [Scripts](#scripts)
-  * [release](#release)
-  * [label](#label)
-  * [repository](#repository)
+  * [release.sh](#releasesh)
+  * [label.py](#labelpy)
+  * [repository.py](#repositorypy)
 - [Configuration](#configuration)
   * [labels](#labels)
   * [script](#script)
@@ -31,7 +32,7 @@ The `main` Github Action is also used by other git repositories.
 
 # Scripts
 
-## release
+## release.sh
 
 This is a script that will create a tag in the current repository where it is executed and will do the following:
 
@@ -60,7 +61,7 @@ Note:
 	variable "CHANGELOG_GITHUB_TOKEN" is set with correct value.
 ```
 
-## label
+## label.py
 
 A script that reads the information from the `dj-wasabi.yml` file and based on a key named `labels` it
 will create/delete/update labels in the git repository on Github.
@@ -79,7 +80,7 @@ optional arguments:
                         The Github API token.
 ```
 
-## repository
+## repository.py
 
 A script that reads the information from the `dj-wasabi.yml` file and will configure the repositories with wiki or projects enabled.
 
