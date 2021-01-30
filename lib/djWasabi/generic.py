@@ -23,8 +23,20 @@ def makeTempDir():
     return tempfile.mkdtemp()
 
 
-def executeCommand(command=None):
-    proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+def getString(data=None, separater=" "):
+    if isinstance(data, str):
+        return data
+    elif isinstance(data, list):
+        return separater.join(data)
+
+
+def executeCommand(command=None, shell=True):
+    """
+    """
+    if not command:
+        raise ValueError('Please provide the command we want to execute.')
+    _command = getString(data=command, separater=" ")
+    proc = subprocess.Popen(_command, shell=shell, stdout=subprocess.PIPE)
     return proc.communicate()[0].decode().strip('\n')
 
 

@@ -129,6 +129,50 @@ def test_generic_githubUrl_no_repository():
         djWasabi.generic.getGithubUrl(owner="dj-wasabi")
 
 
+def test_generic_getString():
+    """Test the function to get a string from a string
+    :return:
+    """
+    myString = "mystringhere"
+    output = djWasabi.generic.getString(data=myString)
+    assert output == "mystringhere"
+
+
+def test_generic_getString_list():
+    """Test the function to get a string from a list
+    :return:
+    """
+    myList = ["my", "string", "here"]
+    output = djWasabi.generic.getString(data=myList)
+    assert output == "my string here"
+
+
+def test_generic_getString_list_separator():
+    """Test the function to get a string from a list
+    :return:
+    """
+    myList = ["my", "string", "here"]
+    output = djWasabi.generic.getString(data=myList, separater=",")
+    assert output == "my,string,here"
+
+
+def test_generic_executeCommand():
+    """Test the to execute command to do an ls
+    :return:
+    """
+    command = ["ls", "CHANGELOG.md"]
+    output = djWasabi.generic.executeCommand(command=command)
+    assert output == "CHANGELOG.md"
+
+
+def test_generic_executeCommand_no_command():
+    """Test the execute command without argument.
+    :return:
+    """
+    with pytest.raises(ValueError, match="Please provide the command we want to execute."):
+        djWasabi.generic.executeCommand()
+
+
 def test_request__get_name():
     """Test the _get function with providing url.
 
