@@ -129,7 +129,7 @@ def test_generic_githubUrl_no_repository():
         djWasabi.generic.getGithubUrl(owner="dj-wasabi")
 
 
-def test_getString():
+def test_generic_getString():
     """Test the function to get a string from a string
     :return:
     """
@@ -138,7 +138,7 @@ def test_getString():
     assert output == "mystringhere"
 
 
-def test_getString_list():
+def test_generic_getString_list():
     """Test the function to get a string from a list
     :return:
     """
@@ -147,7 +147,7 @@ def test_getString_list():
     assert output == "my string here"
 
 
-def test_getString_list_separator():
+def test_generic_getString_list_separator():
     """Test the function to get a string from a list
     :return:
     """

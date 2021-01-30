@@ -30,13 +30,13 @@ def getString(data=None, separater=" "):
         return separater.join(data)
 
 
-def executeCommand(command=None):
+def executeCommand(command=None, shell=True):
     """
     """
     if not command:
         raise ValueError('Please provide the command we want to execute.')
     _command = getString(data=command, separater=" ")
-    proc = subprocess.Popen(_command, shell=True, stdout=subprocess.PIPE)
+    proc = subprocess.Popen(_command, shell=shell, stdout=subprocess.PIPE)
     return proc.communicate()[0].decode().strip('\n')
 
 
