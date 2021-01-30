@@ -16,7 +16,7 @@ def test_git_readRepository_with_repo():
     """Test the read repository with the repo git repo.
     :return:
     """
-    (owner, repo) = djWasabi.git.readRepository(repo="git@github.com:dj-wasabi/consul.git")
+    owner, repo = djWasabi.git.readRepository(repo="git@github.com:dj-wasabi/consul.git")
     assert owner == "dj-wasabi"
     assert repo == "consul"
 
@@ -25,7 +25,7 @@ def test_git_readRepository_without_repo():
     """Test the read repository without argument, provide the current git info back.
     :return:
     """
-    (owner, repo) = djWasabi.git.readRepository()
+    owner, repo = djWasabi.git.readRepository()
     assert owner == "dj-wasabi"
     assert repo == "dj-wasabi-release"
 
@@ -36,6 +36,14 @@ def test_config_readconfig():
     """
     yamlConfig = djWasabi.config.readConfig(rootPath=rootPath)
     assert yamlConfig['owner'] == "Werner Dijkerman"
+
+
+def test_config_readconfig_failure():
+    """Test the reading of the yaml configuration when the file doesn't exist.
+    :return:
+    """
+    with pytest.raises(ValueError, match="File /tmp/dj-wasabi.yml does not exist."):
+        djWasabi.config.readConfig(rootPath="/tmp")
 
 
 def test_config_readOsEnv():
@@ -101,8 +109,8 @@ def test_config_getConfiguration_false():
 def test_generic_githubUrl():
     """Test the githubUrl function.
     """
-    githubUrl = djWasabi.generic.getGithubUrl(owner="dj-wasabi", repository="consul")
-    assert githubUrl == "https://api.github.com/repos/dj-wasabi/consul"
+    githubUrl = djWasabi.generic.getGithubUrl(owner="dj-wasabi", repository="dj-wasabi-release")
+    assert githubUrl == "https://api.github.com/repos/dj-wasabi/dj-wasabi-release"
 
 
 def test_generic_githubUrl_no_owner():
@@ -110,7 +118,7 @@ def test_generic_githubUrl_no_owner():
     :return:
     """
     with pytest.raises(ValueError, match="Please provide the owner of the repository."):
-        djWasabi.generic.getGithubUrl(repository="consul")
+        djWasabi.generic.getGithubUrl(repository="dj-wasabi-release")
 
 
 def test_generic_githubUrl_no_repository():
@@ -119,6 +127,20 @@ def test_generic_githubUrl_no_repository():
     """
     with pytest.raises(ValueError, match="Please provide the name of the repository."):
         djWasabi.generic.getGithubUrl(owner="dj-wasabi")
+
+
+def test_request__get_name():
+    """Test the _get function with providing url.
+
+    Get return: {'id': <NUM>, 'node_id': '<ASAS>', 'name': 'dj-wasabi-release', 'full_name': 'dj-wasabi/dj-wasabi-release', ..
+    :return:
+    """
+    owner, repository = djWasabi.git.readRepository(repo="git@github.com:dj-wasabi/dj-wasabi-release.git")
+    githubUrl = djWasabi.generic.getGithubUrl(owner=owner, repository=repository)
+
+    success, output = djWasabi.request._get(url=githubUrl)
+    assert success
+    assert output.json()['name'] == "dj-wasabi-release"
 
 
 def test_request__get_no_url():
