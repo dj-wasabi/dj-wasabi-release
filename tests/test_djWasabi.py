@@ -109,8 +109,8 @@ def test_config_getConfiguration_false():
 def test_generic_githubUrl():
     """Test the githubUrl function.
     """
-    githubUrl = djWasabi.generic.getGithubUrl(owner="dj-wasabi", repository="consul")
-    assert githubUrl == "https://api.github.com/repos/dj-wasabi/consul"
+    githubUrl = djWasabi.generic.getGithubUrl(owner="dj-wasabi", repository="dj-wasabi-release")
+    assert githubUrl == "https://api.github.com/repos/dj-wasabi/dj-wasabi-release"
 
 
 def test_generic_githubUrl_no_owner():
@@ -118,7 +118,7 @@ def test_generic_githubUrl_no_owner():
     :return:
     """
     with pytest.raises(ValueError, match="Please provide the owner of the repository."):
-        djWasabi.generic.getGithubUrl(repository="consul")
+        djWasabi.generic.getGithubUrl(repository="dj-wasabi-release")
 
 
 def test_generic_githubUrl_no_repository():
@@ -129,18 +129,18 @@ def test_generic_githubUrl_no_repository():
         djWasabi.generic.getGithubUrl(owner="dj-wasabi")
 
 
-def test_request__get_consul_name():
+def test_request__get_name():
     """Test the _get function with providing url.
 
-    Get return: {'id': <NUM>, 'node_id': '<ASAS>', 'name': 'consul', 'full_name': 'dj-wasabi/consul', 'private': False, 'owner'
+    Get return: {'id': <NUM>, 'node_id': '<ASAS>', 'name': 'dj-wasabi-release', 'full_name': 'dj-wasabi/dj-wasabi-release', ..
     :return:
     """
-    owner, repository = djWasabi.git.readRepository(repo="git@github.com:dj-wasabi/consul.git")
+    owner, repository = djWasabi.git.readRepository(repo="git@github.com:dj-wasabi/dj-wasabi-release.git")
     githubUrl = djWasabi.generic.getGithubUrl(owner=owner, repository=repository)
 
     success, output = djWasabi.request._get(url=githubUrl)
     assert success
-    assert output.json()['name'] == "consul"
+    assert output.json()['name'] == "dj-wasabi-release"
 
 
 def test_request__get_no_url():
