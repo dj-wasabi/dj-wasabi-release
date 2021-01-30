@@ -137,5 +137,3 @@ The keys `repository_defaults` contains the default configuration for all reposi
 | allow_merge_commit | Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging pull requests with merge commits.|
 | allow_rebase_merge | Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion.|
 | delete_branch_on_merge | `true` to archive this repository. Note: You cannot unarchive repositories through the API. |
-
-

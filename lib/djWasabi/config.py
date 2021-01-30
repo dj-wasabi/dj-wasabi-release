@@ -18,12 +18,15 @@ def readConfig(rootPath=None):
     """
     configFile = os.path.join(rootPath, "dj-wasabi.yml")
 
-    with open(configFile, 'r') as stream:
-        try:
-            _load = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
-    return _load
+    try:
+        with open(configFile, 'r') as stream:
+            try:
+                _load = yaml.safe_load(stream)
+            except yaml.YAMLError as exc:
+                print(exc)
+        return _load
+    except IOError:
+        raise ValueError('File {f} does not exist.'.format(f=configFile))
 
 
 def readOsEnv(key=None):
