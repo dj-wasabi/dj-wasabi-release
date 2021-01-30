@@ -8,6 +8,7 @@
 
 - Able to configure repositories [\#18](https://github.com/dj-wasabi/dj-wasabi-release/issues/18)
 - Delete local branches automatically [\#15](https://github.com/dj-wasabi/dj-wasabi-release/issues/15)
+- Added tests and improved the execute command function [\#24](https://github.com/dj-wasabi/dj-wasabi-release/pull/24) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added some more tests to increase coverage [\#23](https://github.com/dj-wasabi/dj-wasabi-release/pull/23) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
