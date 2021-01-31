@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Write the release.sh into Python [\#22](https://github.com/dj-wasabi/dj-wasabi-release/issues/22)
 - Able to configure repositories [\#18](https://github.com/dj-wasabi/dj-wasabi-release/issues/18)
 - Delete local branches automatically [\#15](https://github.com/dj-wasabi/dj-wasabi-release/issues/15)
 - Added tests and improved the execute command function [\#24](https://github.com/dj-wasabi/dj-wasabi-release/pull/24) ([dj-wasabi](https://github.com/dj-wasabi))
@@ -17,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Added the Python script equivalent of the release.sh BASH script [\#25](https://github.com/dj-wasabi/dj-wasabi-release/pull/25) ([dj-wasabi](https://github.com/dj-wasabi))
 - Properly able to execute the run-me.py script from GH actions  [\#21](https://github.com/dj-wasabi/dj-wasabi-release/pull/21) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added repository script to configure repositories [\#19](https://github.com/dj-wasabi/dj-wasabi-release/pull/19) ([dj-wasabi](https://github.com/dj-wasabi))
 - Remove local branches that are already removed on remote [\#17](https://github.com/dj-wasabi/dj-wasabi-release/pull/17) ([dj-wasabi](https://github.com/dj-wasabi))
