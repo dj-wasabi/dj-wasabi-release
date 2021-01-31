@@ -5,6 +5,13 @@ import subprocess
 
 
 def debugLog(debug=False, message=None):
+    """ Debug message when debug is enabled.
+
+    :param debug: If we have debug enabled or not.
+    :type debug: bool
+    :param message: The message we want to print.
+    :type message: str
+    """
     if debug:
         print(message)
 
@@ -24,18 +31,37 @@ def makeTempDir():
 
 
 def getString(data=None, separater=" "):
+    """ Debug message when debug is enabled.
+
+    :param data: The value in either str or list.
+    :type data: str,list
+    :param separater: The separater between the words.
+    :type separater: str
+    :rtype: str
+    :return: The message in string.
+    """
     if isinstance(data, str):
         return data
     elif isinstance(data, list):
         return separater.join(data)
 
 
-def executeCommand(command=None, shell=True):
-    """
+def executeCommand(command=None, shell=True, debug=False):
+    """Executing a command and returns the output.
+
+    :param command: The command we want to execute.
+    :type command: str,list
+    :param shell: If we want to make use of a shell
+    :type shell: bool
+    :param debug: If we have debug enabled or not.
+    :type debug: bool
+    :rtype: str
+    :return: The complete url to the Github repository
     """
     if not command:
         raise ValueError('Please provide the command we want to execute.')
     _command = getString(data=command, separater=" ")
+    debugLog(message='Executing command: {c}'.format(c=_command), debug=debug)
     proc = subprocess.Popen(_command, shell=shell, stdout=subprocess.PIPE)
     return proc.communicate()[0].decode().strip('\n')
 
@@ -44,9 +70,9 @@ def getRepoUrl(owner=None, repository=None):
     """Get the complete URL for the Github repository.
 
     :param owner: The name of the owner of the repository.
-    :typem owner: str
+    :type owner: str
     :param repository: The name of the repository
-    :typem repository: str
+    :type repository: str
     :rtype: str
     :return: The complete url to the Github repository
     """
@@ -61,9 +87,9 @@ def getGithubUrl(owner=None, repository=None):
     """Get the complete URL for the Github repository.
 
     :param owner: The name of the owner of the repository.
-    :typem owner: str
+    :type owner: str
     :param repository: The name of the repository
-    :typem repository: str
+    :type repository: str
     :rtype: str
     :return: The complete url to the Github repository
     """

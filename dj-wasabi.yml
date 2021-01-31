@@ -2,6 +2,18 @@
 
 owner: Werner Dijkerman
 
+# Configuring the changelog-generator Docker image
+changelog:
+  image: ferrarimarco/github-changelog-generator
+  volumes:
+    PWD: /usr/local/src/your-app
+  environment:
+    - CHANGELOG_GITHUB_TOKEN
+  arguments:
+    owner: "-u"
+    repository: "-p"
+
+
 # The following set of labels needs be configured and available
 # on all Github repositories.
 labels:
