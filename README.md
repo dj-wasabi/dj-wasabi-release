@@ -14,6 +14,8 @@
   * [script](#script)
   * [Repository](#repository)
 
+![MasterRun](https://github.com/dj-wasabi/dj-wasabi-release/workflows/MasterRun/badge.svg) ![run-all](https://github.com/dj-wasabi/dj-wasabi-release/workflows/run-all/badge.svg) ![Python test_djWasabi](https://github.com/dj-wasabi/dj-wasabi-release/workflows/Python%20test_djWasabi/badge.svg)
+
 ## Introduction
 
 This is a "private" repository that contains the script(s) that I use for maintaining my own set of repositories.

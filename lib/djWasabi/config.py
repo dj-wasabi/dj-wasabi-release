@@ -33,7 +33,7 @@ def readOsEnv(key=None):
     """ Will get the value for the provided environment variable..
 
     :param key: The name of the environment variable.
-    :typem key: str
+    :type key: str
     :rtype: str
     :return: When exist, the value for environment variable.
     """
@@ -47,11 +47,11 @@ def getRepository(config=None, name=None, default=None):
     """Get the correct configuration for the repository.
 
     :param default: The default configuration we will override.
-    :typem default: dict
+    :type default: dict
     :param config: The compleet repository list.
-    :typem config: list
+    :type config: list
     :param name: The name of the current repository we want to find.
-    :typem name: str
+    :type name: str
     :rtype: dict
     :return: The combination of the default and overriden config.
     """
@@ -65,9 +65,9 @@ def combineConfig(default=None, config=None):
     """Override the default with the configuration.
 
     :param default: The default configuration we will override.
-    :typem default: dict
+    :type default: dict
     :param config: The information
-    :typem config: dict
+    :type config: dict
     :rtype: dict
     :return: The combination of the default and overriden config.
     """
