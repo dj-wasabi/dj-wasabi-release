@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.2.0...HEAD)
+
+**Implemented enhancements:**
+
+- Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.2.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.2.0) (2021-02-01)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.1.0...0.2.0)
