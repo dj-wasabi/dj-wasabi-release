@@ -6,7 +6,7 @@
   * [Introduction](#introduction)
   * [Github Actions](#github-actions)
 - [Scripts](#scripts)
-  * [release.sh](#releasesh)
+  * [release.sh](#releasepy)
   * [label.py](#labelpy)
   * [repository.py](#repositorypy)
 - [Configuration](#configuration)
@@ -34,7 +34,7 @@ The `main` Github Action is also used by other git repositories.
 
 # Scripts
 
-## release.sh
+## release.py
 
 This is a script that will create a tag in the current repository where it is executed and will do the following:
 
@@ -48,19 +48,19 @@ This is a script that will create a tag in the current repository where it is ex
 Example `help` message:
 
 ```bash
-$ ./release.sh -h
-This script will either provide the last created tag.
-or will create a new tag and push this to Github.
+$ usage: release.py [-h] [-c CREATE] [-d] [-D] [-l] [-t TOKEN]
 
-	-c <tag>	Create a tag named <tag> and pushes this
-			information to Github and creates a release.
-	-d		Will generate CHANGELOG.md.
-	-h		Will print this help message.
-	-l		Will print last created tag.
+This script is responsible for creating/deleting labels in current git repository in Github based on a configuration found in the 'dj-wasabi.yml' file.
 
-Note:
-	Please make sure that Docker is running and the environment
-	variable "CHANGELOG_GITHUB_TOKEN" is set with correct value.
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CREATE, --create CREATE
+                        Create a tag and complete release.
+  -d, --docs            Create/Update the CHANGELOG.md file.
+  -D, --debug           Print some debug information
+  -l, --list            Provides the latest tag created in this repository.
+  -t TOKEN, --token TOKEN
+                        The Github API token.
 ```
 
 ## label.py

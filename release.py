@@ -20,19 +20,19 @@ except:
 
 def get_args():
     """Support the command-line arguments listed below."""
-    parser = argparse.ArgumentParser(description="""This script is responsible for
-    creating/deleting labels in current git repository in Github based on a configuration
-    found in the 'dj-wasabi.yml` file.""")
+    parser = argparse.ArgumentParser(description="""This script will create a tag, update where
+    needed the CHANGELOG.md and CONTRIBUTORS file and create a release in Github with the provided
+    version. Can also provided the latest tag or generate (without commit) a CHANGELOG.md.""")
     parser.add_argument('-c', '--create', required=False, action='store',
-                        help='Create a tag and complete release.', type=str)
+                        help='Create a tag and a complete release with provided version.', type=str)
     parser.add_argument('-d', '--docs', required=False, action='store_true',
-                        help='Create/Update the CHANGELOG.md file.')
+                        help='Create and/or Update the CHANGELOG.md file.')
     parser.add_argument('-D', '--debug', required=False, action='store_true', help="""Print some
     debug information""")
     parser.add_argument('-l', '--list', required=False, action='store_true',
-                        help='Provides the latest tag created in this repository.')
+                        help='Provides the latest created tag in this repository.')
     parser.add_argument('-t', '--token', required=False, action='store',
-                        help='The Github API token.', type=str)
+                        help='The Github API token, or set environment variable "CHANGELOG_GITHUB_TOKEN".', type=str)
     return parser.parse_args()
 
 
@@ -77,7 +77,7 @@ def generateReleaseDict(version=None):
         "draft": False,
         "prerelease": False
     }
-    return myDict
+    return json.dumps(myDict)
 
 
 def main():
@@ -127,7 +127,7 @@ def main():
         # Update Contributors file and create release in Github
         createUpdateContributerFile(version=version)
         githubUrlRelease = "{g}/releases".format(g=githubUrl)
-        releaseData = json.dumps(generateReleaseDict(version=version))
+        releaseData = generateReleaseDict(version=version)
         djWasabi.generic.debugLog(
             message="We use {u} to create a release with data: {d}".format(
                 u=githubUrlRelease,
