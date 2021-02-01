@@ -6,7 +6,7 @@
   * [Introduction](#introduction)
   * [Github Actions](#github-actions)
 - [Scripts](#scripts)
-  * [release.sh](#releasepy)
+  * [release.py](#releasepy)
   * [label.py](#labelpy)
   * [repository.py](#repositorypy)
 - [Configuration](#configuration)
@@ -48,19 +48,20 @@ This is a script that will create a tag in the current repository where it is ex
 Example `help` message:
 
 ```bash
-$ usage: release.py [-h] [-c CREATE] [-d] [-D] [-l] [-t TOKEN]
+$ ./release.py -h
+usage: release.py [-h] [-c CREATE] [-d] [-D] [-l] [-t TOKEN]
 
-This script is responsible for creating/deleting labels in current git repository in Github based on a configuration found in the 'dj-wasabi.yml' file.
+This script will create a tag, update where needed the CHANGELOG.md and CONTRIBUTORS file and create a release in Github with the provided version. Can also provided the latest tag or generate (without commit) a CHANGELOG.md.
 
 optional arguments:
   -h, --help            show this help message and exit
   -c CREATE, --create CREATE
-                        Create a tag and complete release.
-  -d, --docs            Create/Update the CHANGELOG.md file.
+                        Create a tag and a complete release with provided version.
+  -d, --docs            Create and/or Update the CHANGELOG.md file.
   -D, --debug           Print some debug information
-  -l, --list            Provides the latest tag created in this repository.
+  -l, --list            Provides the latest created tag in this repository.
   -t TOKEN, --token TOKEN
-                        The Github API token.
+                        The Github API token, or set environment variable "CHANGELOG_GITHUB_TOKEN".
 ```
 
 ## label.py
