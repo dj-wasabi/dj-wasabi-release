@@ -21,6 +21,29 @@ def compareDictsInLists(source1=None, source2=None):
     return [i for i in source1 if i not in source2]
 
 
+def keysExistInDict(element=None, *keys):
+    """ Check if *keys (nested) exists in element.
+
+    :param element: The dict we want to check.
+    :type element: dict
+    """
+    if not isinstance(element, dict):
+        raise ValueError('We expects dict as first argument.')
+    if len(keys) == 0:
+        raise ValueError('We expects at least two arguments, one given.')
+
+    _element = element
+    for key in keys:
+        if key in _element:
+            try:
+                _element = _element[key]
+            except KeyError:
+                return False
+        else:
+            return False
+    return True
+
+
 def makeTempDir():
     """ Make a temporary directory.
 

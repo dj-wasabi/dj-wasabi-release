@@ -24,6 +24,53 @@ def test_generic_debugLog_no_debug(capsys):
     assert not captured.out
 
 
+def test_keysExitsInDict():
+    """Test keysExistInDict with providing a dict and check them
+    :return:
+    """
+    data = {
+        "key1": {
+            "key2": {
+                "key3": "Not my problem",
+                "key4": "This is some value we do not care about"
+            }
+        }
+    }
+
+    assert djWasabi.generic.keysExistInDict(data, "key1")
+    assert not djWasabi.generic.keysExistInDict(data, "key1", "key3")
+    assert djWasabi.generic.keysExistInDict(data, "key1", "key2")
+    assert djWasabi.generic.keysExistInDict(data, "key1", "key2", "key4")
+    assert not djWasabi.generic.keysExistInDict(data, "key1", "key2", "key3", "key4")
+
+
+def test_keysExistInDict_with_string():
+    """Test keysExistInDict with providing a string.
+    :return:
+    """
+    data = "String"
+    with pytest.raises(ValueError, match="We expects dict as first argument."):
+        djWasabi.generic.keysExistInDict(data, "key1")
+
+
+def test_keysExistInDict_with_list():
+    """Test keysExistInDict with providing a list.
+    :return:
+    """
+    data = ["String"]
+    with pytest.raises(ValueError, match="We expects dict as first argument."):
+        djWasabi.generic.keysExistInDict(data, "key1")
+
+
+def test_keysExistInDict_with_empty_dict():
+    """Test keysExistInDict without providing keys.
+    :return:
+    """
+    data = {}
+    with pytest.raises(ValueError, match="We expects at least two arguments, one given."):
+        djWasabi.generic.keysExistInDict(data)
+
+
 def test_generic_githubUrl():
     """Test the githubUrl function.
     """
