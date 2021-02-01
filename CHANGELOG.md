@@ -63,10 +63,6 @@
 
 - Added first initial attempt to create script to manage labels [\#3](https://github.com/dj-wasabi/dj-wasabi-release/pull/3) ([dj-wasabi](https://github.com/dj-wasabi))
 
-**Merged pull requests:**
-
-- Added requirement.txt file [\#1](https://github.com/dj-wasabi/dj-wasabi-release/pull/1) ([dj-wasabi](https://github.com/dj-wasabi))
-
 ## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.1...0.0.2)
