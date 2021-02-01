@@ -2,6 +2,21 @@
 
 import os
 from . import config
+from . import generic
+
+
+def validateDockerRunning():
+    """Validate if Docker is running.
+
+    :rtype: bool
+    :return: If Docker is running (True) or not (False)
+    """
+    dockerCommand = ["docker", "ps"]
+    pizza = generic.executeCommand(command=dockerCommand)
+    if pizza == 'Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?':
+        return False
+    else:
+        return True
 
 
 def getValueArg(value=None, owner=None, repository=None):

@@ -12,6 +12,13 @@ sys.path.append(libraryDir)
 from djWasabi import djWasabi
 
 
+def test_validateDockerRunning():
+    """Test if Docker is running.
+    :returns:
+    """
+    assert djWasabi.container.validateDockerRunning()
+
+
 def test_container_getValueArg_owner():
     """Test the to execute command to do an ls
     :return:
