@@ -62,7 +62,7 @@ def executeCommand(command=None, shell=True, debug=False):
         raise ValueError('Please provide the command we want to execute.')
     _command = getString(data=command, separater=" ")
     debugLog(message='Executing command: {c}'.format(c=_command), debug=debug)
-    proc = subprocess.Popen(_command, shell=shell, stdout=subprocess.PIPE)
+    proc = subprocess.Popen(_command, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return proc.communicate()[0].decode().strip('\n')
 
 
