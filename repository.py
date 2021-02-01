@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""This script is responsible for configuring the git repositories based on a configuration found in the 'dj-wasabi.yml` file."""
 
 import os
 import sys
@@ -30,13 +31,13 @@ def updateRepository(url=None, headers=None, data=None, config=None):
     """Configure the Guthub git repository.
 
     :param url: The URL to the Github repository.
-    :typem url: str
+    :type url: str
     :param headers: The headers.
-    :typem headers: dict
+    :type headers: dict
     :param data: The headers.
-    :typem data: dict
+    :type data: dict
     :param config: The headers.
-    :typem config: dict
+    :type config: dict
     """
     patchData = {}
     configOptions = [

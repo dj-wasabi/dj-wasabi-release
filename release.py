@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""Will create a tag, update the CHANGELOG.md and CONTRIBUTORS file and create a release in Github with the provided version."""
 
 import os
 import sys
