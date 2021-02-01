@@ -89,6 +89,12 @@ def main():
     listTags = args.list
     docs = args.docs
 
+    if not djWasabi.container.validateDockerRunning():
+        print('We stop now again')
+
+    print('We stop now')
+    sys.exit(1)
+
     token = djWasabi.config.readOsEnv(key="CHANGELOG_GITHUB_TOKEN")
     headers = {
         "Authorization": 'token {t}'.format(t=token),
