@@ -43,7 +43,7 @@ This is a script that will create a tag in the current repository where it is ex
 1. Create a tag;
 2. Will push this tag to Github;
 3. Will create a "release" in Github;
-4. Commits `AUTHORS` file where needed;
+4. Commits `CONTRIBUTORS` file where needed;
 5. Commits `CHANGELOG.md` file where needed;
 6. Pushes the commits to Github
 
