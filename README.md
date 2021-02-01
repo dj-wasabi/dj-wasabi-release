@@ -1,5 +1,7 @@
 # dj-wasabi-release
 
+<img style="float: right;" src="https://raw.githubusercontent.com/dj-wasabi/dj-wasabi-release/main/.github/image.jpg">
+
 **Table of contents**:
 
 - [dj-wasabi-release](#dj-wasabi-release)
