@@ -18,6 +18,7 @@
 **Fixed bugs:**
 
 - The run-me.py script is failing on executing labels.py script [\#20](https://github.com/dj-wasabi/dj-wasabi-release/issues/20)
+- Removing the prints and exit to get the script working again. [\#29](https://github.com/dj-wasabi/dj-wasabi-release/pull/29) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Merged pull requests:**
 
