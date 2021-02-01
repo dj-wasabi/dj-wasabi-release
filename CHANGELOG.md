@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+## [0.2.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.2.0) (2021-02-01)
 
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.1.0...HEAD)
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/origin...0.2.0)
 
 **Implemented enhancements:**
 
@@ -26,6 +26,13 @@
 - Properly able to execute the run-me.py script from GH actions  [\#21](https://github.com/dj-wasabi/dj-wasabi-release/pull/21) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added repository script to configure repositories [\#19](https://github.com/dj-wasabi/dj-wasabi-release/pull/19) ([dj-wasabi](https://github.com/dj-wasabi))
 - Remove local branches that are already removed on remote [\#17](https://github.com/dj-wasabi/dj-wasabi-release/pull/17) ([dj-wasabi](https://github.com/dj-wasabi))
+
+## [origin](https://github.com/dj-wasabi/dj-wasabi-release/tree/origin) (2021-01-17)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.1.0...origin)
+
+**Merged pull requests:**
+
 - Added repository for docker-local-development-puppet [\#14](https://github.com/dj-wasabi/dj-wasabi-release/pull/14) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.1.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.1.0) (2021-01-08)
@@ -55,6 +62,10 @@
 **Implemented enhancements:**
 
 - Added first initial attempt to create script to manage labels [\#3](https://github.com/dj-wasabi/dj-wasabi-release/pull/3) ([dj-wasabi](https://github.com/dj-wasabi))
+
+**Merged pull requests:**
+
+- Added requirement.txt file [\#1](https://github.com/dj-wasabi/dj-wasabi-release/pull/1) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
 
