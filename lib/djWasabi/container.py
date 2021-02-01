@@ -12,8 +12,8 @@ def validateDockerRunning():
     :return: If Docker is running (True) or not (False)
     """
     dockerCommand = ["docker", "ps"]
-    pizza = generic.executeCommand(command=dockerCommand)
-    if pizza == 'Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?':
+    _output = generic.executeCommand(command=dockerCommand)
+    if _output == 'Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?':
         return False
     else:
         return True
