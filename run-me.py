@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""This script will checkout each git repository and execute the provided script, based on configuration found in 'dj-wasabi.yml'."""
 
 import os
 import sys
