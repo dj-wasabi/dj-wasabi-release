@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
 
@@ -22,6 +23,7 @@
 - Separating the single big test file into smaller files specific for each module file [\#27](https://github.com/dj-wasabi/dj-wasabi-release/pull/27) ([dj-wasabi](https://github.com/dj-wasabi))
 - Improved documentation in doc and script and added a pre-commit hook [\#26](https://github.com/dj-wasabi/dj-wasabi-release/pull/26) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added tests and improved the execute command function [\#24](https://github.com/dj-wasabi/dj-wasabi-release/pull/24) ([dj-wasabi](https://github.com/dj-wasabi))
+- Added some more tests to increase coverage [\#23](https://github.com/dj-wasabi/dj-wasabi-release/pull/23) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
 
@@ -42,7 +44,6 @@
 
 **Implemented enhancements:**
 
-- Added some more tests to increase coverage [\#23](https://github.com/dj-wasabi/dj-wasabi-release/pull/23) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added Flake8 pre-commit-hook [\#11](https://github.com/dj-wasabi/dj-wasabi-release/pull/11) ([dj-wasabi](https://github.com/dj-wasabi))
 - Add GH Action for generating CHANGELOG [\#10](https://github.com/dj-wasabi/dj-wasabi-release/pull/10) ([dj-wasabi](https://github.com/dj-wasabi))
 - Updated versions to be used as part of Molecule runs [\#6](https://github.com/dj-wasabi/dj-wasabi-release/pull/6) ([dj-wasabi](https://github.com/dj-wasabi))
@@ -57,6 +58,10 @@
 - Using function to determine github\_user when it is https repo [\#8](https://github.com/dj-wasabi/dj-wasabi-release/pull/8) ([dj-wasabi](https://github.com/dj-wasabi))
 - Only execute run when changes are made to a certain paths [\#7](https://github.com/dj-wasabi/dj-wasabi-release/pull/7) ([dj-wasabi](https://github.com/dj-wasabi))
 
+**Merged pull requests:**
+
+- Added precommit hook [\#2](https://github.com/dj-wasabi/dj-wasabi-release/pull/2) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.0.3](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.3) (2021-01-01)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.2...0.0.3)
@@ -68,10 +73,6 @@
 ## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.1...0.0.2)
-
-**Merged pull requests:**
-
-- Added precommit hook [\#2](https://github.com/dj-wasabi/dj-wasabi-release/pull/2) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.0.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.1) (2020-10-16)
 
