@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Added Sphinx for docs generation [\#33](https://github.com/dj-wasabi/dj-wasabi-release/pull/33) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
@@ -58,10 +59,6 @@
 - Using function to determine github\_user when it is https repo [\#8](https://github.com/dj-wasabi/dj-wasabi-release/pull/8) ([dj-wasabi](https://github.com/dj-wasabi))
 - Only execute run when changes are made to a certain paths [\#7](https://github.com/dj-wasabi/dj-wasabi-release/pull/7) ([dj-wasabi](https://github.com/dj-wasabi))
 
-**Merged pull requests:**
-
-- Added precommit hook [\#2](https://github.com/dj-wasabi/dj-wasabi-release/pull/2) ([dj-wasabi](https://github.com/dj-wasabi))
-
 ## [0.0.3](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.3) (2021-01-01)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.2...0.0.3)
@@ -73,6 +70,10 @@
 ## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.1...0.0.2)
+
+**Merged pull requests:**
+
+- Added precommit hook [\#2](https://github.com/dj-wasabi/dj-wasabi-release/pull/2) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.0.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.1) (2020-10-16)
 
