@@ -26,7 +26,7 @@ This is a "private" repository that contains the script(s) that I use for mainta
 
 Several actions are part of this repository.
 
-| job | | Description |
+| job | branch | Description |
 |-----|-|---|
 | main | `main` | After each merge/commit into `main` the `CHANGELOG.md` will be updated and committed in the repository. |
 | python-package | `<ALL>` | If a `git clone` needs to be executed. |

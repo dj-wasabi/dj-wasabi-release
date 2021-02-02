@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>djWasabi.generic &#8212; djWasabi 0.2.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-astropy.css" type="text/css" />
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../../index.html"><span id="logotext1">djWasabi</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="../../genindex.html">Index</a></li>
+    <li><a title="Module Index" href="../../py-modindex.html">Modules</a></li>
+    <li>
+
+
+<form action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li>
+	<a href="../../index.html">djWasabi 0.2.0 documentation</a>
+	 &#187;
+      </li>
+      <li><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+
+
+    </ul>
+</div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+
+  <h1>Source code for djWasabi.generic</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+
+<div class="viewcode-block" id="debugLog"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.debugLog">[docs]</a><span class="k">def</span> <span class="nf">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Debug message when debug is enabled.</span>
+
+<span class="sd">    :param debug: If we have debug enabled or not.</span>
+<span class="sd">    :type debug: bool</span>
+<span class="sd">    :param message: The message we want to print.</span>
+<span class="sd">    :type message: str</span>
+<span class="sd">    :example:</span>
+
+<span class="sd">    &gt;&gt;&gt; import djWasabi</span>
+<span class="sd">    &gt;&gt;&gt; djWasabi.generic.debugLog(debug=True, message=&quot;my Message&quot;)</span>
+<span class="sd">    my Message</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">compareDictsInLists</span><span class="p">(</span><span class="n">source1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># pairs = zip(source1, source2)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">source1</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source2</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="keysExistInDict"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.keysExistInDict">[docs]</a><span class="k">def</span> <span class="nf">keysExistInDict</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">keys</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if keys nested exists in element.</span>
+
+<span class="sd">    :param element: The dict we want to check.</span>
+<span class="sd">    :type element: dict</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    :return: If the keys exist (True) or not (False)</span>
+<span class="sd">    :example:</span>
+
+<span class="sd">    &gt;&gt;&gt; import djWasabi</span>
+<span class="sd">    &gt;&gt;&gt; data = {&quot;name&quot;: {&quot;key&quot;: {&quot;value&quot;: &quot;doc&quot;}}}</span>
+<span class="sd">    &gt;&gt;&gt; print(djWasabi.generic.keysExistInDict(element=data, &quot;name&quot;, &quot;key&quot;))</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;We expects dict as first argument.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;We expects at least two arguments, one given.&#39;</span><span class="p">)</span>
+
+    <span class="n">_element</span> <span class="o">=</span> <span class="n">element</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">_element</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_element</span> <span class="o">=</span> <span class="n">_element</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="makeTempDir"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.makeTempDir">[docs]</a><span class="k">def</span> <span class="nf">makeTempDir</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Make a temporary directory.</span>
+
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :return: The path to the temporary directory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="getString"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getString">[docs]</a><span class="k">def</span> <span class="nf">getString</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">separater</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Debug message when debug is enabled.</span>
+
+<span class="sd">    :param data: The value in either str or list.</span>
+<span class="sd">    :type data: str,list</span>
+<span class="sd">    :param separater: The separater between the words.</span>
+<span class="sd">    :type separater: str</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :return: The message in string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">separater</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="executeCommand"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.executeCommand">[docs]</a><span class="k">def</span> <span class="nf">executeCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Executing a command and returns the output.</span>
+
+<span class="sd">    :param command: The command we want to execute.</span>
+<span class="sd">    :type command: str,list</span>
+<span class="sd">    :param shell: If we want to make use of a shell</span>
+<span class="sd">    :type shell: bool</span>
+<span class="sd">    :param debug: If we have debug enabled or not.</span>
+<span class="sd">    :type debug: bool</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :return: The complete url to the Github repository</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">command</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide the command we want to execute.&#39;</span><span class="p">)</span>
+    <span class="n">_command</span> <span class="o">=</span> <span class="n">getString</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">command</span><span class="p">,</span> <span class="n">separater</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">debugLog</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s1">&#39;Executing command: </span><span class="si">{c}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">_command</span><span class="p">),</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">_command</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">shell</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="getRepoUrl"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getRepoUrl">[docs]</a><span class="k">def</span> <span class="nf">getRepoUrl</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repository</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the complete URL for the Github repository.</span>
+
+<span class="sd">    :param owner: The name of the owner of the repository.</span>
+<span class="sd">    :type owner: str</span>
+<span class="sd">    :param repository: The name of the repository</span>
+<span class="sd">    :type repository: str</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :return: The complete url to the Github repository</span>
+<span class="sd">    :example:</span>
+
+<span class="sd">    &gt;&gt;&gt; import djWasabi</span>
+<span class="sd">    &gt;&gt;&gt; print(djWasabi.generic.getRepoUrl(owner=&quot;dj-wasabi&quot;, repository=&quot;dj-wasabi-release&quot;)</span>
+<span class="sd">    git@github.com:dj-wasabi/dj-wasabi-release.git</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">owner</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide the owner of the repository.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">repository</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide the name of the repository.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;git@github.com:</span><span class="si">{o}</span><span class="s2">/</span><span class="si">{r}</span><span class="s2">.git&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">o</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">repository</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="getGithubUrl"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getGithubUrl">[docs]</a><span class="k">def</span> <span class="nf">getGithubUrl</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repository</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the complete URL for the Github repository.</span>
+
+<span class="sd">    :param owner: The name of the owner of the repository.</span>
+<span class="sd">    :type owner: str</span>
+<span class="sd">    :param repository: The name of the repository</span>
+<span class="sd">    :type repository: str</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :return: The complete url to the Github repository</span>
+<span class="sd">    :example:</span>
+
+<span class="sd">    &gt;&gt;&gt; import djWasabi</span>
+<span class="sd">    &gt;&gt;&gt; print(djWasabi.generic.getGithubUrl(owner=&quot;dj-wasabi&quot;, repository=&quot;dj-wasabi-release&quot;)</span>
+<span class="sd">    https://api.github.com/repos/dj-wasabi/dj-wasabi-release</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">owner</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide the owner of the repository.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">repository</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide the name of the repository.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;https://api.github.com/repos/</span><span class="si">{o}</span><span class="s2">/</span><span class="si">{r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">o</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">repository</span><span class="p">)</span></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+
+
+<form action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right"> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Werner Dijkerman.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

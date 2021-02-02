@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. djWasabi.container &#8212; djWasabi 0.2.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-astropy.css" type="text/css" />
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. djWasabi.generic" href="generic.html" />
+    <link rel="prev" title="1. djWasabi.config" href="config.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="index.html"><span id="logotext1">djWasabi</span><span id="logotext2"></span><span id="logotext3">:docs</span></a>
+  <ul>
+
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+    <li><a title="General Index" href="genindex.html">Index</a></li>
+    <li><a title="Module Index" href="py-modindex.html">Modules</a></li>
+    <li>
+
+
+<form action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="generic.html" title="3. djWasabi.generic">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="config.html" title="1. djWasabi.config">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="index.html">djWasabi 0.2.0 documentation</a>
+	 &#187;
+      </li>
+
+      <li><span class="section-number">2. </span>djWasabi.container</li>
+    </ul>
+</div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+
+  <div class="section" id="djwasabi-container">
+<h1><span class="section-number">2. </span>djWasabi.container<a class="headerlink" href="#djwasabi-container" title="Permalink to this headline">¶</a></h1>
+<p>Function specific to container “management” related actions.</p>
+<span class="target" id="module-djWasabi.container"></span><dl class="py function">
+<dt id="djWasabi.container.createContainerCommand">
+<code class="sig-prename descclassname">djWasabi.container.</code><code class="sig-name descname">createContainerCommand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configuration</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">owner</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">repository</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/container.html#createContainerCommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.container.createContainerCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a ‘docker run’ command based on configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configuration</strong> (<em>dict</em>) – The Docker configuration.</p></li>
+<li><p><strong>owner</strong> (<em>str</em>) – The name of the owner of the repository.</p></li>
+<li><p><strong>repository</strong> (<em>str</em>) – The name of the repository</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The complete url to the Github repository</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="djWasabi.container.getValueArg">
+<code class="sig-prename descclassname">djWasabi.container.</code><code class="sig-name descname">getValueArg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">owner</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">repository</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/container.html#getValueArg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.container.getValueArg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a ‘docker run’ command based on configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – The variable you want to get.</p></li>
+<li><p><strong>owner</strong> (<em>str</em>) – The name of the owner of the repository.</p></li>
+<li><p><strong>repository</strong> (<em>str</em>) – The name of the repository</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The complete url to the Github repository</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="djWasabi.container.validateDockerRunning">
+<code class="sig-prename descclassname">djWasabi.container.</code><code class="sig-name descname">validateDockerRunning</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/container.html#validateDockerRunning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.container.validateDockerRunning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate if Docker is running.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If Docker is running (True) or not (False)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">2. djWasabi.container</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="config.html"
+                        title="previous chapter"><span class="section-number">1. </span>djWasabi.config</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="generic.html"
+                        title="next chapter"><span class="section-number">3. </span>djWasabi.generic</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/container.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<form action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="_sources/container.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2021, Werner Dijkerman.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.4.3. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>

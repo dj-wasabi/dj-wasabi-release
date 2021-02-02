@@ -5,12 +5,18 @@ import subprocess
 
 
 def debugLog(debug=False, message=None):
-    """ Debug message when debug is enabled.
+    """Debug message when debug is enabled.
 
     :param debug: If we have debug enabled or not.
     :type debug: bool
     :param message: The message we want to print.
     :type message: str
+    :example:
+
+    >>> import djWasabi
+    >>> djWasabi.generic.debugLog(debug=True, message="my Message")
+    my Message
+
     """
     if debug:
         print(message)
@@ -22,10 +28,18 @@ def compareDictsInLists(source1=None, source2=None):
 
 
 def keysExistInDict(element=None, *keys):
-    """ Check if *keys (nested) exists in element.
+    """Check if keys nested exists in element.
 
     :param element: The dict we want to check.
     :type element: dict
+    :rtype: bool
+    :return: If the keys exist (True) or not (False)
+    :example:
+
+    >>> import djWasabi
+    >>> data = {"name": {"key": {"value": "doc"}}}
+    >>> print(djWasabi.generic.keysExistInDict(element=data, "name", "key"))
+    True
     """
     if not isinstance(element, dict):
         raise ValueError('We expects dict as first argument.')
@@ -45,7 +59,7 @@ def keysExistInDict(element=None, *keys):
 
 
 def makeTempDir():
-    """ Make a temporary directory.
+    """Make a temporary directory.
 
     :rtype: str
     :return: The path to the temporary directory.
@@ -54,7 +68,7 @@ def makeTempDir():
 
 
 def getString(data=None, separater=" "):
-    """ Debug message when debug is enabled.
+    """Debug message when debug is enabled.
 
     :param data: The value in either str or list.
     :type data: str,list
@@ -98,6 +112,11 @@ def getRepoUrl(owner=None, repository=None):
     :type repository: str
     :rtype: str
     :return: The complete url to the Github repository
+    :example:
+
+    >>> import djWasabi
+    >>> print(djWasabi.generic.getRepoUrl(owner="dj-wasabi", repository="dj-wasabi-release")
+    git@github.com:dj-wasabi/dj-wasabi-release.git
     """
     if not owner:
         raise ValueError('Please provide the owner of the repository.')
@@ -115,6 +134,11 @@ def getGithubUrl(owner=None, repository=None):
     :type repository: str
     :rtype: str
     :return: The complete url to the Github repository
+    :example:
+
+    >>> import djWasabi
+    >>> print(djWasabi.generic.getGithubUrl(owner="dj-wasabi", repository="dj-wasabi-release")
+    https://api.github.com/repos/dj-wasabi/dj-wasabi-release
     """
     if not owner:
         raise ValueError('Please provide the owner of the repository.')
