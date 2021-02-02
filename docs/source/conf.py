@@ -4,6 +4,11 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import sphinx_adc_theme
+
+html_theme = "sphinx_adc_theme"
+html_theme_path = [sphinx_adc_theme.get_html_theme_path()]
+
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -53,14 +58,14 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 # html_theme = 'alabaster'
-html_theme = 'bootstrap-astropy'
+# html_theme = 'bootstrap-astropy'
 
-html_theme_options = {
-    'logotext1': 'djWasabi',  # white,  semi-bold
-    'logotext2': '',  # orange, light
-    'logotext3': ':docs',   # white,  light
-    'astropy_project_menubar': False
-}
+# html_theme_options = {
+#     'logotext1': 'djWasabi',  # white,  semi-bold
+#     'logotext2': '',  # orange, light
+#     'logotext3': ':docs',   # white,  light
+#     'astropy_project_menubar': False
+# }
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
