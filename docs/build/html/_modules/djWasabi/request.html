@@ -75,7 +75,7 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">generic</span>
 
 
-<span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;GET the information from provided url.</span>
 
 <span class="sd">    :param url: The URL we want to GET.</span>
@@ -98,7 +98,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">e</span><span class="p">})</span>
 
 
-<span class="k">def</span> <span class="nf">_patch</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_patch</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;PATCH the information from provided url.</span>
 
 <span class="sd">    :param url: The URL we want to PATCH.</span>
@@ -124,7 +124,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">e</span><span class="p">})</span>
 
 
-<span class="k">def</span> <span class="nf">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_post</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;POST the information from provided url.</span>
 
 <span class="sd">    :param url: The URL we want to POST.</span>
@@ -148,7 +148,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">e</span><span class="p">})</span>
 
 
-<span class="k">def</span> <span class="nf">_put</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_put</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;PUT the information from provided url.</span>
 
 <span class="sd">    :param url: The URL we want to PUT.</span>
@@ -170,7 +170,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">e</span><span class="p">})</span>
 
 
-<span class="k">def</span> <span class="nf">_delete</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_delete</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;DELETE the information from provided url.</span>
 
 <span class="sd">    :param url: The URL we want to DELETE.</span>
@@ -192,21 +192,19 @@
         <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">e</span><span class="p">})</span>
 
 
-<div class="viewcode-block" id="verifyResponse"><a class="viewcode-back" href="../../request.html#djWasabi.request.verifyResponse">[docs]</a><span class="k">def</span> <span class="nf">verifyResponse</span><span class="p">(</span><span class="n">success</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="verifyResponse"><a class="viewcode-back" href="../../request.html#djWasabi.request.verifyResponse">[docs]</a><span class="k">def</span> <span class="nf">verifyResponse</span><span class="p">(</span><span class="n">success</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get the correct configuration for the repository.</span>
 
-<span class="sd">    :param default: The default configuration we will override.</span>
-<span class="sd">    :type default: dict</span>
-<span class="sd">    :param config: The compleet repository list.</span>
-<span class="sd">    :type config: list</span>
-<span class="sd">    :param name: The name of the current repository we want to find.</span>
-<span class="sd">    :type name: str</span>
+<span class="sd">    :param success: The default configuration we will override.</span>
+<span class="sd">    :type success: bool</span>
+<span class="sd">    :param data: The compleet requests data object.</span>
+<span class="sd">    :type data: dict</span>
 <span class="sd">    :param debug: If we need to debug or not.</span>
-<span class="sd">    :type debug: book</span>
+<span class="sd">    :type debug: bool</span>
 <span class="sd">    :rtype: dict</span>
 <span class="sd">    :return: The combination of the default and overriden config.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">success</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
         <span class="n">generic</span><span class="o">.</span><span class="n">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;We have successful request, returning json data.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>

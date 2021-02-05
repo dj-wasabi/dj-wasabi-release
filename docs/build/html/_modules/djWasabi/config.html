@@ -80,7 +80,7 @@
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="readConfig"><a class="viewcode-back" href="../../config.html#djWasabi.config.readConfig">[docs]</a><span class="k">def</span> <span class="nf">readConfig</span><span class="p">(</span><span class="n">rootPath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="readConfig"><a class="viewcode-back" href="../../config.html#djWasabi.config.readConfig">[docs]</a><span class="k">def</span> <span class="nf">readConfig</span><span class="p">(</span><span class="n">rootPath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; Will read the configuration file and return the content.</span>
 
 <span class="sd">    :rtype: dict</span>
@@ -99,7 +99,7 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File </span><span class="si">{f}</span><span class="s1"> does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">configFile</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="readOsEnv"><a class="viewcode-back" href="../../config.html#djWasabi.config.readOsEnv">[docs]</a><span class="k">def</span> <span class="nf">readOsEnv</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="readOsEnv"><a class="viewcode-back" href="../../config.html#djWasabi.config.readOsEnv">[docs]</a><span class="k">def</span> <span class="nf">readOsEnv</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; Will get the value for the provided environment variable..</span>
 
 <span class="sd">    :param key: The name of the environment variable.</span>
@@ -113,7 +113,7 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Provided key does not exist.&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="getRepository"><a class="viewcode-back" href="../../config.html#djWasabi.config.getRepository">[docs]</a><span class="k">def</span> <span class="nf">getRepository</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getRepository"><a class="viewcode-back" href="../../config.html#djWasabi.config.getRepository">[docs]</a><span class="k">def</span> <span class="nf">getRepository</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get the correct configuration for the repository.</span>
 
 <span class="sd">    :param default: The default configuration we will override.</span>
@@ -131,7 +131,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="combineConfig"><a class="viewcode-back" href="../../config.html#djWasabi.config.combineConfig">[docs]</a><span class="k">def</span> <span class="nf">combineConfig</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="combineConfig"><a class="viewcode-back" href="../../config.html#djWasabi.config.combineConfig">[docs]</a><span class="k">def</span> <span class="nf">combineConfig</span><span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Override the default with the configuration.</span>
 
 <span class="sd">    :param default: The default configuration we will override.</span>

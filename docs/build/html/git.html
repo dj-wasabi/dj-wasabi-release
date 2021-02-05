@@ -80,13 +80,13 @@
 <p>Git related functions.</p>
 <span class="target" id="module-djWasabi.git"></span><dl class="py function">
 <dt id="djWasabi.git.cloneRepository">
-<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">cloneRepository</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">repositoryUrl</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#cloneRepository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.cloneRepository" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">cloneRepository</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">repositoryUrl</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#cloneRepository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.cloneRepository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clone the provided git repository into specific directory.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="djWasabi.git.commitFile">
-<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">commitFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">message</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#commitFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.commitFile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">commitFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/djWasabi/git.html#commitFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.commitFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Commit a file when it is changed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -107,7 +107,7 @@
 
 <dl class="py function">
 <dt id="djWasabi.git.getCheckTag">
-<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">getCheckTag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#getCheckTag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getCheckTag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">getCheckTag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/djWasabi/git.html#getCheckTag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getCheckTag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if we have already a tag with same name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -124,7 +124,7 @@
 
 <dl class="py function">
 <dt id="djWasabi.git.getLatestTag">
-<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">getLatestTag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#getLatestTag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getLatestTag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">getLatestTag</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/djWasabi/git.html#getLatestTag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getLatestTag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the latest tag created.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -138,7 +138,7 @@
 
 <dl class="py function">
 <dt id="djWasabi.git.getMainBranch">
-<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">getMainBranch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#getMainBranch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getMainBranch" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">getMainBranch</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/djWasabi/git.html#getMainBranch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getMainBranch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the current main of master branch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -152,7 +152,7 @@
 
 <dl class="py function">
 <dt id="djWasabi.git.readRepository">
-<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">readRepository</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repo</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#readRepository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.readRepository" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">djWasabi.git.</code><code class="sig-name descname">readRepository</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repo</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="reference internal" href="_modules/djWasabi/git.html#readRepository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.readRepository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the remote url and return the username and repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>

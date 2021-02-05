@@ -78,15 +78,14 @@
 <p>Basic functions for doing http requests via the requests module.</p>
 <span class="target" id="module-djWasabi.request"></span><dl class="py function">
 <dt id="djWasabi.request.verifyResponse">
-<code class="sig-prename descclassname">djWasabi.request.</code><code class="sig-name descname">verifyResponse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">success</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/request.html#verifyResponse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.request.verifyResponse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">djWasabi.request.</code><code class="sig-name descname">verifyResponse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">success</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>dict<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/djWasabi/request.html#verifyResponse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.request.verifyResponse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the correct configuration for the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>default</strong> (<em>dict</em>) – The default configuration we will override.</p></li>
-<li><p><strong>config</strong> (<em>list</em>) – The compleet repository list.</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – The name of the current repository we want to find.</p></li>
-<li><p><strong>debug</strong> (<em>book</em>) – If we need to debug or not.</p></li>
+<li><p><strong>success</strong> (<em>bool</em>) – The default configuration we will override.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The compleet requests data object.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – If we need to debug or not.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>

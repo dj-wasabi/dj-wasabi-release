@@ -4,7 +4,7 @@ import tempfile
 import subprocess
 
 
-def debugLog(debug=False, message=None):
+def debugLog(debug: bool = False, message: str = None):
     """Debug message when debug is enabled.
 
     :param debug: If we have debug enabled or not.
@@ -22,12 +22,12 @@ def debugLog(debug=False, message=None):
         print(message)
 
 
-def compareDictsInLists(source1=None, source2=None):
+def compareDictsInLists(source1: list = None, source2: list = None) -> list:
     # pairs = zip(source1, source2)
     return [i for i in source1 if i not in source2]
 
 
-def keysExistInDict(element=None, *keys):
+def keysExistInDict(element: dict = None, *keys) -> bool:
     """Check if keys nested exists in element.
 
     :param element: The dict we want to check.
@@ -58,7 +58,7 @@ def keysExistInDict(element=None, *keys):
     return True
 
 
-def makeTempDir():
+def makeTempDir() -> str:
     """Make a temporary directory.
 
     :rtype: str
@@ -67,7 +67,7 @@ def makeTempDir():
     return tempfile.mkdtemp()
 
 
-def getString(data=None, separater=" "):
+def getString(data: dict = None, separater: str = " ") -> str:
     """Debug message when debug is enabled.
 
     :param data: The value in either str or list.
@@ -83,7 +83,7 @@ def getString(data=None, separater=" "):
         return separater.join(data)
 
 
-def executeCommand(command=None, shell=True, debug=False):
+def executeCommand(command: str = None, shell: bool = True, debug: bool = False) -> str:
     """Executing a command and returns the output.
 
     :param command: The command we want to execute.
@@ -103,7 +103,7 @@ def executeCommand(command=None, shell=True, debug=False):
     return proc.communicate()[0].decode().strip('\n')
 
 
-def getRepoUrl(owner=None, repository=None):
+def getRepoUrl(owner: str = None, repository: str = None) -> str:
     """Get the complete URL for the Github repository.
 
     :param owner: The name of the owner of the repository.
@@ -125,7 +125,7 @@ def getRepoUrl(owner=None, repository=None):
     return "git@github.com:{o}/{r}.git".format(o=owner, r=repository)
 
 
-def getGithubUrl(owner=None, repository=None):
+def getGithubUrl(owner: str = None, repository: str = None) -> str:
     """Get the complete URL for the Github repository.
 
     :param owner: The name of the owner of the repository.

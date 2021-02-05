@@ -74,7 +74,7 @@
 <span class="kn">import</span> <span class="nn">subprocess</span>
 
 
-<div class="viewcode-block" id="debugLog"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.debugLog">[docs]</a><span class="k">def</span> <span class="nf">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="debugLog"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.debugLog">[docs]</a><span class="k">def</span> <span class="nf">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Debug message when debug is enabled.</span>
 
 <span class="sd">    :param debug: If we have debug enabled or not.</span>
@@ -92,12 +92,12 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">compareDictsInLists</span><span class="p">(</span><span class="n">source1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">compareDictsInLists</span><span class="p">(</span><span class="n">source1</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source2</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
     <span class="c1"># pairs = zip(source1, source2)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">source1</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source2</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="keysExistInDict"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.keysExistInDict">[docs]</a><span class="k">def</span> <span class="nf">keysExistInDict</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">keys</span><span class="p">):</span>
+<div class="viewcode-block" id="keysExistInDict"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.keysExistInDict">[docs]</a><span class="k">def</span> <span class="nf">keysExistInDict</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">keys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Check if keys nested exists in element.</span>
 
 <span class="sd">    :param element: The dict we want to check.</span>
@@ -128,7 +128,7 @@
     <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<div class="viewcode-block" id="makeTempDir"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.makeTempDir">[docs]</a><span class="k">def</span> <span class="nf">makeTempDir</span><span class="p">():</span>
+<div class="viewcode-block" id="makeTempDir"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.makeTempDir">[docs]</a><span class="k">def</span> <span class="nf">makeTempDir</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Make a temporary directory.</span>
 
 <span class="sd">    :rtype: str</span>
@@ -137,7 +137,7 @@
     <span class="k">return</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="getString"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getString">[docs]</a><span class="k">def</span> <span class="nf">getString</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">separater</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="getString"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getString">[docs]</a><span class="k">def</span> <span class="nf">getString</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">separater</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Debug message when debug is enabled.</span>
 
 <span class="sd">    :param data: The value in either str or list.</span>
@@ -153,7 +153,7 @@
         <span class="k">return</span> <span class="n">separater</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="executeCommand"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.executeCommand">[docs]</a><span class="k">def</span> <span class="nf">executeCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="executeCommand"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.executeCommand">[docs]</a><span class="k">def</span> <span class="nf">executeCommand</span><span class="p">(</span><span class="n">command</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">shell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Executing a command and returns the output.</span>
 
 <span class="sd">    :param command: The command we want to execute.</span>
@@ -173,7 +173,7 @@
     <span class="k">return</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="getRepoUrl"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getRepoUrl">[docs]</a><span class="k">def</span> <span class="nf">getRepoUrl</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repository</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getRepoUrl"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getRepoUrl">[docs]</a><span class="k">def</span> <span class="nf">getRepoUrl</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">repository</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get the complete URL for the Github repository.</span>
 
 <span class="sd">    :param owner: The name of the owner of the repository.</span>
@@ -195,7 +195,7 @@
     <span class="k">return</span> <span class="s2">&quot;git@github.com:</span><span class="si">{o}</span><span class="s2">/</span><span class="si">{r}</span><span class="s2">.git&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">o</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">repository</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="getGithubUrl"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getGithubUrl">[docs]</a><span class="k">def</span> <span class="nf">getGithubUrl</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repository</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getGithubUrl"><a class="viewcode-back" href="../../generic.html#djWasabi.generic.getGithubUrl">[docs]</a><span class="k">def</span> <span class="nf">getGithubUrl</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">repository</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get the complete URL for the Github repository.</span>
 
 <span class="sd">    :param owner: The name of the owner of the repository.</span>

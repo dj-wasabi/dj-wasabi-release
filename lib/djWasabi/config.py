@@ -10,7 +10,7 @@ except:
     sys.exit(1)
 
 
-def readConfig(rootPath=None):
+def readConfig(rootPath: str = None) -> dict:
     """ Will read the configuration file and return the content.
 
     :rtype: dict
@@ -29,7 +29,7 @@ def readConfig(rootPath=None):
         raise ValueError('File {f} does not exist.'.format(f=configFile))
 
 
-def readOsEnv(key=None):
+def readOsEnv(key: str = None) -> str:
     """ Will get the value for the provided environment variable..
 
     :param key: The name of the environment variable.
@@ -43,7 +43,7 @@ def readOsEnv(key=None):
         raise ValueError('Provided key does not exist.')
 
 
-def getRepository(config=None, name=None, default=None):
+def getRepository(config: dict = None, name: str = None, default: dict = None) -> dict:
     """Get the correct configuration for the repository.
 
     :param default: The default configuration we will override.
@@ -61,7 +61,7 @@ def getRepository(config=None, name=None, default=None):
     return False
 
 
-def combineConfig(default=None, config=None):
+def combineConfig(default: dict = None, config: dict = None) -> dict:
     """Override the default with the configuration.
 
     :param default: The default configuration we will override.

@@ -32,7 +32,7 @@ def get_args():
     return parser.parse_args()
 
 
-def cleanDataGithubLabels(data=None):
+def cleanDataGithubLabels(data: dict = None) -> dict:
     """ Will get the current labels data from Github and only return specific info.
 
     :param data: The current information of all the labels.
@@ -59,7 +59,7 @@ def cleanDataGithubLabels(data=None):
     return _new_data_sorted
 
 
-def getGithubLabels(github=None, headers=None):
+def getGithubLabels(github: str = None, headers: dict = None) -> dict:
     """ Will get all labels in repository.
 
     :param repository: The username/repository information.
@@ -75,19 +75,19 @@ def getGithubLabels(github=None, headers=None):
     return cleanDataGithubLabels(data=_githubLabels.json())
 
 
-def compareLabelsCreate(config=None, github=None):
+def compareLabelsCreate(config: list = None, github: list = None) -> list:
+    djWasabi.generic.debugLog(debug=is_debug, message="print 'config': {r}".format(r=config))
+    djWasabi.generic.debugLog(debug=is_debug, message="print 'github': {r}".format(r=github))
     return djWasabi.generic.compareDictsInLists(source1=config, source2=github)
+
+
+def compareLabelsDelete(config: list = None, github: list = None) -> list:
     djWasabi.generic.debugLog(debug=is_debug, message="print 'config': {r}".format(r=config))
     djWasabi.generic.debugLog(debug=is_debug, message="print 'github': {r}".format(r=github))
-
-
-def compareLabelsDelete(config=None, github=None):
     return djWasabi.generic.compareDictsInLists(source1=github, source2=config)
-    djWasabi.generic.debugLog(debug=is_debug, message="print 'config': {r}".format(r=config))
-    djWasabi.generic.debugLog(debug=is_debug, message="print 'github': {r}".format(r=github))
 
 
-def createOrUpdateLabel(github=None, headers=None, entry=None):
+def createOrUpdateLabel(github: str = None, headers: dict = None, entry: dict = None):
     githubUrl = '{g}/labels'.format(g=github)
     githubUrlName = '{g}/{n}'.format(g=githubUrl, n=entry['name'])
     headers['Accept'] = "application/vnd.github.v3.text-match+json"

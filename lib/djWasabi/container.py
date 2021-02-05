@@ -19,7 +19,7 @@ def validateDockerRunning():
         return True
 
 
-def getValueArg(value=None, owner=None, repository=None):
+def getValueArg(value: str = None, owner: str = None, repository: str = None) -> str:
     """Create a 'docker run' command based on configuration.
 
     :param value: The variable you want to get.
@@ -39,7 +39,7 @@ def getValueArg(value=None, owner=None, repository=None):
         return None
 
 
-def createContainerCommand(configuration=None, owner=None, repository=None):
+def createContainerCommand(configuration: dict = None, owner: str = None, repository: str = None) -> str:
     """Create a 'docker run' command based on configuration.
 
     :param configuration: The Docker configuration.
