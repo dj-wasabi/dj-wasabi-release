@@ -27,7 +27,7 @@ def get_args():
     return parser.parse_args()
 
 
-def updateRepository(url=None, headers=None, data=None, config=None):
+def updateRepository(url: str = None, headers: dict = None, data: dict = None, config: dict = None):
     """Configure the Guthub git repository.
 
     :param url: The URL to the Github repository.
@@ -67,7 +67,7 @@ def updateRepository(url=None, headers=None, data=None, config=None):
         djWasabi.request.verifyResponse(success=success, data=_data, debug=is_debug)
 
 
-def repositorySecurity(url=None, headers=None, config=None):
+def repositorySecurity(url: str = None, headers: dict = None, config: dict = None):
     securityUrl = "{g}/vulnerability-alerts".format(g=url)
     headers['Accept'] = "application/vnd.github.dorian-preview+json"
     _success, _securityData = djWasabi.request._get(url=securityUrl, headers=headers)

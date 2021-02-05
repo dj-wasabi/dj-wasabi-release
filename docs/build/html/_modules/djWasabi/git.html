@@ -74,8 +74,8 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">generic</span>
 
 
-<div class="viewcode-block" id="readRepository"><a class="viewcode-back" href="../../git.html#djWasabi.git.readRepository">[docs]</a><span class="k">def</span> <span class="nf">readRepository</span><span class="p">(</span><span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Get the remote url and return the username and repository.</span>
+<div class="viewcode-block" id="readRepository"><a class="viewcode-back" href="../../git.html#djWasabi.git.readRepository">[docs]</a><span class="k">def</span> <span class="nf">readRepository</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get the remote url and return the username and repository.</span>
 
 <span class="sd">    :rtype: str</span>
 <span class="sd">    :return: The username/repository of the current directory.</span>
@@ -94,8 +94,8 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="cloneRepository"><a class="viewcode-back" href="../../git.html#djWasabi.git.cloneRepository">[docs]</a><span class="k">def</span> <span class="nf">cloneRepository</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repositoryUrl</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Clone the provided git repository into specific directory.</span>
+<div class="viewcode-block" id="cloneRepository"><a class="viewcode-back" href="../../git.html#djWasabi.git.cloneRepository">[docs]</a><span class="k">def</span> <span class="nf">cloneRepository</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">repositoryUrl</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clone the provided git repository into specific directory.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;git clone </span><span class="si">{r}</span><span class="s2"> </span><span class="si">{d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">repositoryUrl</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
@@ -103,7 +103,7 @@
     <span class="n">generic</span><span class="o">.</span><span class="n">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">_repository_string</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="getCheckTag"><a class="viewcode-back" href="../../git.html#djWasabi.git.getCheckTag">[docs]</a><span class="k">def</span> <span class="nf">getCheckTag</span><span class="p">(</span><span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCheckTag"><a class="viewcode-back" href="../../git.html#djWasabi.git.getCheckTag">[docs]</a><span class="k">def</span> <span class="nf">getCheckTag</span><span class="p">(</span><span class="n">tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Check if we have already a tag with same name.</span>
 
 <span class="sd">    :param tag: The name of the tag.</span>
@@ -121,7 +121,7 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<div class="viewcode-block" id="getMainBranch"><a class="viewcode-back" href="../../git.html#djWasabi.git.getMainBranch">[docs]</a><span class="k">def</span> <span class="nf">getMainBranch</span><span class="p">():</span>
+<div class="viewcode-block" id="getMainBranch"><a class="viewcode-back" href="../../git.html#djWasabi.git.getMainBranch">[docs]</a><span class="k">def</span> <span class="nf">getMainBranch</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get the current main of master branch.</span>
 
 <span class="sd">    :rtype: str</span>
@@ -131,7 +131,7 @@
     <span class="k">return</span> <span class="n">generic</span><span class="o">.</span><span class="n">executeCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">_command</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="getLatestTag"><a class="viewcode-back" href="../../git.html#djWasabi.git.getLatestTag">[docs]</a><span class="k">def</span> <span class="nf">getLatestTag</span><span class="p">():</span>
+<div class="viewcode-block" id="getLatestTag"><a class="viewcode-back" href="../../git.html#djWasabi.git.getLatestTag">[docs]</a><span class="k">def</span> <span class="nf">getLatestTag</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get the latest tag created.</span>
 
 <span class="sd">    :rtype: str</span>
@@ -141,7 +141,7 @@
     <span class="k">return</span> <span class="n">generic</span><span class="o">.</span><span class="n">executeCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">_command</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="commitFile"><a class="viewcode-back" href="../../git.html#djWasabi.git.commitFile">[docs]</a><span class="k">def</span> <span class="nf">commitFile</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="commitFile"><a class="viewcode-back" href="../../git.html#djWasabi.git.commitFile">[docs]</a><span class="k">def</span> <span class="nf">commitFile</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Commit a file when it is changed.</span>
 
 <span class="sd">    :param file: The name of the file we want to commit.</span>

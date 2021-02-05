@@ -37,7 +37,7 @@ def get_args():
     return parser.parse_args()
 
 
-def updateChangelogMd(command=None, version=None):
+def updateChangelogMd(command: list = None, version: str = None):
     """ Generate and committing the CHANGELOG.md file when it is changed.
 
     :param command: The command to generate the CHANGELOG.md file.
@@ -54,7 +54,7 @@ def updateChangelogMd(command=None, version=None):
         )
 
 
-def createUpdateContributerFile(version=None):
+def createUpdateContributerFile(version: str = None):
     _file = "CONTRIBUTORS"
     if not os.path.isfile(_file):
         touchFile = ["touch", _file]
@@ -68,7 +68,7 @@ def createUpdateContributerFile(version=None):
     )
 
 
-def generateReleaseDict(version=None):
+def generateReleaseDict(version: str = None) -> dict:
     _branch = djWasabi.git.getMainBranch()
     myDict = {
         "tag_name": version,
@@ -114,12 +114,14 @@ def main():
             print("We have already a tag with version: {v}".format(v=version))
             sys.exit(1)
 
+        print('Pulling latest information from Github.')
         gitPullCommand = ["git", "pull"]
         djWasabi.generic.executeCommand(command=gitPullCommand)
 
         gitFetchCommand = ["git", "fetch", "-p"]
         djWasabi.generic.executeCommand(command=gitFetchCommand)
 
+        print('Creating a tag and push version {v}.'.format(v=version))
         gitTagCOmmand = ["git", "tag", "-a", version, "-m", version]
         djWasabi.generic.executeCommand(command=gitTagCOmmand)
 
@@ -127,6 +129,7 @@ def main():
         djWasabi.generic.executeCommand(command=gitTagCOmmand)
 
         # changelog
+        print('Updating CONTRIBUTORS and CHANGELOG files.')
         updateChangelogMd(command=dockerCommand, version=version)
 
         # Update Contributors file and create release in Github
@@ -141,12 +144,13 @@ def main():
         djWasabi.request._post(url=githubUrlRelease, data=releaseData, headers=headers)
 
         # Push the changes.
+        print('Pushing latest changes.')
         gitTagCommand = ["git", "push"]
         djWasabi.generic.executeCommand(command=gitTagCommand)
     elif listTags:
-        print("Generating 'CHANGELOG.md' file.")
         print(djWasabi.git.getLatestTag())
     elif docs:
+        print('Updating CHANGELOG file.')
         updateChangelogMd(command=dockerCommand)
     else:
         print('No action done.')

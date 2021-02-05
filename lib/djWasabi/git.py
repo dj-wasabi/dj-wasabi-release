@@ -4,8 +4,8 @@ import subprocess
 from . import generic
 
 
-def readRepository(repo=None, debug=False):
-    """ Get the remote url and return the username and repository.
+def readRepository(repo: str = None, debug: bool = False) -> tuple:
+    """Get the remote url and return the username and repository.
 
     :rtype: str
     :return: The username/repository of the current directory.
@@ -24,8 +24,8 @@ def readRepository(repo=None, debug=False):
     return (owner, repo)
 
 
-def cloneRepository(name=None, repositoryUrl=None, debug=False):
-    """ Clone the provided git repository into specific directory.
+def cloneRepository(name: str = None, repositoryUrl: str = None, debug: bool = False):
+    """Clone the provided git repository into specific directory.
 
     """
     command = "git clone {r} {d}".format(r=repositoryUrl, d=name)
@@ -33,7 +33,7 @@ def cloneRepository(name=None, repositoryUrl=None, debug=False):
     generic.debugLog(debug=debug, message=_repository_string)
 
 
-def getCheckTag(tag=None):
+def getCheckTag(tag: str = None) -> bool:
     """Check if we have already a tag with same name.
 
     :param tag: The name of the tag.
@@ -51,7 +51,7 @@ def getCheckTag(tag=None):
         return True
 
 
-def getMainBranch():
+def getMainBranch() -> str:
     """Get the current main of master branch.
 
     :rtype: str
@@ -61,7 +61,7 @@ def getMainBranch():
     return generic.executeCommand(command=_command)
 
 
-def getLatestTag():
+def getLatestTag() -> str:
     """Get the latest tag created.
 
     :rtype: str
@@ -71,7 +71,7 @@ def getLatestTag():
     return generic.executeCommand(command=_command)
 
 
-def commitFile(file=None, message=None, debug=False):
+def commitFile(file: str = None, message: str = None, debug: bool = False) -> bool:
     """Commit a file when it is changed.
 
     :param file: The name of the file we want to commit.

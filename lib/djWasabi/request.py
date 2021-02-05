@@ -5,7 +5,7 @@ import requests
 from . import generic
 
 
-def _get(url=None, headers=None, timeout="10"):
+def _get(url: str = None, headers: dict = None, timeout: str = "10") -> tuple:
     """GET the information from provided url.
 
     :param url: The URL we want to GET.
@@ -28,7 +28,7 @@ def _get(url=None, headers=None, timeout="10"):
         return (False, {'error': e})
 
 
-def _patch(url=None, headers=None, data=None, timeout="10"):
+def _patch(url: str = None, headers: dict = None, data: dict = None, timeout: str = "10") -> tuple:
     """PATCH the information from provided url.
 
     :param url: The URL we want to PATCH.
@@ -54,7 +54,7 @@ def _patch(url=None, headers=None, data=None, timeout="10"):
         return (False, {'error': e})
 
 
-def _post(url=None, headers=None, data=None, timeout=10):
+def _post(url: str = None, headers: dict = None, data: dict = None, timeout: str = "10") -> tuple:
     """POST the information from provided url.
 
     :param url: The URL we want to POST.
@@ -78,7 +78,7 @@ def _post(url=None, headers=None, data=None, timeout=10):
         return (False, {'error': e})
 
 
-def _put(url=None, headers=None, timeout="10"):
+def _put(url: str = None, headers: dict = None, timeout: str = "10") -> tuple:
     """PUT the information from provided url.
 
     :param url: The URL we want to PUT.
@@ -100,7 +100,7 @@ def _put(url=None, headers=None, timeout="10"):
         return (False, {'error': e})
 
 
-def _delete(url=None, headers=None, timeout="10"):
+def _delete(url: str = None, headers: dict = None, timeout: str = "10") -> tuple:
     """DELETE the information from provided url.
 
     :param url: The URL we want to DELETE.
@@ -122,21 +122,19 @@ def _delete(url=None, headers=None, timeout="10"):
         return (False, {'error': e})
 
 
-def verifyResponse(success=None, data=None, debug=False):
+def verifyResponse(success: bool = None, data: dict = None, debug: bool = False) -> dict:
     """Get the correct configuration for the repository.
 
-    :param default: The default configuration we will override.
-    :type default: dict
-    :param config: The compleet repository list.
-    :type config: list
-    :param name: The name of the current repository we want to find.
-    :type name: str
+    :param success: The default configuration we will override.
+    :type success: bool
+    :param data: The compleet requests data object.
+    :type data: dict
     :param debug: If we need to debug or not.
-    :type debug: book
+    :type debug: bool
     :rtype: dict
     :return: The combination of the default and overriden config.
     """
-    if data.ok:
+    if success and data.ok:
         generic.debugLog(debug=debug, message="We have successful request, returning json data.")
         return data.json()
     else:
