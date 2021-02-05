@@ -12,6 +12,10 @@
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
 
+**Fixed bugs:**
+
+- Configured specific Python version for run-me.py script from GH Actions [\#36](https://github.com/dj-wasabi/dj-wasabi-release/pull/36) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.2.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.2.0) (2021-02-01)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.1.0...0.2.0)
