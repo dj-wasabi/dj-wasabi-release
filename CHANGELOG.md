@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Added the usage of python type hinting for all of the functions. [\#35](https://github.com/dj-wasabi/dj-wasabi-release/pull/35) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added Sphinx for docs generation [\#33](https://github.com/dj-wasabi/dj-wasabi-release/pull/33) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
