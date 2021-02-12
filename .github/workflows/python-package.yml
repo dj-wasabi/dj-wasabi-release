@@ -46,4 +46,4 @@ jobs:
         DJWASABI: test
       run: |
         git remote set-url origin git@github.com:dj-wasabi/dj-wasabi-release.git
-        pytest -cov=lib/djWasabi -v
+        pytest -cov lib/djWasabi -v

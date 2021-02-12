@@ -45,6 +45,20 @@ def test_request__patch_no_url():
         djWasabi.request._patch()
 
 
+@responses.activate
+def test_request__post_name():
+    with open("tests/resources/dj-wasabi-release.json") as f:
+        jsonData = json.load(f)
+    responses.add(responses.POST, 'https://fake.url.com/dj-wasabi-release',
+                  json=jsonData, status=201)
+
+    success, output = djWasabi.request._post(url='https://fake.url.com/dj-wasabi-release')
+
+    assert success
+    assert output.json()['name'] == "dj-wasabi-release"
+    assert output.status_code == 201
+
+
 def test_request__post_no_url():
     """Test the _post function without providing url.
     :return:
