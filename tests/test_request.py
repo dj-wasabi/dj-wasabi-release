@@ -3,7 +3,10 @@
 import sys
 import os
 import requests
+import json
 import pytest
+import responses
+from requests.exceptions import RequestException
 
 currentPath = os.path.dirname(os.path.realpath(__file__))
 rootPath = os.path.join(currentPath, "..")
@@ -12,18 +15,18 @@ sys.path.append(libraryDir)
 from djWasabi import djWasabi
 
 
+@responses.activate
 def test_request__get_name():
-    """Test the _get function with providing url.
+    with open("tests/resources/dj-wasabi-release.json") as f:
+        jsonData = json.load(f)
+    responses.add(responses.GET, 'https://fake.url.com/dj-wasabi-release',
+                  json=jsonData, status=200)
 
-    Get return: {'id': <NUM>, 'node_id': '<ASAS>', 'name': 'dj-wasabi-release', 'full_name': 'dj-wasabi/dj-wasabi-release', ..
-    :return:
-    """
-    owner, repository = djWasabi.git.readRepository(repo="git@github.com:dj-wasabi/dj-wasabi-release.git")
-    githubUrl = djWasabi.generic.getGithubUrl(owner=owner, repository=repository)
+    success, output = djWasabi.request._get(url='https://fake.url.com/dj-wasabi-release')
 
-    success, output = djWasabi.request._get(url=githubUrl)
     assert success
     assert output.json()['name'] == "dj-wasabi-release"
+    assert output.status_code == 200
 
 
 def test_request__get_no_url():
