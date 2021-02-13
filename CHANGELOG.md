@@ -40,6 +40,7 @@
 
 - The run-me.py script is failing on executing labels.py script [\#20](https://github.com/dj-wasabi/dj-wasabi-release/issues/20)
 - Removing the prints and exit to get the script working again. [\#29](https://github.com/dj-wasabi/dj-wasabi-release/pull/29) ([dj-wasabi](https://github.com/dj-wasabi))
+- Using function to determine github\_user when it is https repo [\#8](https://github.com/dj-wasabi/dj-wasabi-release/pull/8) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Merged pull requests:**
 
@@ -66,7 +67,6 @@
 - The GH Action `run-all` not working correctly [\#12](https://github.com/dj-wasabi/dj-wasabi-release/issues/12)
 - Correcting 'path' to watch for the 'run-all' yob [\#13](https://github.com/dj-wasabi/dj-wasabi-release/pull/13) ([dj-wasabi](https://github.com/dj-wasabi))
 - Removal of debug commands [\#9](https://github.com/dj-wasabi/dj-wasabi-release/pull/9) ([dj-wasabi](https://github.com/dj-wasabi))
-- Using function to determine github\_user when it is https repo [\#8](https://github.com/dj-wasabi/dj-wasabi-release/pull/8) ([dj-wasabi](https://github.com/dj-wasabi))
 - Only execute run when changes are made to a certain paths [\#7](https://github.com/dj-wasabi/dj-wasabi-release/pull/7) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.0.3](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.3) (2021-01-01)
