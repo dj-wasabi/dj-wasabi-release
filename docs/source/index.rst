@@ -14,8 +14,8 @@ Welcome to djWasabi's documentation!
    config.rst
    container.rst
    generic.rst
+   http.rst
    git.rst
-   request.rst
 
 
 Indices and tables

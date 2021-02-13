@@ -63,14 +63,14 @@ def updateRepository(url: str = None, headers: dict = None, data: dict = None, c
             debug=is_debug,
             message="We have the following configuration options {r}".format(r=json.dumps(patchData))
         )
-        success, _data = djWasabi.request._patch(url=url, headers=headers, data=json.dumps(patchData))
-        djWasabi.request.verifyResponse(success=success, data=_data, debug=is_debug)
+        success, _data = request._patch(url=url, headers=headers, data=json.dumps(patchData))
+        request.verifyResponse(success=success, data=_data)
 
 
 def repositorySecurity(url: str = None, headers: dict = None, config: dict = None):
     securityUrl = "{g}/vulnerability-alerts".format(g=url)
     headers['Accept'] = "application/vnd.github.dorian-preview+json"
-    _success, _securityData = djWasabi.request._get(url=securityUrl, headers=headers)
+    _success, _securityData = request._get(url=securityUrl, headers=headers)
     securityData = _securityData.json()
     if securityData['message'] == "Vulnerability alerts are disabled.":
         securityEnabled = False
@@ -79,12 +79,12 @@ def repositorySecurity(url: str = None, headers: dict = None, config: dict = Non
 
     if config['vulnerability'] and not securityEnabled:
         # Enable it
-        success, _ = djWasabi.request._put(url=securityUrl, headers=headers)
+        success, _ = request._put(url=securityUrl, headers=headers)
         if success:
             print("Enabled it")
     elif not config['vulnerability'] and securityEnabled:
         # Disable it
-        success, _ = djWasabi.request._delete(url=securityUrl, headers=headers)
+        success, _ = request._delete(url=securityUrl, headers=headers)
         if success:
             print("Disabled it")
     else:
@@ -94,10 +94,13 @@ def repositorySecurity(url: str = None, headers: dict = None, config: dict = Non
 
 def main():
     global is_debug
+    global request
     args = get_args()
     is_debug = args.debug
     repo = args.repo
     token = args.token
+
+    request = djWasabi.http.request(debug=is_debug)
     yamlConfig = djWasabi.config.readConfig(rootPath=currentPath)
     if token is None:
         token = djWasabi.config.readOsEnv(key="CHANGELOG_GITHUB_TOKEN")
@@ -115,8 +118,8 @@ def main():
 
     # Get data from Github
     githubUrl = djWasabi.generic.getGithubUrl(owner=owner, repository=repository)
-    _success, _repoData = djWasabi.request._get(url=githubUrl, headers=headers)
-    repoData = djWasabi.request.verifyResponse(success=_success, data=_repoData, debug=is_debug)
+    _success, _repoData = request._get(url=githubUrl, headers=headers)
+    repoData = request.verifyResponse(success=_success, data=_repoData)
     djWasabi.generic.debugLog(
         debug=is_debug,
         message="We have the following JSON data: {r}".format(r=json.dumps(repoData))
