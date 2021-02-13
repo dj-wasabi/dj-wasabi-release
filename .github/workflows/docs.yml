@@ -10,10 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docs/"
-        build-command: "make html"
+    - name: "Install Sphinx"
+      run: |
+        apt-get update
+        apt-get install -y python3-sphinx
+        cd docs
+        pip install -r requirements.txt
+        make html
 
     - name: Commit documentation changes
       run: |
