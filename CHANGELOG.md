@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Usage of a Mock to run some tests specific for doing http requests [\#34](https://github.com/dj-wasabi/dj-wasabi-release/issues/34)
 - Added the usage of python type hinting for all of the functions. [\#35](https://github.com/dj-wasabi/dj-wasabi-release/pull/35) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added Sphinx for docs generation [\#33](https://github.com/dj-wasabi/dj-wasabi-release/pull/33) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
@@ -15,6 +16,10 @@
 **Fixed bugs:**
 
 - Configured specific Python version for run-me.py script from GH Actions [\#36](https://github.com/dj-wasabi/dj-wasabi-release/pull/36) ([dj-wasabi](https://github.com/dj-wasabi))
+
+**Merged pull requests:**
+
+- Added first test with a mock [\#37](https://github.com/dj-wasabi/dj-wasabi-release/pull/37) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.2.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.2.0) (2021-02-01)
 
