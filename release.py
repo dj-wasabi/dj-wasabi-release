@@ -6,6 +6,7 @@ import sys
 import requests
 import argparse
 import json
+import platform
 
 currentPath = os.path.dirname(os.path.realpath(__file__))
 libraryDir = os.path.join(currentPath, "lib")
@@ -81,6 +82,34 @@ def generateReleaseDict(version: str = None) -> dict:
     return json.dumps(myDict)
 
 
+def updateSphinxDocs(version: str = None):
+    """Update the Sphinx release information with provided version.
+
+    :param version: The version.
+    :type version: str
+    """
+    _os = platform.system()
+    _command = ["ls -l"]
+    _file = "docs/source/conf.pyp"
+    if os.path.isfile(_file):
+        if _os == "Darwin":
+            _command = "sed -i '' \"s/release = .*$/release = '{v}'/g\" {f}".format(
+                v=version, f=_file
+            )
+        else:
+            _command = "sed -i \"s/release = .*$/release = '{v}'/g\" {f}".format(
+                v=version, f=_file
+            )
+        djWasabi.generic.executeCommand(command=_command)
+        djWasabi.git.commitFile(
+            file=_file,
+            message="Updating {f} file for release {v}".format(f=_file, v=version),
+            debug=is_debug
+        )
+    else:
+        print("No Sphinx documentation available.")
+
+
 def main():
     global is_debug
     global owner, repository
@@ -120,6 +149,9 @@ def main():
 
         gitFetchCommand = ["git", "fetch", "-p"]
         djWasabi.generic.executeCommand(command=gitFetchCommand)
+
+        print('Updating Sphinx-docs release information if applicable.')
+        updateSphinxDocs(version=version)
 
         print('Creating a tag and push version {v}.'.format(v=version))
         gitTagCOmmand = ["git", "tag", "-a", version, "-m", version]
