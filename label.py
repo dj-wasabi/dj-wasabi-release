@@ -71,7 +71,7 @@ def getGithubLabels(github: str = None, headers: dict = None) -> dict:
     """
     githubUrl = '{g}/labels'.format(g=github)
     djWasabi.generic.debugLog(debug=is_debug, message="The Github URL {r}".format(r=githubUrl))
-    _githubLabels = requests.get(githubUrl, headers=headers)
+    _, _githubLabels = request._get(githubUrl, headers=headers)
     return cleanDataGithubLabels(data=_githubLabels.json())
 
 
@@ -92,16 +92,16 @@ def createOrUpdateLabel(github: str = None, headers: dict = None, entry: dict = 
     githubUrlName = '{g}/{n}'.format(g=githubUrl, n=entry['name'])
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
 
-    labelExist = requests.get(githubUrlName, headers=headers)
+    _, labelExist = request._get(githubUrlName, headers=headers)
     if labelExist.status_code == 200:
         print('Patching label {n}'.format(n=entry['name']))
-        r = requests.patch(githubUrlName, headers=headers, data=json.dumps(entry))
+        _, r = request._patch(githubUrlName, headers=headers, data=json.dumps(entry))
         djWasabi.generic.debugLog(debug=is_debug, message="The Github URL {u} with PATCH data: {r}".format(
             u=githubUrlName, r=r.text)
         )
     else:
         print('Creating label {n}'.format(n=entry['name']))
-        r = requests.post(githubUrl, headers=headers, data=json.dumps(entry))
+        _, r = request._post(githubUrl, headers=headers, data=json.dumps(entry))
         djWasabi.generic.debugLog(debug=is_debug, message="The Github URL {u} with POST data: {r}".format(
             u=githubUrl, r=r.text)
         )
@@ -111,17 +111,20 @@ def deleteLabel(github=None, headers=None, name=None):
     githubUrl = '{g}/labels/{n}'.format(g=github, n=name)
     headers['Accept'] = "application/vnd.github.v3.text-match+json"
     print('Deleting repo {n}'.format(n=name))
-    r = requests.delete(githubUrl, headers=headers)
+    _, r = request._delete(githubUrl, headers=headers)
     djWasabi.generic.debugLog(debug=is_debug, message="The Github DELETE data: {r}".format(r=r.text))
 
 
 def main():
     #
     global is_debug
+    global request
     args = get_args()
     is_debug = args.debug
     repo = args.repo
     token = args.token
+
+    request = djWasabi.http.request()
     yamlConfig = djWasabi.config.readConfig(rootPath=currentPath)
     if token is None:
         token = djWasabi.config.readOsEnv(key="CHANGELOG_GITHUB_TOKEN")

@@ -141,7 +141,8 @@ def main():
                 u=githubUrlRelease,
                 d=releaseData
             ), debug=is_debug)
-        djWasabi.request._post(url=githubUrlRelease, data=releaseData, headers=headers)
+        request = djWasabi.http.request()
+        request._post(url=githubUrlRelease, data=releaseData, headers=headers)
 
         # Push the changes.
         print('Pushing latest changes.')
