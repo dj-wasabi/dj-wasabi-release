@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5. djWasabi.git &#8212; djWasabi 0.2.0 documentation</title>
+    <link rel="stylesheet" href="_static/css/adctheme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <meta name="generator" content="Sphinx/ADC Theme by Mirounga www.mirounga.fr"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="djWasabi 0.2.0 documentation" href="index.html" />
+    <link media="only screen and (max-device-width: 480px)" href="_static/css/mobile.css" type="text/css" rel="stylesheet" /> 
+  </head>
+  <body>
+<div id="docstitle">
+    <p>djWasabi 0.2.0 documentation</p>
+</div>
+<div id="header">
+    <div id="title"><h1>5. djWasabi.git</h1></div>
+    <ul id="headerButtons">
+        <li id="toc_button"><div class="headerButton"><a href="#">Table of Contents</a></div></li>
+        <li id="page_buttons">
+            <div class="headerButton"><a href="genindex.html" title="General Index" accesskey="I">index</a></div>
+            <div class="headerButton"><a href="py-modindex.html" title="Python Module Index" >modules</a></div>
+        </li>
+    </ul>
+</div>
+
+<div id="sphinxsidebar">
+  <div class="sphinxsidebarwrapper">
+        <ul><li class="toctree-l1"><a href="contents.html">Main Page</a></li></ul>
+        
+      <h3>This Page</h3>
+      <ul class="this-page-menu">
+        <li><a href="_sources/git.rst.txt"
+               rel="nofollow">Show Source</a></li>
+      </ul>
+    <div id="searchbox" style="display: none">
+        <form class="search" action="search.html" method="get">
+                        <div class="search-wrapper">
+                        <input type="submit" value="" class="search-left"/>
+                        <input class="prettysearch" type="text" name="q" size="18" title="Enter search terms or a module, class or function name."/>
+                        <span class="search-right">&nbsp;</span>
+                        </div>
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+    <script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+</div>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="djwasabi-git">
+<h1>5. djWasabi.git<a class="headerlink" href="#djwasabi-git" title="Permalink to this headline">¶</a></h1>
+<p>Git related functions.</p>
+<span class="target" id="module-djWasabi.git"></span><dl class="function">
+<dt id="djWasabi.git.cloneRepository">
+<code class="descclassname">djWasabi.git.</code><code class="descname">cloneRepository</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>repositoryUrl: str = None</em>, <em>debug: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/git.html#cloneRepository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.cloneRepository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone the provided git repository into specific directory.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="djWasabi.git.commitFile">
+<code class="descclassname">djWasabi.git.</code><code class="descname">commitFile</code><span class="sig-paren">(</span><em>file: str = None</em>, <em>message: str = None</em>, <em>debug: bool = False</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/djWasabi/git.html#commitFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.commitFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commit a file when it is changed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file</strong> (<em>str</em>) – The name of the file we want to commit.</li>
+<li><strong>message</strong> (<em>str</em>) – The commit message we want to use.</li>
+<li><strong>debug</strong> (<em>Bool</em>) – If we want debug logging enabled.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">When committed (True), or no commit has been made (False)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="djWasabi.git.getCheckTag">
+<code class="descclassname">djWasabi.git.</code><code class="descname">getCheckTag</code><span class="sig-paren">(</span><em>tag: str = None</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/djWasabi/git.html#getCheckTag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getCheckTag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if we have already a tag with same name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tag</strong> (<em>str</em>) – The name of the tag.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If the tag exist (True) or not (False)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="djWasabi.git.getLatestTag">
+<code class="descclassname">djWasabi.git.</code><code class="descname">getLatestTag</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/djWasabi/git.html#getLatestTag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getLatestTag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the latest tag created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The latest created tag.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="djWasabi.git.getMainBranch">
+<code class="descclassname">djWasabi.git.</code><code class="descname">getMainBranch</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/djWasabi/git.html#getMainBranch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.getMainBranch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current main of master branch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The ‘main’ or ‘master’ branch</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="djWasabi.git.readRepository">
+<code class="descclassname">djWasabi.git.</code><code class="descname">readRepository</code><span class="sig-paren">(</span><em>repo: str = None</em>, <em>debug: bool = False</em><span class="sig-paren">)</span> &#x2192; tuple<a class="reference internal" href="_modules/djWasabi/git.html#readRepository"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.git.readRepository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the remote url and return the username and repository.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The username/repository of the current directory.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div> 
+        </div>
+      </div>
+    <div class="footer">
+    <p>
+      &copy; Copyright 2021, Werner Dijkerman.
+      Created using <a href="http://www.sphinx-doc.org/">Sphinx</a> 1.6.7 <a href="https://github.com/mga-sphinx/sphinx_adc_theme">ADC Theme</a> .
+    (Revision )
+        </p>
+    </div>
+      <div class="clearer"></div>
+    </div>
+        <div id="breadcrumbs">
+                5. djWasabi.git
+        </div>
+        <script type="text/javascript" charset="utf-8" src="_static/js/toc.js"></script>
+  </body>
+</html>
