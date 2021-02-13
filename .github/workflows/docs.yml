@@ -18,7 +18,7 @@ jobs:
     - name: Commit documentation changes
       run: |
         git clone https://github.com/dj-wasabi/dj-wasabi-release.git --branch gh-pages --single-branch gh-pages
-        cp -r docs/_build/* gh-pages/
+        cp -r docs/build/* gh-pages/
         cd gh-pages
         touch .nojekyll
         git config --global user.name 'Werner Dijkerman [GH bot]'
