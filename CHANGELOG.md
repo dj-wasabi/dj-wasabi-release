@@ -12,6 +12,7 @@
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
+- Check if Docker is running before release.py script continues [\#28](https://github.com/dj-wasabi/dj-wasabi-release/pull/28) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
 
@@ -30,7 +31,6 @@
 - Write the release.sh into Python [\#22](https://github.com/dj-wasabi/dj-wasabi-release/issues/22)
 - Able to configure repositories [\#18](https://github.com/dj-wasabi/dj-wasabi-release/issues/18)
 - Delete local branches automatically [\#15](https://github.com/dj-wasabi/dj-wasabi-release/issues/15)
-- Check if Docker is running before release.py script continues [\#28](https://github.com/dj-wasabi/dj-wasabi-release/pull/28) ([dj-wasabi](https://github.com/dj-wasabi))
 - Separating the single big test file into smaller files specific for each module file [\#27](https://github.com/dj-wasabi/dj-wasabi-release/pull/27) ([dj-wasabi](https://github.com/dj-wasabi))
 - Improved documentation in doc and script and added a pre-commit hook [\#26](https://github.com/dj-wasabi/dj-wasabi-release/pull/26) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added tests and improved the execute command function [\#24](https://github.com/dj-wasabi/dj-wasabi-release/pull/24) ([dj-wasabi](https://github.com/dj-wasabi))
