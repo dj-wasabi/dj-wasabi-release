@@ -14,7 +14,7 @@ class request():
     def __init__(
         self, debug: bool = False, status: list = None, methods: list = None, backoff: int = 1,
             retries: int = 5, timeout: int = 10):
-        """Init the request class.
+        """Set defaults and setting up retry mechanism for http requests.
 
         :param debug: If we need debug information or not.
         :type debug: bool
@@ -61,7 +61,7 @@ class request():
         :param headers: The headers.
         :type headers: dict
         :rtype: tuple
-        :return: Succes (or not) with the return object
+        :return: Succes (or not) with the request object
         """
         if not url:
             raise ValueError('Please provide the URL.')
@@ -81,7 +81,7 @@ class request():
         :param data: The headers.
         :type data: dict
         :rtype: tuple
-        :return: Succes (or not) with the return object
+        :return: Succes (or not) with the request object
         """
         if not url:
             raise ValueError('Please provide the URL.')
@@ -101,7 +101,7 @@ class request():
         :param data: The data we want to POST.
         :type data: dict
         :rtype: tuple
-        :return: Succes (or not) with the return object
+        :return: Succes (or not) with the request object
         """
         if not url:
             raise ValueError('Please provide the URL.')
@@ -119,7 +119,7 @@ class request():
         :param headers: The headers.
         :type headers: dict
         :rtype: tuple
-        :return: Succes (or not) with the return object
+        :return: Succes (or not) with the request object
         """
         if not url:
             raise ValueError('Please provide the URL.')
@@ -137,7 +137,7 @@ class request():
         :param headers: The headers.
         :type headers: dict
         :rtype: tuple
-        :return: Succes (or not) with the return object
+        :return: Succes (or not) with the request object
         """
         if not url:
             raise ValueError('Please provide the URL.')
@@ -147,10 +147,10 @@ class request():
         except requests.exceptions.RequestException as e:
             return (False, {'error': e})
 
-    def verifyResponse(self, success: bool = None, data: dict = {}) -> dict:
+    def verifyResponse(self, success: bool = False, data: dict = {}) -> dict:
         """Get the correct configuration for the repository.
 
-        :param success: The default configuration we will override.
+        :param success: The status value of the http request.
         :type success: bool
         :param data: The compleet requests data object.
         :type data: dict
