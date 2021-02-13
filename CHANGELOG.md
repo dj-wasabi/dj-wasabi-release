@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - Usage of a Mock to run some tests specific for doing http requests [\#34](https://github.com/dj-wasabi/dj-wasabi-release/issues/34)
+- Updating the Sphinx release property file when creating a release [\#39](https://github.com/dj-wasabi/dj-wasabi-release/pull/39) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added the usage of python type hinting for all of the functions. [\#35](https://github.com/dj-wasabi/dj-wasabi-release/pull/35) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added Sphinx for docs generation [\#33](https://github.com/dj-wasabi/dj-wasabi-release/pull/33) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
@@ -60,7 +61,6 @@
 - Updated versions to be used as part of Molecule runs [\#6](https://github.com/dj-wasabi/dj-wasabi-release/pull/6) ([dj-wasabi](https://github.com/dj-wasabi))
 - Create runme script to be executed when merge on master [\#5](https://github.com/dj-wasabi/dj-wasabi-release/pull/5) ([dj-wasabi](https://github.com/dj-wasabi))
 - Add Python module incl. tests [\#4](https://github.com/dj-wasabi/dj-wasabi-release/pull/4) ([dj-wasabi](https://github.com/dj-wasabi))
-- Added first initial attempt to create script to manage labels [\#3](https://github.com/dj-wasabi/dj-wasabi-release/pull/3) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
 
@@ -73,6 +73,10 @@
 ## [0.0.3](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.3) (2021-01-01)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.0.2...0.0.3)
+
+**Implemented enhancements:**
+
+- Added first initial attempt to create script to manage labels [\#3](https://github.com/dj-wasabi/dj-wasabi-release/pull/3) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.0.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.0.2) (2020-10-17)
 
