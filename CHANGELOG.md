@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - Usage of a Mock to run some tests specific for doing http requests [\#34](https://github.com/dj-wasabi/dj-wasabi-release/issues/34)
+- Update shpinx release when repository contains Sphinx [\#40](https://github.com/dj-wasabi/dj-wasabi-release/pull/40) ([dj-wasabi](https://github.com/dj-wasabi))
 - Updating the Sphinx release property file when creating a release [\#39](https://github.com/dj-wasabi/dj-wasabi-release/pull/39) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added the usage of python type hinting for all of the functions. [\#35](https://github.com/dj-wasabi/dj-wasabi-release/pull/35) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added Sphinx for docs generation [\#33](https://github.com/dj-wasabi/dj-wasabi-release/pull/33) ([dj-wasabi](https://github.com/dj-wasabi))
