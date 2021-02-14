@@ -14,7 +14,6 @@
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
-- Improved documentation in doc and script and added a pre-commit hook [\#26](https://github.com/dj-wasabi/dj-wasabi-release/pull/26) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
 
@@ -23,7 +22,6 @@
 **Merged pull requests:**
 
 - Added first test with a mock [\#37](https://github.com/dj-wasabi/dj-wasabi-release/pull/37) ([dj-wasabi](https://github.com/dj-wasabi))
-- Added the Python script equivalent of the release.sh BASH script [\#25](https://github.com/dj-wasabi/dj-wasabi-release/pull/25) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.2.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.2.0) (2021-02-01)
 
@@ -36,6 +34,7 @@
 - Delete local branches automatically [\#15](https://github.com/dj-wasabi/dj-wasabi-release/issues/15)
 - Check if Docker is running before release.py script continues [\#28](https://github.com/dj-wasabi/dj-wasabi-release/pull/28) ([dj-wasabi](https://github.com/dj-wasabi))
 - Separating the single big test file into smaller files specific for each module file [\#27](https://github.com/dj-wasabi/dj-wasabi-release/pull/27) ([dj-wasabi](https://github.com/dj-wasabi))
+- Improved documentation in doc and script and added a pre-commit hook [\#26](https://github.com/dj-wasabi/dj-wasabi-release/pull/26) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added tests and improved the execute command function [\#24](https://github.com/dj-wasabi/dj-wasabi-release/pull/24) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added some more tests to increase coverage [\#23](https://github.com/dj-wasabi/dj-wasabi-release/pull/23) ([dj-wasabi](https://github.com/dj-wasabi))
 
@@ -46,6 +45,7 @@
 
 **Merged pull requests:**
 
+- Added the Python script equivalent of the release.sh BASH script [\#25](https://github.com/dj-wasabi/dj-wasabi-release/pull/25) ([dj-wasabi](https://github.com/dj-wasabi))
 - Properly able to execute the run-me.py script from GH actions  [\#21](https://github.com/dj-wasabi/dj-wasabi-release/pull/21) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added repository script to configure repositories [\#19](https://github.com/dj-wasabi/dj-wasabi-release/pull/19) ([dj-wasabi](https://github.com/dj-wasabi))
 - Remove local branches that are already removed on remote [\#17](https://github.com/dj-wasabi/dj-wasabi-release/pull/17) ([dj-wasabi](https://github.com/dj-wasabi))
