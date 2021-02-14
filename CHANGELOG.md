@@ -1,5 +1,21 @@
 # Changelog
 
+## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.3.0...HEAD)
+
+**Implemented enhancements:**
+
+- Generating documentation automatically when merged on main [\#38](https://github.com/dj-wasabi/dj-wasabi-release/issues/38)
+
+**Fixed bugs:**
+
+- Sphinx 'release' not updated. [\#41](https://github.com/dj-wasabi/dj-wasabi-release/issues/41)
+
+**Merged pull requests:**
+
+- Fixing the path to the file containing the Sphinx configuration [\#42](https://github.com/dj-wasabi/dj-wasabi-release/pull/42) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.3.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.3.0) (2021-02-14)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.2.0...0.3.0)
