@@ -90,7 +90,7 @@ def updateSphinxDocs(version: str = None):
     """
     _os = platform.system()
     _command = ["ls -l"]
-    _file = "docs/source/conf.pyp"
+    _file = "docs/source/conf.py"
     if os.path.isfile(_file):
         if _os == "Darwin":
             _command = "sed -i '' \"s/release = .*$/release = '{v}'/g\" {f}".format(
