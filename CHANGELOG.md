@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+## [0.3.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.3.1) (2021-02-14)
 
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.3.0...HEAD)
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.3.0...0.3.1)
 
 **Implemented enhancements:**
 
