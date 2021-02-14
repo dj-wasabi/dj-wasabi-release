@@ -23,7 +23,7 @@ def get_args():
     return parser.parse_args()
 
 
-def getConfigScript(scripts=[], script=None):
+def getConfigScript(scripts: list = [], script: str = None) -> dict:
     """ Get the configuration for provided script.
     """
     for entry in scripts:
