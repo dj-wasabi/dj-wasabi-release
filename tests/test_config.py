@@ -12,20 +12,37 @@ sys.path.append(libraryDir)
 from djWasabi import djWasabi
 
 
-def test_config_readconfig():
+def test_config_readYamlFile():
     """Test the reading of the yaml configuration
     :return:
     """
-    yamlConfig = djWasabi.config.readConfig(rootPath=rootPath)
-    assert yamlConfig['owner'] == "Werner Dijkerman"
+    yamlConfig = djWasabi.config.readYamlFile(file="tests/resources/config.yml")
+    assert yamlConfig['dummy']
+    assert yamlConfig['pizza'] == "I Like it"
 
 
-def test_config_readconfig_failure():
+def test_config_readYamlFile_no_file():
+    """Test the reading of the yaml configuration when the file doesn't exist.
+    :return:
+    """
+    with pytest.raises(ValueError, match="Please provide a path to the YAML file."):
+        djWasabi.config.readYamlFile()
+
+
+def test_config_readYamlFile_failure():
     """Test the reading of the yaml configuration when the file doesn't exist.
     :return:
     """
     with pytest.raises(ValueError, match="File /tmp/dj-wasabi.yml does not exist."):
-        djWasabi.config.readConfig(rootPath="/tmp")
+        djWasabi.config.readYamlFile(file="/tmp/dj-wasabi.yml")
+
+
+def test_config_readYamlFile_failure_no_yaml():
+    """Test the reading of the yaml configuration when the file doesn't exist.
+    :return:
+    """
+    with pytest.raises(ValueError, match="File does not contain YAML"):
+        djWasabi.config.readYamlFile(file="/etc/hosts")
 
 
 def test_config_readOsEnv():

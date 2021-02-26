@@ -38,7 +38,8 @@ def main():
     args = get_args()
     is_debug = args.debug
     script = args.script
-    yamlConfig = djWasabi.config.readConfig(rootPath=currentPath)
+    yamlConfigFile = os.path.join(currentPath, "dj-wasabi.yml")
+    yamlConfig = djWasabi.config.readYamlFile(file=yamlConfigFile)
 
     repositories = yamlConfig['repositories']
     scripts = yamlConfig['scripts']
