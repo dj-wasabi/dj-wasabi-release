@@ -52,3 +52,5 @@ jobs:
       run: |
         ./label.py -D
         ./repository.py -D
+      env:
+        CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}
