@@ -46,4 +46,11 @@ jobs:
         DJWASABI: test
       run: |
         git remote set-url origin git@github.com:dj-wasabi/dj-wasabi-release.git
-        pytest --cov=lib/djWasabi -v
+        pytest --cov=lib/djWasabi -v --cov-fail-under=75 --cov-report term-missing
+
+    - name: Execute scripts on this repository.
+      run: |
+        ./label.py -D
+        ./repository.py -D
+      env:
+        CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}

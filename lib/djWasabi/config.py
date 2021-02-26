@@ -2,35 +2,33 @@
 
 import os
 import sys
-
-try:
-    import yaml
-except:
-    print('Please install: pip install pyyaml')
-    sys.exit(1)
+import yaml
 
 
-def readConfig(rootPath: str = None) -> dict:
-    """ Will read the configuration file and return the content.
+def readYamlFile(file: str = None) -> dict:
+    """Will read the configuration file and return the content.
 
+    :param file: The name of the environment variable.
+    :type file: str
     :rtype: dict
     :return: The content of the configuration file.
     """
-    configFile = os.path.join(rootPath, "dj-wasabi.yml")
+    if file is None:
+        raise ValueError('Please provide a path to the YAML file.')
 
     try:
-        with open(configFile, 'r') as stream:
+        with open(file, 'r') as stream:
             try:
                 _load = yaml.safe_load(stream)
-            except yaml.YAMLError as exc:
-                print(exc)
+            except yaml.YAMLError as exc: # noqa: 841
+                raise ValueError('File does not contain YAML')
         return _load
     except IOError:
-        raise ValueError('File {f} does not exist.'.format(f=configFile))
+        raise ValueError('File {f} does not exist.'.format(f=file))
 
 
 def readOsEnv(key: str = None) -> str:
-    """ Will get the value for the provided environment variable..
+    """Will get the value for the provided environment variable..
 
     :param key: The name of the environment variable.
     :type key: str

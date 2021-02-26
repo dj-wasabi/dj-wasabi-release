@@ -125,7 +125,8 @@ def main():
     token = args.token
 
     request = djWasabi.http.request()
-    yamlConfig = djWasabi.config.readConfig(rootPath=currentPath)
+    yamlConfigFile = os.path.join(currentPath, "dj-wasabi.yml")
+    yamlConfig = djWasabi.config.readYamlFile(file=yamlConfigFile)
     if token is None:
         token = djWasabi.config.readOsEnv(key="CHANGELOG_GITHUB_TOKEN")
     headers = {'Authorization': 'token {t}'.format(t=token)}

@@ -131,7 +131,8 @@ def main():
 
     owner, repository = djWasabi.git.readRepository(debug=is_debug)
     githubUrl = djWasabi.generic.getGithubUrl(owner=owner, repository=repository)
-    yamlConfig = djWasabi.config.readConfig(rootPath=currentPath)
+    yamlConfigFile = os.path.join(currentPath, "dj-wasabi.yml")
+    yamlConfig = djWasabi.config.readYamlFile(file=yamlConfigFile)
     dockerCommand = djWasabi.container.createContainerCommand(
         configuration=yamlConfig['changelog'],
         owner=owner, repository=repository
