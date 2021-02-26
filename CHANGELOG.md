@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.3.1...HEAD)
+
+**Implemented enhancements:**
+
+- Using a class for the HTTP functions [\#43](https://github.com/dj-wasabi/dj-wasabi-release/pull/43) ([dj-wasabi](https://github.com/dj-wasabi))
+
 ## [0.3.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.3.1) (2021-02-14)
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.3.0...0.3.1)
