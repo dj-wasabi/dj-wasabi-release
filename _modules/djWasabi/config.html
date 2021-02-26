@@ -73,35 +73,33 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">yaml</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please install: pip install pyyaml&#39;</span><span class="p">)</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
 
 
-<div class="viewcode-block" id="readConfig"><a class="viewcode-back" href="../../config.html#djWasabi.config.readConfig">[docs]</a><span class="k">def</span> <span class="nf">readConfig</span><span class="p">(</span><span class="n">rootPath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Will read the configuration file and return the content.</span>
+<div class="viewcode-block" id="readYamlFile"><a class="viewcode-back" href="../../config.html#djWasabi.config.readYamlFile">[docs]</a><span class="k">def</span> <span class="nf">readYamlFile</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Will read the configuration file and return the content.</span>
 
+<span class="sd">    :param file: The name of the environment variable.</span>
+<span class="sd">    :type file: str</span>
 <span class="sd">    :rtype: dict</span>
 <span class="sd">    :return: The content of the configuration file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">configFile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootPath</span><span class="p">,</span> <span class="s2">&quot;dj-wasabi.yml&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide a path to the YAML file.&#39;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">configFile</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">_load</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
-            <span class="k">except</span> <span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span> <span class="c1"># noqa: 841</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File does not contain YAML&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_load</span>
     <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File </span><span class="si">{f}</span><span class="s1"> does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">configFile</span><span class="p">))</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File </span><span class="si">{f}</span><span class="s1"> does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">file</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="readOsEnv"><a class="viewcode-back" href="../../config.html#djWasabi.config.readOsEnv">[docs]</a><span class="k">def</span> <span class="nf">readOsEnv</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Will get the value for the provided environment variable..</span>
+    <span class="sd">&quot;&quot;&quot;Will get the value for the provided environment variable..</span>
 
 <span class="sd">    :param key: The name of the environment variable.</span>
 <span class="sd">    :type key: str</span>
