@@ -3,20 +3,24 @@
 <img align="right"  src="https://raw.githubusercontent.com/dj-wasabi/dj-wasabi-release/main/.github/image.jpg">
 
 **Table of contents**:
+<!--TOC-->
 
 - [dj-wasabi-release](#dj-wasabi-release)
-  * [Introduction](#introduction)
-  * [Github Actions](#github-actions)
+  - [Introduction](#introduction)
+  - [Github Actions](#github-actions)
 - [Scripts](#scripts)
-  * [release.py](#releasepy)
-  * [label.py](#labelpy)
-  * [repository.py](#repositorypy)
+  - [release.py](#releasepy)
+  - [label.py](#labelpy)
+  - [repository.py](#repositorypy)
 - [Configuration](#configuration)
-  * [labels](#labels)
-  * [script](#script)
-  * [Repository](#repository)
+  - [labels](#labels)
+  - [script](#script)
+  - [Repository](#repository)
 
-![MasterRun](https://github.com/dj-wasabi/dj-wasabi-release/workflows/MasterRun/badge.svg) ![Generate documentation](https://github.com/dj-wasabi/dj-wasabi-release/workflows/Generate%20documentation/badge.svg) ![run-all](https://github.com/dj-wasabi/dj-wasabi-release/workflows/run-all/badge.svg) ![Python test_djWasabi](https://github.com/dj-wasabi/dj-wasabi-release/workflows/Python%20test_djWasabi/badge.svg)
+<!--TOC-->
+
+![MasterRun](https://github.com/dj-wasabi/dj-wasabi-release/workflows/MasterRun/badge.svg) ![Generate documentation](https://github.com/dj-wasabi/dj-wasabi-release/workflows/Generate%20documentation/badge.svg) ![run-all](https://github.com/dj-wasabi/dj-wasabi-release/workflows/run-all/badge.svg) ![Python test_djWasabi](https://github.com/dj-wasabi/dj-wasabi-release/workflows/Python%20test_djWasabi/badge.svg) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
 
 ## Introduction
 

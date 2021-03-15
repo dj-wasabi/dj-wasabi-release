@@ -1,5 +1,3 @@
----
-
 owner: Werner Dijkerman
 
 # Configuring the changelog-generator Docker image
@@ -8,45 +6,46 @@ changelog:
   volumes:
     PWD: /usr/local/src/your-app
   environment:
-    - CHANGELOG_GITHUB_TOKEN
+  - CHANGELOG_GITHUB_TOKEN
   arguments:
-    owner: "-u"
-    repository: "-p"
+    owner: -u
+    repository: -p
+    version: --future-release
 
 
 # The following set of labels needs be configured and available
 # on all Github repositories.
 labels:
-  - name: enhancement
-    color: 'a2eeef'
-    description: New feature or requests.
-  - name: deprecated
-    color: 'd73a4a'
-    description: This feature is deprecated.
-  - name: backwards-incompatible
-    color: '000000'
-    description: An backwards incompatible issues or causes issues for migration.
-  - name: bug
-    color: 'd73a4a'
-    description: Something isn't working.
-  - name: security
-    color: 'B60205'
-    description: Security related issue.
-  - name: invalid
-    color: 'e4e669'
-    description: This doesn't seem right.
-  - name: wontfix
-    color: 'ffffff'
-    description: This will not be worked on.
-  - name: duplicate
-    color: 'cfd3d7'
-    description: This issue or pull request already exists.
-  - name: first-issue
-    color: '0052cc'
-    description: Nice first issue for newcomers
-  - name: needed-help
-    color: 'FBCA04'
-    description: Issues/PR requires help to continue.
+- name: enhancement
+  color: a2eeef
+  description: New feature or requests.
+- name: deprecated
+  color: d73a4a
+  description: This feature is deprecated.
+- name: backwards-incompatible
+  color: '000000'
+  description: An backwards incompatible issues or causes issues for migration.
+- name: bug
+  color: d73a4a
+  description: Something isn't working.
+- name: security
+  color: B60205
+  description: Security related issue.
+- name: invalid
+  color: e4e669
+  description: This doesn't seem right.
+- name: wontfix
+  color: ffffff
+  description: This will not be worked on.
+- name: duplicate
+  color: cfd3d7
+  description: This issue or pull request already exists.
+- name: first-issue
+  color: 0052cc
+  description: Nice first issue for newcomers
+- name: needed-help
+  color: FBCA04
+  description: Issues/PR requires help to continue.
 
 # Configuration of scripts that can be executed with the 'run-me.py' script.
 #
@@ -55,36 +54,36 @@ labels:
 # args: A list with arguments that needs to be provided when running the script.
 #
 scripts:
-  - name: label.py
-    clone: False
-    args:
-      - "-r"
-  - name: repository.py
-    clone: False
-    args:
-      - "-r"
+- name: label.py
+  clone: false
+  args:
+  - -r
+- name: repository.py
+  clone: false
+  args:
+  - -r
 
 # A list with all repositories that is "maintained" by the scripts found
 # in the 'scripts' property.
 
 repository_default:
-    wiki: False
-    projects: False
-    archived: False
-    vulnerability: False
+  wiki: false
+  projects: false
+  archived: false
+  vulnerability: false
 
 repositories:
-  - name: consul
-  - name: vault
-  - name: dj-wasabi-release
-  - name: helm-zabbix
-  - name: ansible-telegraf
-  - name: ansible-ossec-agent
-  - name: ansible-ossec-server
-  - name: pre-commit-hooks
-  - name: vagrant-kubernetes
-  - name: ansible-role-php
-  - name: packer-centos-vsphere-example
-  - name: clair-and-docker-notary-example
-  - name: consul-acl-examples
-  - name: docker-local-development-puppet
+- name: consul
+- name: vault
+- name: dj-wasabi-release
+- name: helm-zabbix
+- name: ansible-telegraf
+- name: ansible-ossec-agent
+- name: ansible-ossec-server
+- name: pre-commit-hooks
+- name: vagrant-kubernetes
+- name: ansible-role-php
+- name: packer-centos-vsphere-example
+- name: clair-and-docker-notary-example
+- name: consul-acl-examples
+- name: docker-local-development-puppet

@@ -71,6 +71,29 @@ def test_keysExistInDict_with_empty_dict():
         djWasabi.generic.keysExistInDict(data)
 
 
+def test_generic_getRepoUrl():
+    """Test the getRepoUrl function.
+    """
+    getRepoUrl = djWasabi.generic.getRepoUrl(owner="dj-wasabi", repository="dj-wasabi-release")
+    assert getRepoUrl == "git@github.com:dj-wasabi/dj-wasabi-release.git"
+
+
+def test_generic_getRepoUrl_no_owner():
+    """Test the getRepoUrl function without providing owner.
+    :return:
+    """
+    with pytest.raises(ValueError, match="Please provide the owner of the repository."):
+        djWasabi.generic.getRepoUrl(repository="dj-wasabi-release")
+
+
+def test_generic_getRepoUrl_no_repository():
+    """Test the getRepoUrl function without providing repository.
+    :return:
+    """
+    with pytest.raises(ValueError, match="Please provide the name of the repository."):
+        djWasabi.generic.getRepoUrl(owner="dj-wasabi")
+
+
 def test_generic_githubUrl():
     """Test the githubUrl function.
     """
@@ -136,3 +159,19 @@ def test_generic_executeCommand_no_command():
     """
     with pytest.raises(ValueError, match="Please provide the command we want to execute."):
         djWasabi.generic.executeCommand()
+
+
+def test_generic_compareDictsInLists():
+    list1 = [
+        {
+            "key": "pizza",
+            "name": "value"
+        }
+    ]
+    list2 = [
+        {
+            "name": "value"
+        }
+    ]
+    output = djWasabi.generic.compareDictsInLists(source1=list1, source2=list2)
+    assert output == [{'key': 'pizza', 'name': 'value'}]

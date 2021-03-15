@@ -47,12 +47,12 @@ def updateChangelogMd(command: list = None, version: str = None):
     :type version: str
     """
     djWasabi.generic.executeCommand(command=command)
-    if version is not None:
-        djWasabi.git.commitFile(
-            file="CHANGELOG.md",
-            message="Updating {f} file for release {v}".format(f="CHANGELOG.md", v=version),
-            debug=is_debug
-        )
+    # if version is not None:
+    #     djWasabi.git.commitFile(
+    #         file="CHANGELOG.md",
+    #         message="Updating {f} file for release {v}".format(f="CHANGELOG.md", v=version),
+    #         debug=is_debug
+    #     )
 
 
 def createUpdateContributerFile(version: str = None):
@@ -135,7 +135,7 @@ def main():
     yamlConfig = djWasabi.config.readYamlFile(file=yamlConfigFile)
     dockerCommand = djWasabi.container.createContainerCommand(
         configuration=yamlConfig['changelog'],
-        owner=owner, repository=repository
+        owner=owner, repository=repository, version=version
     )
 
     if version:

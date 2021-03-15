@@ -1,9 +1,10 @@
----
 repos:
 - repo: https://github.com/dj-wasabi/pre-commit-hooks
   rev: master
   hooks:
-    - id: shellcheck
+  - id: shellcheck
+  - id: markdown-toc
+  - id: verify-yaml
 
 - repo: https://gitlab.com/pycqa/flake8
   rev: 3.8.4
@@ -14,7 +15,6 @@ repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v3.4.0
   hooks:
-    - id: end-of-file-fixer
-    - id: trailing-whitespace
-    - id: check-merge-conflict
-    - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-merge-conflict
