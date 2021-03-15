@@ -57,8 +57,12 @@ def getMainBranch() -> str:
     :rtype: str
     :return: The 'main' or 'master' branch
     """
-    _command = ["git", "rev-parse", "--abbrev-ref", "HEAD"]
-    return generic.executeCommand(command=_command)
+    _command = [
+        "git", "branch", "-r", "--points-at", "refs/remotes/origin/HEAD",
+        "| tee | grep -- '->' | awk '{print $3}'"
+    ]
+    _output = generic.executeCommand(command=_command)
+    return _output.split('/')[1]
 
 
 def getLatestTag() -> str:

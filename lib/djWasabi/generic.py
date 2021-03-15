@@ -49,10 +49,7 @@ def keysExistInDict(element: dict = None, *keys) -> bool:
     _element = element
     for key in keys:
         if key in _element:
-            try:
-                _element = _element[key]
-            except KeyError:
-                return False
+            _element = _element[key]
         else:
             return False
     return True
@@ -83,7 +80,7 @@ def getString(data: dict = None, separater: str = " ") -> str:
         return separater.join(data)
 
 
-def executeCommand(command: str = None, shell: bool = True, debug: bool = False) -> str:
+def executeCommand(command: str = None, shell: bool = True, debug: bool = True) -> str:
     """Executing a command and returns the output.
 
     :param command: The command we want to execute.

@@ -64,6 +64,23 @@ def test_container_getValueArg_none():
     assert output is None
 
 
+def test_container_getValueArg_version():
+    """Test the to execute command to do an ls
+    :return:
+    """
+    value = "version"
+    owner = "dj-wasabi"
+    repository = "dj-wasabi-release"
+    version = "1.2.3"
+    output = djWasabi.container.getValueArg(
+        value=value,
+        owner=owner,
+        repository=repository,
+        version=version
+    )
+    assert output == "1.2.3"
+
+
 def test_container_createContainerCommand():
     """Test the docker run with only Docker image.
     :return:
@@ -146,3 +163,27 @@ def test_container_createContainerCommand_noImage():
             owner=owner,
             repository=repository
         )
+
+
+def test_container_createContainerCommand_arguments():
+    """Test the docker run with provided arguments.
+    :return:
+    """
+
+    configuration = {
+        "image": "dj-wasabi/consul",
+        "arguments": {
+            "repository": "-p"
+        }
+
+    }
+    owner = "dj-wasabi"
+    repository = "dj-wasabi-release"
+    container = djWasabi.container.createContainerCommand(
+        configuration=configuration,
+        owner=owner,
+        repository=repository
+    )
+    output = djWasabi.generic.getString(data=container)
+    value = "docker run --rm dj-wasabi/consul -p {r}".format(r=repository)
+    assert output == value

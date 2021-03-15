@@ -28,3 +28,19 @@ def test_git_readRepository_without_repo():
     owner, repo = djWasabi.git.readRepository()
     assert owner == "dj-wasabi"
     assert repo == "dj-wasabi-release"
+
+
+# def test_git_readRepository_getMainBranch():
+#     """Test the return of the "main" branch.
+#     :return:
+#     """
+#     output = djWasabi.git.getMainBranch()
+#     assert output == "main"
+
+
+# def test_git_readRepository_getLatestTag():
+#     """Test the return of the "main" branch.
+#     :return:
+#     """
+#     output = djWasabi.git.getLatestTag()
+#     assert output.startswith('0.')

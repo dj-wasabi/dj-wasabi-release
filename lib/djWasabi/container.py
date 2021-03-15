@@ -19,7 +19,7 @@ def validateDockerRunning():
         return True
 
 
-def getValueArg(value: str = None, owner: str = None, repository: str = None) -> str:
+def getValueArg(value: str = None, owner: str = None, repository: str = None, version: str = None) -> str:
     """Create a 'docker run' command based on configuration.
 
     :param value: The variable you want to get.
@@ -28,18 +28,25 @@ def getValueArg(value: str = None, owner: str = None, repository: str = None) ->
     :type owner: str
     :param repository: The name of the repository
     :type repository: str
+    :param version: The version of the release.
+    :type version: str
     :rtype: str
     :return: The complete url to the Github repository
     """
+    generic.debugLog(debug=True, message=value)
     if value == "owner":
         return owner
     elif value == "repository":
+        generic.debugLog(debug=True, message="We are here now")
         return repository
+    elif value == "version":
+        generic.debugLog(debug=True, message="Are we here yet")
+        return version
     else:
         return None
 
 
-def createContainerCommand(configuration: dict = None, owner: str = None, repository: str = None) -> str:
+def createContainerCommand(configuration: dict = None, owner: str = None, repository: str = None, version: str = None) -> str:
     """Create a 'docker run' command based on configuration.
 
     :param configuration: The Docker configuration.
@@ -48,6 +55,8 @@ def createContainerCommand(configuration: dict = None, owner: str = None, reposi
     :type owner: str
     :param repository: The name of the repository
     :type repository: str
+    :param version: The version of the release.
+    :type version: str
     :rtype: str
     :return: The complete url to the Github repository
     """
@@ -75,7 +84,8 @@ def createContainerCommand(configuration: dict = None, owner: str = None, reposi
     # Arguments
     if 'arguments' in configuration:
         for arg in configuration['arguments']:
-            _value = getValueArg(value=arg, owner=owner, repository=repository)
-            command.append(configuration['arguments'][arg])
-            command.append(_value)
+            # generic.debugLog(debug=True, message="value is {a}".format(a=arg))
+            myvalue = getValueArg(value=arg, owner=owner, repository=repository, version=version)
+            myArg = "{k} {v}".format(k=configuration['arguments'][arg], v=myvalue)
+            command.append(myArg)
     return command

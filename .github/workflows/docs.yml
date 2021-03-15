@@ -1,8 +1,7 @@
-
-name: "Generate documentation"
+name: Generate documentation
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   docs:
@@ -10,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: "Install Sphinx"
+    - name: Install Sphinx
       run: |
         sudo apt-get update
         sudo apt-get install -y python3-sphinx
