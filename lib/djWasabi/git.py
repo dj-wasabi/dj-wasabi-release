@@ -12,13 +12,19 @@ def readRepository(repo: str = None, debug: bool = False) -> tuple:
     """
     if repo is None:
         command = "git config --get remote.origin.url"
-        _repository_string = generic.executeCommand(command=command)
+        _repository_string = generic.executeCommand(command=command, debug=debug)
     else:
         _repository_string = repo
-    _repository = _repository_string.split(':')[1]
-    _data = _repository.split('.')[0]
-    owner = _data.split('/')[0]
-    repo = _data.split('/')[1]
+    print(_repository_string)
+    if _repository_string.startswith('https'):
+        _data = _repository_string.rsplit('/', 2)
+        owner = _data[1]
+        repo = _data[2].split('.')[0]
+    else:
+        _repository = _repository_string.split(':')[1]
+        _data = _repository.split('.')[0]
+        owner = _data.split('/')[0]
+        repo = _data.split('/')[1]
 
     generic.debugLog(debug=debug, message="Git {o} with repository: {r}".format(o=owner, r=repo))
     return (owner, repo)

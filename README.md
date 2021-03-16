@@ -26,7 +26,7 @@
 
 This is a "private" repository that contains the script(s) that I use for maintaining my own set of repositories.
 
-Documentation available [here](https://dj-wasabi.github.io/dj-wasabi-release/build/html/index.html).
+Documentation available [here](https://dj-wasabi.github.io/dj-wasabi-release/index.html).
 
 ## Github Actions
 

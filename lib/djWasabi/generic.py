@@ -80,7 +80,7 @@ def getString(data: dict = None, separater: str = " ") -> str:
         return separater.join(data)
 
 
-def executeCommand(command: str = None, shell: bool = True, debug: bool = True) -> str:
+def executeCommand(command: str = None, shell: bool = True, debug: bool = False) -> str:
     """Executing a command and returns the output.
 
     :param command: The command we want to execute.
