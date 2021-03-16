@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Uncomment commit;No None release; Also able to work with https repositories instead of git [\#46](https://github.com/dj-wasabi/dj-wasabi-release/pull/46) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added various minor changes [\#45](https://github.com/dj-wasabi/dj-wasabi-release/pull/45) ([dj-wasabi](https://github.com/dj-wasabi))
 - Using a class for the HTTP functions [\#43](https://github.com/dj-wasabi/dj-wasabi-release/pull/43) ([dj-wasabi](https://github.com/dj-wasabi))
 
