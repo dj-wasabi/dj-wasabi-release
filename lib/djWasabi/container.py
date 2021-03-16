@@ -33,14 +33,11 @@ def getValueArg(value: str = None, owner: str = None, repository: str = None, ve
     :rtype: str
     :return: The complete url to the Github repository
     """
-    generic.debugLog(debug=True, message=value)
     if value == "owner":
         return owner
     elif value == "repository":
-        generic.debugLog(debug=True, message="We are here now")
         return repository
     elif value == "version":
-        generic.debugLog(debug=True, message="Are we here yet")
         return version
     else:
         return None
@@ -85,6 +82,8 @@ def createContainerCommand(configuration: dict = None, owner: str = None, reposi
     if 'arguments' in configuration:
         for arg in configuration['arguments']:
             # generic.debugLog(debug=True, message="value is {a}".format(a=arg))
+            if arg == "version" and version is None:
+                continue
             myvalue = getValueArg(value=arg, owner=owner, repository=repository, version=version)
             myArg = "{k} {v}".format(k=configuration['arguments'][arg], v=myvalue)
             command.append(myArg)

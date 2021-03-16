@@ -12,6 +12,15 @@ sys.path.append(libraryDir)
 from djWasabi import djWasabi
 
 
+def test_git_readRepository_with_https_repo():
+    """Test the read repository with the repo git repo.
+    :return:
+    """
+    owner, repo = djWasabi.git.readRepository(repo="https://github.com/dj-wasabi/pre-commit-hooks")
+    assert owner == "dj-wasabi"
+    assert repo == "pre-commit-hooks"
+
+
 def test_git_readRepository_with_repo():
     """Test the read repository with the repo git repo.
     :return:
