@@ -6,9 +6,14 @@
 
 **Implemented enhancements:**
 
+- Added pre-commit hook to now allow commits into master|main;Moved some tasks before doing an tag [\#47](https://github.com/dj-wasabi/dj-wasabi-release/pull/47) ([dj-wasabi](https://github.com/dj-wasabi))
 - Uncomment commit;No None release; Also able to work with https repositories instead of git [\#46](https://github.com/dj-wasabi/dj-wasabi-release/pull/46) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added various minor changes [\#45](https://github.com/dj-wasabi/dj-wasabi-release/pull/45) ([dj-wasabi](https://github.com/dj-wasabi))
 - Using a class for the HTTP functions [\#43](https://github.com/dj-wasabi/dj-wasabi-release/pull/43) ([dj-wasabi](https://github.com/dj-wasabi))
+
+**Fixed bugs:**
+
+- raise ValueError\('Please provide the owner of the repository.'\) as part of Github Actions execution [\#44](https://github.com/dj-wasabi/dj-wasabi-release/issues/44)
 
 ## [0.3.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.3.1) (2021-02-14)
 
