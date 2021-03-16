@@ -96,14 +96,11 @@
 <span class="sd">    :rtype: str</span>
 <span class="sd">    :return: The complete url to the Github repository</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">generic</span><span class="o">.</span><span class="n">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;owner&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">owner</span>
     <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;repository&quot;</span><span class="p">:</span>
-        <span class="n">generic</span><span class="o">.</span><span class="n">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;We are here now&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">repository</span>
     <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;version&quot;</span><span class="p">:</span>
-        <span class="n">generic</span><span class="o">.</span><span class="n">debugLog</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Are we here yet&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">version</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -148,6 +145,8 @@
     <span class="k">if</span> <span class="s1">&#39;arguments&#39;</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;arguments&#39;</span><span class="p">]:</span>
             <span class="c1"># generic.debugLog(debug=True, message=&quot;value is {a}&quot;.format(a=arg))</span>
+            <span class="k">if</span> <span class="n">arg</span> <span class="o">==</span> <span class="s2">&quot;version&quot;</span> <span class="ow">and</span> <span class="n">version</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
             <span class="n">myvalue</span> <span class="o">=</span> <span class="n">getValueArg</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">arg</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span> <span class="n">repository</span><span class="o">=</span><span class="n">repository</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
             <span class="n">myArg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{k}</span><span class="s2"> </span><span class="si">{v}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;arguments&#39;</span><span class="p">][</span><span class="n">arg</span><span class="p">],</span> <span class="n">v</span><span class="o">=</span><span class="n">myvalue</span><span class="p">)</span>
             <span class="n">command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">myArg</span><span class="p">)</span>
