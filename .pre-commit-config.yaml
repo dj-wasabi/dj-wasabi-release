@@ -5,6 +5,8 @@ repos:
   - id: shellcheck
   - id: markdown-toc
   - id: verify-yaml
+  - id: no-commit-on-branch
+    args: ['-b master,main']
 
 - repo: https://gitlab.com/pycqa/flake8
   rev: 3.8.4

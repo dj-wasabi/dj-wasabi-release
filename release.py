@@ -154,6 +154,13 @@ def main():
         print('Updating Sphinx-docs release information if applicable.')
         updateSphinxDocs(version=version)
 
+        # changelog
+        print('Updating CONTRIBUTORS and CHANGELOG files.')
+        updateChangelogMd(command=dockerCommand, version=version)
+
+        # Update Contributors file and create release in Github
+        createUpdateContributerFile(version=version)
+
         print('Creating a tag and push version {v}.'.format(v=version))
         gitTagCOmmand = ["git", "tag", "-a", version, "-m", version]
         djWasabi.generic.executeCommand(command=gitTagCOmmand)
@@ -161,12 +168,6 @@ def main():
         gitTagCOmmand = ["git", "push", "--tags"]
         djWasabi.generic.executeCommand(command=gitTagCOmmand)
 
-        # changelog
-        print('Updating CONTRIBUTORS and CHANGELOG files.')
-        updateChangelogMd(command=dockerCommand, version=version)
-
-        # Update Contributors file and create release in Github
-        createUpdateContributerFile(version=version)
         githubUrlRelease = "{g}/releases".format(g=githubUrl)
         releaseData = generateReleaseDict(version=version)
         djWasabi.generic.debugLog(
