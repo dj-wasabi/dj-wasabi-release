@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
 
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.3.1...HEAD)
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.4.0...HEAD)
+
+**Merged pull requests:**
+
+- No idea what I did anymore with these changes.. :\) [\#48](https://github.com/dj-wasabi/dj-wasabi-release/pull/48) ([dj-wasabi](https://github.com/dj-wasabi))
+
+## [0.4.0](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.4.0) (2021-03-16)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.3.1...0.4.0)
 
 **Implemented enhancements:**
 
@@ -45,6 +53,7 @@
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
+- Added tests and improved the execute command function [\#24](https://github.com/dj-wasabi/dj-wasabi-release/pull/24) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
 
@@ -66,7 +75,6 @@
 - Check if Docker is running before release.py script continues [\#28](https://github.com/dj-wasabi/dj-wasabi-release/pull/28) ([dj-wasabi](https://github.com/dj-wasabi))
 - Separating the single big test file into smaller files specific for each module file [\#27](https://github.com/dj-wasabi/dj-wasabi-release/pull/27) ([dj-wasabi](https://github.com/dj-wasabi))
 - Improved documentation in doc and script and added a pre-commit hook [\#26](https://github.com/dj-wasabi/dj-wasabi-release/pull/26) ([dj-wasabi](https://github.com/dj-wasabi))
-- Added tests and improved the execute command function [\#24](https://github.com/dj-wasabi/dj-wasabi-release/pull/24) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added some more tests to increase coverage [\#23](https://github.com/dj-wasabi/dj-wasabi-release/pull/23) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
