@@ -43,7 +43,9 @@ def getValueArg(value: str = None, owner: str = None, repository: str = None, ve
         return None
 
 
-def createContainerCommand(configuration: dict = None, owner: str = None, repository: str = None, version: str = None) -> str:
+def createContainerCommand(configuration: dict = None, owner: str = None, repository: str = None, version: str = None,
+                           debug: bool = False
+                           ) -> str:
     """Create a 'docker run' command based on configuration.
 
     :param configuration: The Docker configuration.
@@ -87,4 +89,5 @@ def createContainerCommand(configuration: dict = None, owner: str = None, reposi
             myvalue = getValueArg(value=arg, owner=owner, repository=repository, version=version)
             myArg = "{k} {v}".format(k=configuration['arguments'][arg], v=myvalue)
             command.append(myArg)
+    generic.debugLog(debug=debug, message="Executing command: {c}".format(c=command))
     return command

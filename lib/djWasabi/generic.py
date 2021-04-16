@@ -94,7 +94,10 @@ def executeCommand(command: str = None, shell: bool = True, debug: bool = False)
     """
     if not command:
         raise ValueError('Please provide the command we want to execute.')
-    _command = getString(data=command, separater=" ")
+    if shell:
+        _command = getString(data=command, separater=" ")
+    else:
+        _command = command
     debugLog(message='Executing command: {c}'.format(c=_command), debug=debug)
     proc = subprocess.Popen(_command, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return proc.communicate()[0].decode().strip('\n')

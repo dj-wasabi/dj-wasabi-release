@@ -96,10 +96,8 @@ def commitFile(file: str = None, message: str = None, debug: bool = False) -> bo
     changelogdUpdated = ["git", "status", "|", "grep", file, "|", "wc", "-l"]
     changelogdUpdatedOutput = int(generic.executeCommand(command=changelogdUpdated))
     if changelogdUpdatedOutput >= 1:
-        gitAddCommand = ["git", "add", file]
-        generic.executeCommand(command=gitAddCommand)
-        gitCommitCommand = ['git commit -m "{m}" {f}'.format(m=message, f=file)]
-        generic.debugLog(debug=debug, message="Executing command: {c}".format(c=gitCommitCommand))
-        generic.executeCommand(command=gitCommitCommand)
+        # gitCommitCommand = ["git", "commit", "-m", {m}, {f}.format(m=message, f=file)]
+        gitCommitCommand = ["git", "commit", "-m", message, file]
+        generic.executeCommand(command=gitCommitCommand, shell=False, debug=debug)
         return True
     return False
