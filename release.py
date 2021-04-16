@@ -135,7 +135,7 @@ def main():
     yamlConfig = djWasabi.config.readYamlFile(file=yamlConfigFile)
     dockerCommand = djWasabi.container.createContainerCommand(
         configuration=yamlConfig['changelog'],
-        owner=owner, repository=repository, version=version
+        owner=owner, repository=repository, version=version, debug=is_debug
     )
 
     if version:
@@ -188,7 +188,7 @@ def main():
         print('Updating CHANGELOG file.')
         updateChangelogMd(command=dockerCommand)
     else:
-        print('No action done.')
+        print('No action to be executed.')
 
 
 if __name__ == "__main__":
