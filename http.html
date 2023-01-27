@@ -1,22 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4. djWasabi.http.request() &#8212; djWasabi 0.3.1 documentation</title>
-    <link rel="stylesheet" href="_static/css/adctheme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/adctheme.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <meta name="generator" content="Sphinx/ADC Theme by Mirounga www.mirounga.fr"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="djWasabi 0.3.1 documentation" href="index.html" />
+    <link rel="next" title="5. djWasabi.git" href="git.html" />
+    <link rel="prev" title="3. djWasabi.generic" href="generic.html" />
     <link media="only screen and (max-device-width: 480px)" href="_static/css/mobile.css" type="text/css" rel="stylesheet" /> 
   </head><body>
 <div id="docstitle">
@@ -29,14 +31,24 @@
         <li id="page_buttons">
             <div class="headerButton"><a href="genindex.html" title="General Index" accesskey="I">index</a></div>
             <div class="headerButton"><a href="py-modindex.html" title="Python Module Index" >modules</a></div>
+            <div class="headerButton"><a href="git.html" title="5. djWasabi.git" accesskey="N">next</a></div>
+            <div class="headerButton"><a href="generic.html" title="3. djWasabi.generic" accesskey="P">previous</a></div>
         </li>
     </ul>
 </div>
 
 <div id="sphinxsidebar">
   <div class="sphinxsidebarwrapper">
-        <ul><li class="toctree-l1"><a href="contents.html">Main Page</a></li></ul>
-        
+        <ul><li class="toctree-l1"><a href="index.html">Main Page</a></li></ul>
+        <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="config.html">1. djWasabi.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">2. djWasabi.container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generic.html">3. djWasabi.generic</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. djWasabi.http.request()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">5. djWasabi.git</a></li>
+</ul>
+
       <h3>This Page</h3>
       <ul class="this-page-menu">
         <li><a href="_sources/http.rst.txt"
@@ -64,201 +76,173 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="djwasabi-http-request">
-<h1>4. djWasabi.http.request()<a class="headerlink" href="#djwasabi-http-request" title="Permalink to this headline">¶</a></h1>
+  <section id="djwasabi-http-request">
+<h1><span class="section-number">4. </span>djWasabi.http.request()<a class="headerlink" href="#djwasabi-http-request" title="Permalink to this headline">¶</a></h1>
 <p>Basic functions for doing http requests via the requests module.</p>
-<dl class="class">
-<dt id="djWasabi.http.request">
-<em class="property">class </em><code class="descclassname">djWasabi.http.</code><code class="descname">request</code><span class="sig-paren">(</span><em>debug: bool = False</em>, <em>status: list = None</em>, <em>methods: list = None</em>, <em>backoff: int = 1</em>, <em>retries: int = 5</em>, <em>timeout: int = 10</em>, <em>verify: bool = True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/http.html#request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="djWasabi.http.request">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djWasabi.http.</span></span><span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">methods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/http.html#request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request" title="Permalink to this definition">¶</a></dt>
 <dd><p>.</p>
-<dl class="method">
-<dt id="djWasabi.http.request.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>debug: bool = False</em>, <em>status: list = None</em>, <em>methods: list = None</em>, <em>backoff: int = 1</em>, <em>retries: int = 5</em>, <em>timeout: int = 10</em>, <em>verify: bool = True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/http.html#request.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="djWasabi.http.request.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">methods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/djWasabi/http.html#request.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set defaults and setting up retry mechanism for http requests.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>debug</strong> (<em>bool</em>) – If we need debug information or not.</li>
-<li><strong>status</strong> (<em>list</em>) – A list with http status code that needs to be retried.</li>
-<li><strong>methods</strong> (<em>list</em>) – A list with htto methods that are allowed to be retried.</li>
-<li><strong>retries</strong> (<em>int</em>) – The amount of retries we want to use.</li>
-<li><strong>backoff</strong> (<em>int</em>) – The backoff timeout. See <a class="reference external" href="https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/">https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/</a></li>
-<li><strong>timeout</strong> (<em>int</em>) – The timeout in seconds</li>
-<li><strong>verify</strong> (<em>bool</em>) – If TLS connections needs to verify the remote certificate.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>debug</strong> (<em>bool</em>) – If we need debug information or not.</p></li>
+<li><p><strong>status</strong> (<em>list</em>) – A list with http status code that needs to be retried.</p></li>
+<li><p><strong>methods</strong> (<em>list</em>) – A list with htto methods that are allowed to be retried.</p></li>
+<li><p><strong>retries</strong> (<em>int</em>) – The amount of retries we want to use.</p></li>
+<li><p><strong>backoff</strong> (<em>int</em>) – The backoff timeout. See <a class="reference external" href="https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/">https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/</a></p></li>
+<li><p><strong>timeout</strong> (<em>int</em>) – The timeout in seconds</p></li>
+<li><p><strong>verify</strong> (<em>bool</em>) – If TLS connections needs to verify the remote certificate.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="djWasabi.http.request.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#djWasabi.http.request.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="djWasabi.http.request.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#djWasabi.http.request.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="djWasabi.http.request._delete">
-<code class="descname">_delete</code><span class="sig-paren">(</span><em>url: str = None</em>, <em>headers: dict = {}</em>, <em>username: str = None</em>, <em>password: str = None</em><span class="sig-paren">)</span> &#x2192; tuple<a class="reference internal" href="_modules/djWasabi/http.html#request._delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request._delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="djWasabi.http.request._delete">
+<span class="sig-name descname"><span class="pre">_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/djWasabi/http.html#request._delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request._delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>DELETE the information from provided url.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>url</strong> (<em>str</em>) – The URL we want to DELETE.</li>
-<li><strong>headers</strong> (<em>dict</em>) – The headers.</li>
-<li><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</li>
-<li><strong>password</strong> (<em>str</em>) – The password for the provided username.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL we want to DELETE.</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – The headers.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password for the provided username.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Succes (or not) with the request object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Succes (or not) with the request object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="djWasabi.http.request._get">
-<code class="descname">_get</code><span class="sig-paren">(</span><em>url: str = None</em>, <em>headers: dict = {}</em>, <em>username: str = None</em>, <em>password: str = None</em><span class="sig-paren">)</span> &#x2192; tuple<a class="reference internal" href="_modules/djWasabi/http.html#request._get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request._get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="djWasabi.http.request._get">
+<span class="sig-name descname"><span class="pre">_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/djWasabi/http.html#request._get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request._get" title="Permalink to this definition">¶</a></dt>
 <dd><p>GET the information from provided url.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>url</strong> (<em>str</em>) – The URL we want to GET.</li>
-<li><strong>headers</strong> (<em>dict</em>) – The headers.</li>
-<li><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</li>
-<li><strong>password</strong> (<em>str</em>) – The password for the provided username.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL we want to GET.</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – The headers.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password for the provided username.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Succes (or not) with the request object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Succes (or not) with the request object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="djWasabi.http.request._patch">
-<code class="descname">_patch</code><span class="sig-paren">(</span><em>url: str = None</em>, <em>headers: dict = {}</em>, <em>data: dict = {}</em>, <em>username: str = None</em>, <em>password: str = None</em><span class="sig-paren">)</span> &#x2192; tuple<a class="reference internal" href="_modules/djWasabi/http.html#request._patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request._patch" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="djWasabi.http.request._patch">
+<span class="sig-name descname"><span class="pre">_patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/djWasabi/http.html#request._patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request._patch" title="Permalink to this definition">¶</a></dt>
 <dd><p>PATCH the information from provided url.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>url</strong> (<em>str</em>) – The URL we want to PATCH.</li>
-<li><strong>headers</strong> (<em>dict</em>) – The headers.</li>
-<li><strong>data</strong> (<em>dict</em>) – The headers.</li>
-<li><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</li>
-<li><strong>password</strong> (<em>str</em>) – The password for the provided username.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL we want to PATCH.</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – The headers.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The headers.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password for the provided username.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Succes (or not) with the request object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Succes (or not) with the request object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="djWasabi.http.request._post">
-<code class="descname">_post</code><span class="sig-paren">(</span><em>url: str = None</em>, <em>headers: dict = {}</em>, <em>data: dict = {}</em>, <em>username: str = None</em>, <em>password: str = None</em><span class="sig-paren">)</span> &#x2192; tuple<a class="reference internal" href="_modules/djWasabi/http.html#request._post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request._post" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="djWasabi.http.request._post">
+<span class="sig-name descname"><span class="pre">_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/djWasabi/http.html#request._post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request._post" title="Permalink to this definition">¶</a></dt>
 <dd><p>POST the information from provided url.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>url</strong> (<em>str</em>) – The URL we want to POST.</li>
-<li><strong>headers</strong> (<em>dict</em>) – The headers.</li>
-<li><strong>data</strong> (<em>dict</em>) – The data we want to POST.</li>
-<li><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</li>
-<li><strong>password</strong> (<em>str</em>) – The password for the provided username.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL we want to POST.</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – The headers.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The data we want to POST.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password for the provided username.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Succes (or not) with the request object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Succes (or not) with the request object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="djWasabi.http.request._put">
-<code class="descname">_put</code><span class="sig-paren">(</span><em>url: str = None</em>, <em>headers: dict = {}</em>, <em>username: str = None</em>, <em>password: str = None</em><span class="sig-paren">)</span> &#x2192; tuple<a class="reference internal" href="_modules/djWasabi/http.html#request._put"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request._put" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="djWasabi.http.request._put">
+<span class="sig-name descname"><span class="pre">_put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/djWasabi/http.html#request._put"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request._put" title="Permalink to this definition">¶</a></dt>
 <dd><p>PUT the information from provided url.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>url</strong> (<em>str</em>) – The URL we want to PUT.</li>
-<li><strong>headers</strong> (<em>dict</em>) – The headers.</li>
-<li><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</li>
-<li><strong>password</strong> (<em>str</em>) – The password for the provided username.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL we want to PUT.</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – The headers.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – The username that needs to be used when authentication is needed.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password for the provided username.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Succes (or not) with the request object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Succes (or not) with the request object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="djWasabi.http.request.verifyResponse">
-<code class="descname">verifyResponse</code><span class="sig-paren">(</span><em>success: bool = False</em>, <em>data: dict = {}</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/djWasabi/http.html#request.verifyResponse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#djWasabi.http.request.verifyResponse" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="djWasabi.http.request.verifyResponse">
+<span class="sig-name descname"><span class="pre">verifyResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">success</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/djWasabi/http.html#request.verifyResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#djWasabi.http.request.verifyResponse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the correct configuration for the repository.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>success</strong> (<em>bool</em>) – The status value of the http request.</li>
-<li><strong>data</strong> (<em>dict</em>) – The compleet requests data object.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>success</strong> (<em>bool</em>) – The status value of the http request.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The compleet requests data object.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The combination of the default and overriden config.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The combination of the default and overriden config.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
           </div> 
@@ -267,14 +251,14 @@
     <div class="footer">
     <p>
       &copy; Copyright 2021, Werner Dijkerman.
-      Created using <a href="http://www.sphinx-doc.org/">Sphinx</a> 1.8.5 <a href="https://github.com/mga-sphinx/sphinx_adc_theme">ADC Theme</a> .
+      Created using <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.2 <a href="https://github.com/mga-sphinx/sphinx_adc_theme">ADC Theme</a> .
     (Revision )
         </p>
     </div>
       <div class="clearer"></div>
     </div>
         <div id="breadcrumbs">
-                4. djWasabi.http.request()
+                <span class="section-number">4. </span>djWasabi.http.request()
         </div>
         <script type="text/javascript" charset="utf-8" src="_static/js/toc.js"></script>
   </body>
