@@ -12,10 +12,6 @@
 
 [Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.4.0...0.4.1)
 
-**Implemented enhancements:**
-
-- Updating the Sphinx release property file when creating a release [\#39](https://github.com/dj-wasabi/dj-wasabi-release/pull/39) ([dj-wasabi](https://github.com/dj-wasabi))
-
 **Merged pull requests:**
 
 - No idea what I did anymore with these changes.. :\) [\#48](https://github.com/dj-wasabi/dj-wasabi-release/pull/48) ([dj-wasabi](https://github.com/dj-wasabi))
@@ -59,8 +55,8 @@
 
 - Usage of a Mock to run some tests specific for doing http requests [\#34](https://github.com/dj-wasabi/dj-wasabi-release/issues/34)
 - Update shpinx release when repository contains Sphinx [\#40](https://github.com/dj-wasabi/dj-wasabi-release/pull/40) ([dj-wasabi](https://github.com/dj-wasabi))
+- Updating the Sphinx release property file when creating a release [\#39](https://github.com/dj-wasabi/dj-wasabi-release/pull/39) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added the usage of python type hinting for all of the functions. [\#35](https://github.com/dj-wasabi/dj-wasabi-release/pull/35) ([dj-wasabi](https://github.com/dj-wasabi))
-- Added Sphinx for docs generation [\#33](https://github.com/dj-wasabi/dj-wasabi-release/pull/33) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added small description in scripts [\#32](https://github.com/dj-wasabi/dj-wasabi-release/pull/32) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added basic check to verify existing keys in dict [\#31](https://github.com/dj-wasabi/dj-wasabi-release/pull/31) ([dj-wasabi](https://github.com/dj-wasabi))
 - Added image to be used as part of readme document [\#30](https://github.com/dj-wasabi/dj-wasabi-release/pull/30) ([dj-wasabi](https://github.com/dj-wasabi))
@@ -82,6 +78,7 @@
 - Write the release.sh into Python [\#22](https://github.com/dj-wasabi/dj-wasabi-release/issues/22)
 - Able to configure repositories [\#18](https://github.com/dj-wasabi/dj-wasabi-release/issues/18)
 - Delete local branches automatically [\#15](https://github.com/dj-wasabi/dj-wasabi-release/issues/15)
+- Added Sphinx for docs generation [\#33](https://github.com/dj-wasabi/dj-wasabi-release/pull/33) ([dj-wasabi](https://github.com/dj-wasabi))
 - Check if Docker is running before release.py script continues [\#28](https://github.com/dj-wasabi/dj-wasabi-release/pull/28) ([dj-wasabi](https://github.com/dj-wasabi))
 - Separating the single big test file into smaller files specific for each module file [\#27](https://github.com/dj-wasabi/dj-wasabi-release/pull/27) ([dj-wasabi](https://github.com/dj-wasabi))
 - Improved documentation in doc and script and added a pre-commit hook [\#26](https://github.com/dj-wasabi/dj-wasabi-release/pull/26) ([dj-wasabi](https://github.com/dj-wasabi))
