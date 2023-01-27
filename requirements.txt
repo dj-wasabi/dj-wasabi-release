@@ -1,5 +1,4 @@
 # Molecule CI dependencies
-ansible-compat==2.2.1
 ansible-core==2.13.4
 ansible-lint==6.7.0
 ansible==6.4.0
