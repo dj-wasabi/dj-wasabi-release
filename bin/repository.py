@@ -8,7 +8,7 @@ import argparse
 import json
 
 currentPath = os.path.dirname(os.path.realpath(__file__))
-libraryDir = os.path.join(currentPath, "lib")
+libraryDir = os.path.join(currentPath, "..", "lib")
 sys.path.append(libraryDir)
 from djWasabi import djWasabi
 
@@ -101,7 +101,7 @@ def main():
     token = args.token
 
     request = djWasabi.http.request(debug=is_debug)
-    yamlConfigFile = os.path.join(currentPath, "dj-wasabi.yml")
+    yamlConfigFile = os.path.join(currentPath, "..", "dj-wasabi.yml")
     yamlConfig = djWasabi.config.readYamlFile(file=yamlConfigFile)
     if token is None:
         token = djWasabi.config.readOsEnv(key="CHANGELOG_GITHUB_TOKEN")

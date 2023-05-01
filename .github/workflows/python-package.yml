@@ -49,8 +49,8 @@ jobs:
 
     - name: Execute scripts on this repository.
       run: |
-        ./label.py -D
-        ./repository.py -D
+        ./bin/label.py -D
+        ./bin/repository.py -D
       env:
         CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}
 
@@ -60,10 +60,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: 3.x
+
+    - name: Install and execute buid
+      run: |
+        export CURRENT_BRANCH=$(git branch --show-current)
+        export CURRENT_TAG=$(git tag --sort=-creatordate | head -n1)
+        python -m pip install build setuptools
+        python setup.py sdist
 
     - name: Publish distribution to Test PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
