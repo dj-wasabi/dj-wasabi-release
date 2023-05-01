@@ -1,12 +1,14 @@
-# Molecule CI dependencies
-ansible-core==2.13.4
-ansible-lint==6.7.0
-ansible==6.4.0
-docker==5.0.3
+ansible-compat==2.2.1
+ansible-core==2.14.5
+ansible-lint==6.15.0
+ansible==7.5.0
+dependencies==7.7.0
+docker==6.0.1
+dockerfile-parse==2.0.0
 ipaddr==2.2.0
 ipaddress==1.0.23
-molecule-docker==1.1.0
-molecule-vagrant==1.0.0
-molecule==3.5.1
+molecule-docker==2.1.0
+molecule-vagrant==2.0.0
+molecule==5.0.0
 netaddr==0.8.0
 pytest-testinfra==7.0.0

@@ -5,7 +5,6 @@ name: MasterRun
 on:
   push:
     branches:
-    - master
     - main
 
   workflow_dispatch:
@@ -15,25 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout dj-wasabi-release repo
-      uses: actions/checkout@v2
-      with:
-        repository: dj-wasabi/dj-wasabi-release
-        path: dj-wasabi-release
-
     - name: Checkout current repo
       uses: actions/checkout@v2
-      with:
-        path: main
 
     - name: Commit Changelog file
       run: |
-        # We are cloned in the 'main' directory and the dj-wasabi-release
-        # repository is the 'dj-wasabi-release' next to 'main'
-        cd main
-
         # Generate CHANGELOG.md file
-        ../dj-wasabi-release/release.sh -d
+        ./release.sh -d
 
         # Let commit the changes if there are any? (Well there should be!)
         if [[ $(git status | grep -c 'CHANGELOG.md' || true) -gt 0 ]]
@@ -47,3 +34,15 @@ jobs:
         fi
       env:
         CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  pypi-publish:
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/dj-wasabi
+    permissions:
+      id-token: write
+    steps:
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1

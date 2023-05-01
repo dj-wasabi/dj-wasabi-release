@@ -2,3 +2,5 @@
 .vscode/
 .coverage
 docs/build/html/
+**.egg-info**
+dist/

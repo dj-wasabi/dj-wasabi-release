@@ -55,7 +55,7 @@ class request():
             HTTPConnection.debuglevel = 1
         self.http = http
 
-    def _get(self, url: str = None, headers: dict = {}, username: str = None, password: str = None) -> tuple:
+    def _get(self, url: str = None, headers: dict = {}, username: str = None, password: str = None, params: dict = {}) -> tuple:
         """GET the information from provided url.
 
         :param url: The URL we want to GET.
@@ -71,10 +71,13 @@ class request():
         """
         if not url:
             raise ValueError('Please provide the URL.')
+        kwargs = {}
 
-        kwargs = {
-            "headers": headers
-        }
+        if bool(headers):
+            kwargs["headers"]: headers
+        if bool(params):
+            kwargs["params"]: params
+
         if username is not None and password is not None:
             kwargs['auth'] = (username, password)
 
