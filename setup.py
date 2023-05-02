@@ -15,7 +15,9 @@ if 'CURRENT_TAG' in os.environ:
     new_tag = "{m}.{i}.{p}-{c}".format(m=_new_tag[0], i=_new_tag[1], p=int(_new_tag[2]) + 1, c=run_id)
 
 if current_branch != "main":
-    latest_tag =new_tag
+    latest_tag = new_tag
+else:
+    latest_tag = current_tag
 
 with open("README.md", "r", encoding = "utf-8") as fh:
     long_description = fh.read()
