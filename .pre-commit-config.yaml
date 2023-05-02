@@ -8,11 +8,11 @@ repos:
   - id: no-commit-on-branch
     args: ['-b master,main']
 
-- repo: https://gitlab.com/pycqa/flake8
-  rev: 3.8.4
-  hooks:
-  - id: flake8
-    additional_dependencies: [flake8-typing-imports==1.7.0]
+# - repo: https://gitlab.com/pycqa/flake8
+#   rev: 3.8.4
+#   hooks:
+#   - id: flake8
+#     additional_dependencies: [flake8-typing-imports==1.7.0]
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v3.4.0

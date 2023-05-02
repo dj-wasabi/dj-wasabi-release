@@ -21,7 +21,7 @@ jobs:
         python-version: ['3.9']
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -35,6 +35,7 @@ jobs:
     - name: Run runme with label script.
       run: |
         git remote set-url origin git@github.com:dj-wasabi/dj-wasabi-release.git
+        cd bin
         ./run-me.py -D -s label.py
       env:
         CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}
@@ -42,6 +43,7 @@ jobs:
     - name: Run runme with repository script.
       run: |
         git remote set-url origin git@github.com:dj-wasabi/dj-wasabi-release.git
+        cd bin
         ./run-me.py -D -s repository.py
       env:
         CHANGELOG_GITHUB_TOKEN: ${{ secrets.CHANGELOG_GITHUB_TOKEN }}

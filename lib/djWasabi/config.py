@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import json
 import os
 import sys
 import yaml
@@ -25,6 +26,16 @@ def readYamlFile(file: str = None) -> dict:
         return _load
     except IOError:
         raise ValueError('File {f} does not exist.'.format(f=file))
+
+
+def readJsonFile(file: str = None) -> dict:
+    """Will read a json file and return the content.
+    """
+    if file is None:
+        raise ValueError('Please provide a path to the JSON file.')
+
+    with open(file, 'r') as stream:
+        return json.load(stream)
 
 
 def readOsEnv(key: str = None) -> str:

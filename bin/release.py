@@ -9,7 +9,7 @@ import json
 import platform
 
 currentPath = os.path.dirname(os.path.realpath(__file__))
-libraryDir = os.path.join(currentPath, "lib")
+libraryDir = os.path.join(currentPath, "..", "lib")
 sys.path.append(libraryDir)
 from djWasabi import djWasabi
 
@@ -131,7 +131,7 @@ def main():
 
     owner, repository = djWasabi.git.readRepository(debug=is_debug)
     githubUrl = djWasabi.generic.getGithubUrl(owner=owner, repository=repository)
-    yamlConfigFile = os.path.join(currentPath, "dj-wasabi.yml")
+    yamlConfigFile = os.path.join(currentPath, "..", "dj-wasabi.yml")
     yamlConfig = djWasabi.config.readYamlFile(file=yamlConfigFile)
     dockerCommand = djWasabi.container.createContainerCommand(
         configuration=yamlConfig['changelog'],

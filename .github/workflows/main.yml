@@ -5,7 +5,6 @@ name: MasterRun
 on:
   push:
     branches:
-    - master
     - main
 
   workflow_dispatch:
@@ -15,25 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout dj-wasabi-release repo
-      uses: actions/checkout@v2
-      with:
-        repository: dj-wasabi/dj-wasabi-release
-        path: dj-wasabi-release
-
     - name: Checkout current repo
-      uses: actions/checkout@v2
-      with:
-        path: main
+      uses: actions/checkout@v3
 
     - name: Commit Changelog file
       run: |
-        # We are cloned in the 'main' directory and the dj-wasabi-release
-        # repository is the 'dj-wasabi-release' next to 'main'
-        cd main
-
         # Generate CHANGELOG.md file
-        ../dj-wasabi-release/release.sh -d
+        ./release.sh -d
 
         # Let commit the changes if there are any? (Well there should be!)
         if [[ $(git status | grep -c 'CHANGELOG.md' || true) -gt 0 ]]
@@ -47,3 +34,29 @@ jobs:
         fi
       env:
         CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-n-publish:
+    name: Build and publish Python to PyPI
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - name: Install and execute buid
+      run: |
+        export CURRENT_BRANCH=$(git branch --show-current)
+        export CURRENT_TAG=$(git tag --sort=-creatordate | head -n1)
+        python -m pip install build setuptools
+        python setup.py sdist
+
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
