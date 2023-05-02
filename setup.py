@@ -6,10 +6,13 @@ if 'CURRENT_BRANCH' in os.environ:
 else:
     current_branch = 'main'
 
+if 'GITHUB_SHA' in os.environ:
+    commit_tag = os.environ['GITHUB_SHA']
+
 if 'CURRENT_TAG' in os.environ:
     current_tag = os.environ["CURRENT_TAG"]
     _new_tag = current_tag.split('.')
-    new_tag = "{m}.{i}.{p}".format(m=_new_tag[0], i=_new_tag[1], p=int(_new_tag[2]) + 1)
+    new_tag = "{m}.{i}.{p}-{c}".format(m=_new_tag[0], i=_new_tag[1], p=int(_new_tag[2]) + 1, c=commit_tag)
 
 if current_branch != "main":
     latest_tag =new_tag
