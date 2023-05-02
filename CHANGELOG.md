@@ -8,6 +8,10 @@
 
 - Create a Python module and push it to Pypi [\#50](https://github.com/dj-wasabi/dj-wasabi-release/pull/50) ([dj-wasabi](https://github.com/dj-wasabi))
 
+**Fixed bugs:**
+
+- Fix for uploading to Pypi [\#51](https://github.com/dj-wasabi/dj-wasabi-release/pull/51) ([dj-wasabi](https://github.com/dj-wasabi))
+
 **Security fixes:**
 
 - Bump ansible from 2.9.14 to 2.9.20 [\#49](https://github.com/dj-wasabi/dj-wasabi-release/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -69,7 +73,6 @@
 **Fixed bugs:**
 
 - Configured specific Python version for run-me.py script from GH Actions [\#36](https://github.com/dj-wasabi/dj-wasabi-release/pull/36) ([dj-wasabi](https://github.com/dj-wasabi))
-- Removing the prints and exit to get the script working again. [\#29](https://github.com/dj-wasabi/dj-wasabi-release/pull/29) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Merged pull requests:**
 
@@ -93,6 +96,7 @@
 **Fixed bugs:**
 
 - The run-me.py script is failing on executing labels.py script [\#20](https://github.com/dj-wasabi/dj-wasabi-release/issues/20)
+- Removing the prints and exit to get the script working again. [\#29](https://github.com/dj-wasabi/dj-wasabi-release/pull/29) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Merged pull requests:**
 
