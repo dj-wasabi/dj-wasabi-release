@@ -30,6 +30,13 @@ jobs:
 
                 git add CHANGELOG.md
                 git commit -m "Updated CHANGELOG.md on \"$(date "+%Y-%m-%d %H:%M:%S")\"" CHANGELOG.md
+
+                # Get the tag
+                BUILD_VERSION=$(grep '^version:' dj-wasabi.yml | awk '{print $2}')
+                BUILD_VERSION_LAST=$(git for-each-ref --sort=creatordate --format '%(refname)' refs/tags | sed 's/refs\/tags\///g' | grep "${BUILD_VERSION}" | tail -n1)
+                BUILD_VERSION_PATCH=$(echo "${BUILD_VERSION_LAST:-0}" | awk -F '.' '{print $NF}')
+                NEW_TAG="${BUILD_VERSION}.$(expr "${BUILD_VERSION_PATCH}" + 1)"
+                ./release.sh -c "${NEW_TAG}"
                 git push
         fi
       env:
