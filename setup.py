@@ -23,6 +23,8 @@ setuptools.setup(
   version = latest_tag,
   license='MIT',
   description = 'My personal PIP package',
+  long_description = '',
+  long_description_content_type = '',
   author = 'Werner Dijkerman',
   author_email = 'iam@werner-dijkerman.nl',
   url = 'https://github.com/dj-wasabi/dj-wasabi-release',
