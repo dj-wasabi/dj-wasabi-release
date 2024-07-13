@@ -1,20 +1,29 @@
 # Changelog
 
-## [Unreleased](https://github.com/dj-wasabi/dj-wasabi-release/tree/HEAD)
+## [0.4.3](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.4.3) (2024-07-13)
 
-[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.4.1...HEAD)
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.4.2...0.4.3)
+
+**Merged pull requests:**
+
+- Added some more options to http lib [\#54](https://github.com/dj-wasabi/dj-wasabi-release/pull/54) ([dj-wasabi](https://github.com/dj-wasabi))
+
+## [0.4.2](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.4.2) (2024-07-13)
+
+[Full Changelog](https://github.com/dj-wasabi/dj-wasabi-release/compare/0.4.1...0.4.2)
 
 **Implemented enhancements:**
 
+- Automatically increasing version and create a tag [\#52](https://github.com/dj-wasabi/dj-wasabi-release/pull/52) ([dj-wasabi](https://github.com/dj-wasabi))
 - Create a Python module and push it to Pypi [\#50](https://github.com/dj-wasabi/dj-wasabi-release/pull/50) ([dj-wasabi](https://github.com/dj-wasabi))
 
 **Fixed bugs:**
 
 - Fix for uploading to Pypi [\#51](https://github.com/dj-wasabi/dj-wasabi-release/pull/51) ([dj-wasabi](https://github.com/dj-wasabi))
 
-**Security fixes:**
+**Merged pull requests:**
 
-- Bump ansible from 2.9.14 to 2.9.20 [\#49](https://github.com/dj-wasabi/dj-wasabi-release/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Attempt to properly version it [\#53](https://github.com/dj-wasabi/dj-wasabi-release/pull/53) ([dj-wasabi](https://github.com/dj-wasabi))
 
 ## [0.4.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.4.1) (2021-04-16)
 
@@ -38,6 +47,10 @@
 **Fixed bugs:**
 
 - raise ValueError\('Please provide the owner of the repository.'\) as part of Github Actions execution [\#44](https://github.com/dj-wasabi/dj-wasabi-release/issues/44)
+
+**Security fixes:**
+
+- Bump ansible from 2.9.14 to 2.9.20 [\#49](https://github.com/dj-wasabi/dj-wasabi-release/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [0.3.1](https://github.com/dj-wasabi/dj-wasabi-release/tree/0.3.1) (2021-02-14)
 
