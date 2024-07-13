@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import sys
 import requests
-from . import generic
+import urllib3
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from http.client import HTTPConnection
 
+urllib3.disable_warnings()
 
 class request():
     """."""
@@ -83,6 +83,8 @@ class request():
 
         try:
             return (True, self.http.get(url, **kwargs))
+        except requests.exceptions.SSLError as e:
+            return (False, {'error': e})
         except requests.exceptions.RequestException as e:
             return (False, {'error': e})
 
@@ -117,7 +119,7 @@ class request():
         except requests.exceptions.RequestException as e:
             return (False, {'error': e})
 
-    def _post(self, url: str = None, headers: dict = {}, data: dict = {}, username: str = None, password: str = None) -> tuple:
+    def _post(self, url: str = None, headers: dict = {}, data: dict = {}, username: str = None, password: str = None, files: str = None) -> tuple:
         """POST the information from provided url.
 
         :param url: The URL we want to POST.
@@ -130,31 +132,38 @@ class request():
         :type username: str
         :param password: The password for the provided username.
         :type password: str
+        :param files: The contents of the file to be posted.
+        :type files: obj
         :rtype: tuple
         :return: Succes (or not) with the request object
         """
         if not url:
             raise ValueError('Please provide the URL.')
-
         kwargs = {
-            "headers": headers,
-            "data": data
+            "headers": headers
         }
+
+        if len(data) > 0:
+            kwargs['data'] = data
         if username is not None and password is not None:
             kwargs['auth'] = (username, password)
+        if files is not None:
+            kwargs['files'] = files
 
         try:
             return (True, self.http.post(url, **kwargs))
         except requests.exceptions.RequestException as e:
             return (False, {'error': e})
 
-    def _put(self, url: str = None, headers: dict = {}, username: str = None, password: str = None) -> tuple:
+    def _put(self, url: str = None, headers: dict = {}, data: dict = {}, username: str = None, password: str = None) -> tuple:
         """PUT the information from provided url.
 
         :param url: The URL we want to PUT.
         :type url: str
         :param headers: The headers.
         :type headers: dict
+        :param data: The data we want to PUT.
+        :type data: dict
         :param username: The username that needs to be used when authentication is needed.
         :type username: str
         :param password: The password for the provided username.
@@ -168,6 +177,8 @@ class request():
         kwargs = {
             "headers": headers
         }
+        if len(data) > 0:
+            kwargs['data'] = data
         if username is not None and password is not None:
             kwargs['auth'] = (username, password)
 
@@ -215,14 +226,18 @@ class request():
         :return: The combination of the default and overriden config.
         """
         if success and data.ok:
-            generic.debugLog(debug=self.debug, message="We have successful request, returning json data.")
-            return data.json()
+            try:
+                return data.json()
+            except:
+                return data.content
         else:
-            error = {
-                "status": data.status_code,
-                "headers": data.headers,
-                "url": data.url,
-                "text": data.text
-            }
-            print(error)
-            sys.exit(1)
+            error = {"error": True}
+            if 'headers' in data:
+                error['headers'] = data.headers
+            if 'url' in data:
+                error['url'] = data.url
+            if 'text' in data:
+                error['text'] = data.text
+            if 'status_code' in data:
+                error["status"] = data.status_code
+            return(error)
